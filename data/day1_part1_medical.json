@@ -1,0 +1,260 @@
+{
+  "package": "D",
+  "day": "Day1",
+  "title_zh": "医院门诊 & 承包商安全管理（一）",
+  "title_en": "Day1: Hospital Outpatient & Contractor Safety Management (I)",
+  "vocab": [
+    {
+      "id": "d1_med_01",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "emergency room",
+      "zh": "急诊室",
+      "example_en": "Please take the patient to the emergency room right away.",
+      "example_zh": "请立刻把病人送到急诊室。"
+    },
+    {
+      "id": "d1_med_02",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "outpatient lobby",
+      "zh": "门诊大厅",
+      "example_en": "Please wait in the outpatient lobby until your number is called.",
+      "example_zh": "请在门诊大厅等候叫号。"
+    },
+    {
+      "id": "d1_med_03",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "inpatient lobby",
+      "zh": "住院登记大厅",
+      "example_en": "Please go to the inpatient lobby to complete admission procedures.",
+      "example_zh": "请前往住院登记大厅办理入院手续。"
+    },
+    {
+      "id": "d1_med_04",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "internal medicine department",
+      "zh": "内科",
+      "example_en": "Please register at the internal medicine department on the second floor.",
+      "example_zh": "请到二楼内科挂号。"
+    },
+    {
+      "id": "d1_med_05",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "medical insurance card",
+      "zh": "医保卡",
+      "example_en": "Please show your medical insurance card before registration.",
+      "example_zh": "挂号前请出示医保卡。"
+    },
+    {
+      "id": "d1_med_06",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "specialist",
+      "zh": "专科医生",
+      "example_en": "Your GP may refer you to a specialist for further examination.",
+      "example_zh": "全科医生可能会将你转诊给专科医生进一步检查。"
+    },
+    {
+      "id": "d1_med_07",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "primary care doctor",
+      "zh": "家庭全科医生",
+      "example_en": "Your primary care doctor will coordinate your overall treatment.",
+      "example_zh": "家庭全科医生会统筹你的整体治疗。"
+    },
+    {
+      "id": "d1_med_08",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "fever-reducer",
+      "zh": "退烧药",
+      "example_en": "Take a fever-reducer if your temperature exceeds 38.5 degrees.",
+      "example_zh": "体温超过 38.5 度时请服用退烧药。"
+    },
+    {
+      "id": "d1_med_09",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "cough syrup",
+      "zh": "止咳糖浆",
+      "example_en": "Shake the cough syrup well before use.",
+      "example_zh": "服用前请摇匀止咳糖浆。"
+    },
+    {
+      "id": "d1_med_10",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "follow-up check",
+      "zh": "复查",
+      "example_en": "Please come back for a follow-up check in one week.",
+      "example_zh": "请一周后回来复查。"
+    },
+    {
+      "id": "d1_med_11",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "chronic illnesses",
+      "zh": "慢性病",
+      "example_en": "Patients with chronic illnesses need regular follow-up checks.",
+      "example_zh": "慢性病患者需要定期复查。"
+    },
+    {
+      "id": "d1_med_12",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "bacterial infection",
+      "zh": "细菌感染",
+      "example_en": "A bacterial infection usually requires antibiotics.",
+      "example_zh": "细菌感染通常需要使用抗生素。"
+    },
+    {
+      "id": "d1_med_13",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "viral cold",
+      "zh": "病毒性感冒",
+      "example_en": "Rest and drink water if you catch a viral cold.",
+      "example_zh": "患病毒性感冒时要多休息、多喝水。"
+    },
+    {
+      "id": "d1_med_14",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "pulse",
+      "zh": "脉搏",
+      "example_en": "The nurse will check your pulse and blood pressure.",
+      "example_zh": "护士会检查你的脉搏和血压。"
+    },
+    {
+      "id": "d1_med_15",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "immunity",
+      "zh": "免疫力",
+      "example_en": "Adequate sleep helps boost your immunity.",
+      "example_zh": "充足睡眠有助于提升免疫力。"
+    },
+    {
+      "id": "d1_med_16",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "symptoms",
+      "zh": "症状",
+      "example_en": "Please describe your symptoms in detail to the doctor.",
+      "example_zh": "请向医生详细描述你的症状。"
+    },
+    {
+      "id": "d1_med_17",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "wound",
+      "zh": "伤口",
+      "example_en": "Clean and dress the wound to prevent infection.",
+      "example_zh": "清洁伤口并包扎，防止感染。"
+    },
+    {
+      "id": "d1_med_v01",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "develop infection",
+      "zh": "发生感染",
+      "example_en": "Open wounds may develop infection if not treated properly.",
+      "example_zh": "伤口处理不当可能发生感染。"
+    },
+    {
+      "id": "d1_med_v02",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "recover",
+      "zh": "痊愈、康复",
+      "example_en": "Most patients recover fully within two weeks.",
+      "example_zh": "大多数患者两周内可完全康复。"
+    },
+    {
+      "id": "d1_med_v03",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "prescribe medicine",
+      "zh": "开药",
+      "example_en": "The doctor will prescribe medicine based on your symptoms.",
+      "example_zh": "医生会根据症状开药。"
+    },
+    {
+      "id": "d1_med_v04",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "jump to conclusions",
+      "zh": "过早下定论",
+      "example_en": "Don't jump to conclusions before all test results are in.",
+      "example_zh": "在所有检查结果出来前不要过早下定论。"
+    },
+    {
+      "id": "d1_med_v05",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "boost immunity",
+      "zh": "提升免疫力",
+      "example_en": "Regular exercise and a balanced diet help boost immunity.",
+      "example_zh": "规律运动和均衡饮食有助于提升免疫力。"
+    },
+    {
+      "id": "d1_med_v06",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "register appointment",
+      "zh": "挂号",
+      "example_en": "You can register an appointment online or at the front desk.",
+      "example_zh": "你可以在线上或前台挂号。"
+    },
+    {
+      "id": "d1_med_v07",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "refer sb to a specialist",
+      "zh": "将病人转诊给专科医生",
+      "example_en": "The GP may refer the patient to a specialist for further tests.",
+      "example_zh": "全科医生可将病人转诊给专科医生做进一步检查。"
+    },
+    {
+      "id": "d1_med_v08",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "describe discomfort",
+      "zh": "描述不适症状",
+      "example_en": "Please describe your discomfort to the doctor as clearly as possible.",
+      "example_zh": "请尽可能清晰地向医生描述你的不适。"
+    },
+    {
+      "id": "d1_med_s01",
+      "cat": "生活医疗",
+      "sub_cat": "常用固定短句",
+      "en": "What brings you in today?",
+      "zh": "你今天哪里不舒服？（诊所问诊专用）",
+      "example_en": "What brings you in today? Let me know your main concern.",
+      "example_zh": "你今天哪里不舒服？请告诉我最主要的问题。"
+    },
+    {
+      "id": "d1_med_s02",
+      "cat": "生活医疗",
+      "sub_cat": "常用固定短句",
+      "en": "Wait for your number on the screen",
+      "zh": "屏幕等候叫号",
+      "example_en": "Please wait for your number on the screen in the outpatient lobby.",
+      "example_zh": "请在门诊大厅屏幕等候叫号。"
+    },
+    {
+      "id": "d1_med_s03",
+      "cat": "生活医疗",
+      "sub_cat": "常用固定短句",
+      "en": "Drink plenty of water, get enough rest",
+      "zh": "多喝水、充分休息",
+      "example_en": "Drink plenty of water, get enough rest, and you'll feel better soon.",
+      "example_zh": "多喝水、充分休息，你很快就会好转。"
+    }
+  ]
+}
