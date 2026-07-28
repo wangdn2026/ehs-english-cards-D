@@ -54,13 +54,13 @@ def main():
     with open(data_file, encoding="utf-8") as f:
         data = json.load(f)
 
-    out_dir = ROOT / "day1" / data["day"].lower()
+    out_dir = ROOT / "day1"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     cards = data["vocab"]
     for i, card in enumerate(cards):
-        prev_url = f"{cards[i-1]['id']}.html" if i > 0 else "index.html"
-        next_url = f"{cards[i+1]['id']}.html" if i < len(cards) - 1 else "index.html"
+        prev_url = f"{cards[i-1]['id']}.html" if i > 0 else "../index.html"
+        next_url = f"{cards[i+1]['id']}.html" if i < len(cards) - 1 else "../index.html"
         html = render_card(data, card, prev_url, next_url)
         out = out_dir / f"{card['id']}.html"
         out.write_text(html, encoding="utf-8")
