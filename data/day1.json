@@ -1,0 +1,800 @@
+{
+  "package": "D",
+  "day": "Day1",
+  "title_zh": "医院门诊 & 承包商安全管理（一）",
+  "title_en": "Day1: Hospital Outpatient & Contractor Safety Management (I)",
+  "vocab": [
+    {
+      "id": "d1_med_01",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "emergency room",
+      "zh": "急诊室",
+      "example_en": "Please take the patient to the emergency room right away.",
+      "example_zh": "请立刻把病人送到急诊室。"
+    },
+    {
+      "id": "d1_med_02",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "outpatient lobby",
+      "zh": "门诊大厅",
+      "example_en": "Please wait in the outpatient lobby until your number is called.",
+      "example_zh": "请在门诊大厅等候叫号。"
+    },
+    {
+      "id": "d1_med_03",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "inpatient lobby",
+      "zh": "住院登记大厅",
+      "example_en": "Please go to the inpatient lobby to complete admission procedures.",
+      "example_zh": "请前往住院登记大厅办理入院手续。"
+    },
+    {
+      "id": "d1_med_04",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "internal medicine department",
+      "zh": "内科",
+      "example_en": "Please register at the internal medicine department on the second floor.",
+      "example_zh": "请到二楼内科挂号。"
+    },
+    {
+      "id": "d1_med_05",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "medical insurance card",
+      "zh": "医保卡",
+      "example_en": "Please show your medical insurance card before registration.",
+      "example_zh": "挂号前请出示医保卡。"
+    },
+    {
+      "id": "d1_med_06",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "specialist",
+      "zh": "专科医生",
+      "example_en": "Your GP may refer you to a specialist for further examination.",
+      "example_zh": "全科医生可能会将你转诊给专科医生进一步检查。"
+    },
+    {
+      "id": "d1_med_07",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "primary care doctor",
+      "zh": "家庭全科医生",
+      "example_en": "Your primary care doctor will coordinate your overall treatment.",
+      "example_zh": "家庭全科医生会统筹你的整体治疗。"
+    },
+    {
+      "id": "d1_med_08",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "fever-reducer",
+      "zh": "退烧药",
+      "example_en": "Take a fever-reducer if your temperature exceeds 38.5 degrees.",
+      "example_zh": "体温超过 38.5 度时请服用退烧药。"
+    },
+    {
+      "id": "d1_med_09",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "cough syrup",
+      "zh": "止咳糖浆",
+      "example_en": "Shake the cough syrup well before use.",
+      "example_zh": "服用前请摇匀止咳糖浆。"
+    },
+    {
+      "id": "d1_med_10",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "follow-up check",
+      "zh": "复查",
+      "example_en": "Please come back for a follow-up check in one week.",
+      "example_zh": "请一周后回来复查。"
+    },
+    {
+      "id": "d1_med_11",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "chronic illnesses",
+      "zh": "慢性病",
+      "example_en": "Patients with chronic illnesses need regular follow-up checks.",
+      "example_zh": "慢性病患者需要定期复查。"
+    },
+    {
+      "id": "d1_med_12",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "bacterial infection",
+      "zh": "细菌感染",
+      "example_en": "A bacterial infection usually requires antibiotics.",
+      "example_zh": "细菌感染通常需要使用抗生素。"
+    },
+    {
+      "id": "d1_med_13",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "viral cold",
+      "zh": "病毒性感冒",
+      "example_en": "Rest and drink water if you catch a viral cold.",
+      "example_zh": "患病毒性感冒时要多休息、多喝水。"
+    },
+    {
+      "id": "d1_med_14",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "pulse",
+      "zh": "脉搏",
+      "example_en": "The nurse will check your pulse and blood pressure.",
+      "example_zh": "护士会检查你的脉搏和血压。"
+    },
+    {
+      "id": "d1_med_15",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "immunity",
+      "zh": "免疫力",
+      "example_en": "Adequate sleep helps boost your immunity.",
+      "example_zh": "充足睡眠有助于提升免疫力。"
+    },
+    {
+      "id": "d1_med_16",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "symptoms",
+      "zh": "症状",
+      "example_en": "Please describe your symptoms in detail to the doctor.",
+      "example_zh": "请向医生详细描述你的症状。"
+    },
+    {
+      "id": "d1_med_17",
+      "cat": "生活医疗",
+      "sub_cat": "核心名词",
+      "en": "wound",
+      "zh": "伤口",
+      "example_en": "Clean and dress the wound to prevent infection.",
+      "example_zh": "清洁伤口并包扎，防止感染。"
+    },
+    {
+      "id": "d1_med_v01",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "develop infection",
+      "zh": "发生感染",
+      "example_en": "Open wounds may develop infection if not treated properly.",
+      "example_zh": "伤口处理不当可能发生感染。"
+    },
+    {
+      "id": "d1_med_v02",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "recover",
+      "zh": "痊愈、康复",
+      "example_en": "Most patients recover fully within two weeks.",
+      "example_zh": "大多数患者两周内可完全康复。"
+    },
+    {
+      "id": "d1_med_v03",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "prescribe medicine",
+      "zh": "开药",
+      "example_en": "The doctor will prescribe medicine based on your symptoms.",
+      "example_zh": "医生会根据症状开药。"
+    },
+    {
+      "id": "d1_med_v04",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "jump to conclusions",
+      "zh": "过早下定论",
+      "example_en": "Don't jump to conclusions before all test results are in.",
+      "example_zh": "在所有检查结果出来前不要过早下定论。"
+    },
+    {
+      "id": "d1_med_v05",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "boost immunity",
+      "zh": "提升免疫力",
+      "example_en": "Regular exercise and a balanced diet help boost immunity.",
+      "example_zh": "规律运动和均衡饮食有助于提升免疫力。"
+    },
+    {
+      "id": "d1_med_v06",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "register appointment",
+      "zh": "挂号",
+      "example_en": "You can register an appointment online or at the front desk.",
+      "example_zh": "你可以在线上或前台挂号。"
+    },
+    {
+      "id": "d1_med_v07",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "refer sb to a specialist",
+      "zh": "将病人转诊给专科医生",
+      "example_en": "The GP may refer the patient to a specialist for further tests.",
+      "example_zh": "全科医生可将病人转诊给专科医生做进一步检查。"
+    },
+    {
+      "id": "d1_med_v08",
+      "cat": "生活医疗",
+      "sub_cat": "高频动词/短语",
+      "en": "describe discomfort",
+      "zh": "描述不适症状",
+      "example_en": "Please describe your discomfort to the doctor as clearly as possible.",
+      "example_zh": "请尽可能清晰地向医生描述你的不适。"
+    },
+    {
+      "id": "d1_med_s01",
+      "cat": "生活医疗",
+      "sub_cat": "常用固定短句",
+      "en": "What brings you in today?",
+      "zh": "你今天哪里不舒服？（诊所问诊专用）",
+      "example_en": "What brings you in today? Let me know your main concern.",
+      "example_zh": "你今天哪里不舒服？请告诉我最主要的问题。"
+    },
+    {
+      "id": "d1_med_s02",
+      "cat": "生活医疗",
+      "sub_cat": "常用固定短句",
+      "en": "Wait for your number on the screen",
+      "zh": "屏幕等候叫号",
+      "example_en": "Please wait for your number on the screen in the outpatient lobby.",
+      "example_zh": "请在门诊大厅屏幕等候叫号。"
+    },
+    {
+      "id": "d1_med_s03",
+      "cat": "生活医疗",
+      "sub_cat": "常用固定短句",
+      "en": "Drink plenty of water, get enough rest",
+      "zh": "多喝水、充分休息",
+      "example_en": "Drink plenty of water, get enough rest, and you'll feel better soon.",
+      "example_zh": "多喝水、充分休息，你很快就会好转。"
+    },
+    {
+      "id": "d1_con_01",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "contractor",
+      "zh": "承包商",
+      "example_en": "All contractors must complete pre-qualification before site access.",
+      "example_zh": "所有承包商入场前必须完成资格预审。"
+    },
+    {
+      "id": "d1_con_02",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "subcontractor",
+      "zh": "分包商",
+      "example_en": "Subcontractors must follow the same E. H. S. standards as the prime contractor.",
+      "example_zh": "分包商必须遵守与主承包商相同的 E. H. S. 标准。"
+    },
+    {
+      "id": "d1_con_03",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "office based team",
+      "zh": "驻场办公团队",
+      "example_en": "The office based team coordinates daily operations with the on-site crew.",
+      "example_zh": "驻场办公团队与现场作业队伍协调日常工作。"
+    },
+    {
+      "id": "d1_con_04",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "facilities support services",
+      "zh": "厂务后勤服务",
+      "example_en": "Facilities support services cover utilities, cleaning, and building maintenance.",
+      "example_zh": "厂务后勤服务涵盖水电气、清洁和楼宇维护。"
+    },
+    {
+      "id": "d1_con_05",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "grounds maintenance",
+      "zh": "场地维护",
+      "example_en": "Grounds maintenance crews must wear high-visibility vests at all times.",
+      "example_zh": "场地维护人员必须全程穿戴反光背心。"
+    },
+    {
+      "id": "d1_con_06",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "landscaping",
+      "zh": "园林绿化",
+      "example_en": "Landscaping work near power lines requires an electrical safety review.",
+      "example_zh": "靠近电力线的园林绿化作业需要电气安全评审。"
+    },
+    {
+      "id": "d1_con_07",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "janitorial services",
+      "zh": "保洁服务",
+      "example_en": "Janitorial services staff receive training on chemical handling and slip prevention.",
+      "example_zh": "保洁服务人员接受化学品操作与防滑培训。"
+    },
+    {
+      "id": "d1_con_08",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "pest control",
+      "zh": "虫害防治",
+      "example_en": "Pest control applicators must carry their certification on site.",
+      "example_zh": "虫害防治施药人员必须随身携带资质证书。"
+    },
+    {
+      "id": "d1_con_09",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "waste management",
+      "zh": "废弃物管理",
+      "example_en": "Waste management contractors must segregate hazardous waste at the source.",
+      "example_zh": "废弃物管理承包商必须从源头分类危险废物。"
+    },
+    {
+      "id": "d1_con_10",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "renovation",
+      "zh": "翻新工程",
+      "example_en": "Renovation projects require a work permit and pre-task plan.",
+      "example_zh": "翻新工程需要办理作业许可证和作业前方案。"
+    },
+    {
+      "id": "d1_con_11",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "equipment maintenance",
+      "zh": "设备维保",
+      "example_en": "Equipment maintenance is scheduled monthly to keep critical systems reliable.",
+      "example_zh": "设备维保按月排期，确保关键系统可靠运行。"
+    },
+    {
+      "id": "d1_con_12",
+      "cat": "承包商安全管理",
+      "sub_cat": "承包商分类",
+      "en": "construction projects",
+      "zh": "施工项目",
+      "example_en": "Construction projects follow a four-stage safety management cycle.",
+      "example_zh": "施工项目遵循四阶段安全管理周期。"
+    },
+    {
+      "id": "d1_con_13",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "E. H. S.",
+      "zh": "环境、健康与安全",
+      "example_en": "E. H. S. stands for Environmental, Health and Safety.",
+      "example_zh": "E. H. S. 代表环境、健康与安全。"
+    },
+    {
+      "id": "d1_con_14",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "pre-qualification",
+      "zh": "资格预审",
+      "example_en": "Pre-qualification is required before any contractor can bid on the project.",
+      "example_zh": "任何承包商投标前必须先通过资格预审。"
+    },
+    {
+      "id": "d1_con_15",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "Contractor Pre-qualification Form",
+      "zh": "承包商资格预审表",
+      "example_en": "Fill in the Contractor Pre-qualification Form and attach all licenses.",
+      "example_zh": "填写承包商资格预审表，并附上所有许可证。"
+    },
+    {
+      "id": "d1_con_16",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "bid package",
+      "zh": "投标文件",
+      "example_en": "The bid package must include pricing, schedule, and E. H. S. capability.",
+      "example_zh": "投标文件必须包含价格、进度和 E. H. S. 能力说明。"
+    },
+    {
+      "id": "d1_con_17",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "safety agreement",
+      "zh": "安全协议",
+      "example_en": "Both parties must sign the safety agreement before work begins.",
+      "example_zh": "双方必须在开工前签署安全协议。"
+    },
+    {
+      "id": "d1_con_18",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "Contractor E. H. S. Manual",
+      "zh": "承包商 E. H. S. 手册",
+      "example_en": "The Contractor E. H. S. Manual is updated every year.",
+      "example_zh": "承包商 E. H. S. 手册每年更新一次。"
+    },
+    {
+      "id": "d1_con_19",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "work permit",
+      "zh": "作业许可证",
+      "example_en": "A work permit is required for any hot work above 2 meters.",
+      "example_zh": "2 米以上的高处动火作业需要办理作业许可证。"
+    },
+    {
+      "id": "d1_con_20",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "incident reporting and investigation",
+      "zh": "事故上报与调查",
+      "example_en": "Incident reporting and investigation must be completed within 24 hours.",
+      "example_zh": "事故上报与调查必须在 24 小时内完成。"
+    },
+    {
+      "id": "d1_con_21",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "emergency response procedure",
+      "zh": "应急处置流程",
+      "example_en": "Review the emergency response procedure before entering the site.",
+      "example_zh": "入场前必须学习应急处置流程。"
+    },
+    {
+      "id": "d1_con_22",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "Job Safety Analysis",
+      "zh": "作业安全分析",
+      "example_en": "Job Safety Analysis identifies hazards for each step of the task.",
+      "example_zh": "作业安全分析识别每一步作业的危险源。"
+    },
+    {
+      "id": "d1_con_23",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "safety training records",
+      "zh": "安全培训记录",
+      "example_en": "Keep your safety training records ready for inspection at any time.",
+      "example_zh": "安全培训记录需随时备查。"
+    },
+    {
+      "id": "d1_con_24",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "safety orientation",
+      "zh": "安全入职培训",
+      "example_en": "Every new hire must complete safety orientation on the first day.",
+      "example_zh": "每位新员工入职第一天必须完成安全入职培训。"
+    },
+    {
+      "id": "d1_con_25",
+      "cat": "承包商安全管理",
+      "sub_cat": "EHS体系/文件",
+      "en": "web-based orientation training modules",
+      "zh": "线上入职培训模块",
+      "example_en": "Web-based orientation training modules cover E. H. S. and code of conduct.",
+      "example_zh": "线上入职培训模块涵盖 E. H. S. 和行为准则。"
+    },
+    {
+      "id": "d1_con_26",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "annual audit",
+      "zh": "年度审核",
+      "example_en": "Every contractor is subject to an annual audit by the E. H. S. team.",
+      "example_zh": "每家承包商每年接受一次 E. H. S. 团队的年度审核。"
+    },
+    {
+      "id": "d1_con_27",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "quarterly performance review",
+      "zh": "季度绩效评审",
+      "example_en": "The quarterly performance review covers safety, quality, and schedule.",
+      "example_zh": "季度绩效评审涵盖安全、质量和进度。"
+    },
+    {
+      "id": "d1_con_28",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "safety inspection",
+      "zh": "安全检查",
+      "example_en": "Safety inspections are conducted weekly on high-risk work areas.",
+      "example_zh": "高风险作业区域每周开展安全检查。"
+    },
+    {
+      "id": "d1_con_29",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "periodical safety meetings",
+      "zh": "定期安全会议",
+      "example_en": "Periodical safety meetings review lessons learned from the past month.",
+      "example_zh": "定期安全会议回顾过去一个月的经验教训。"
+    },
+    {
+      "id": "d1_con_30",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "reportable injury",
+      "zh": "可记录工伤",
+      "example_en": "Any reportable injury must be filed within 8 hours.",
+      "example_zh": "任何可记录工伤必须在 8 小时内上报。"
+    },
+    {
+      "id": "d1_con_31",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "safety citation",
+      "zh": "安全违规处罚通知书",
+      "example_en": "Repeated safety citations may lead to suspension of site access.",
+      "example_zh": "多次安全违规处罚可能导致入场权限被暂停。"
+    },
+    {
+      "id": "d1_con_32",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "licences and certification",
+      "zh": "许可证与资质证书",
+      "example_en": "Verify that licences and certification are valid before starting work.",
+      "example_zh": "开工前需核验许可证与资质证书的有效性。"
+    },
+    {
+      "id": "d1_con_33",
+      "cat": "承包商安全管理",
+      "sub_cat": "安全审核考核",
+      "en": "safety representative",
+      "zh": "现场安全负责人",
+      "example_en": "Each crew must designate a safety representative for the shift.",
+      "example_zh": "每个班组每个班次必须指定一名现场安全负责人。"
+    },
+    {
+      "id": "d1_con_34",
+      "cat": "承包商安全管理",
+      "sub_cat": "作业阶段术语",
+      "en": "Pre-Qualification and Selection",
+      "zh": "阶段1：资格预审与筛选",
+      "example_en": "Stage one is Pre-Qualification and Selection of qualified contractors.",
+      "example_zh": "第一阶段是资格预审与合格承包商筛选。"
+    },
+    {
+      "id": "d1_con_35",
+      "cat": "承包商安全管理",
+      "sub_cat": "作业阶段术语",
+      "en": "Pre-Job Safety",
+      "zh": "阶段2：入场安全准备",
+      "example_en": "Pre-Job Safety covers orientation, training, and E. H. S. manual review.",
+      "example_zh": "入场安全准备涵盖入职、培训和 E. H. S. 手册学习。"
+    },
+    {
+      "id": "d1_con_36",
+      "cat": "承包商安全管理",
+      "sub_cat": "作业阶段术语",
+      "en": "On the Job Safety",
+      "zh": "阶段3：现场作业安全",
+      "example_en": "On the Job Safety includes daily toolbox talks and permit checks.",
+      "example_zh": "现场作业安全包括每日班前会和许可证核查。"
+    },
+    {
+      "id": "d1_con_37",
+      "cat": "承包商安全管理",
+      "sub_cat": "作业阶段术语",
+      "en": "Post-Job Safety",
+      "zh": "阶段4：作业后安全与绩效评估",
+      "example_en": "Post-Job Safety reviews incident trends and lessons learned.",
+      "example_zh": "作业后安全与绩效评估复盘事故趋势与经验教训。"
+    },
+    {
+      "id": "d1_con_p01",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "mandatory requirement",
+      "zh": "强制要求",
+      "example_en": "Hard hats are a mandatory requirement on all construction sites.",
+      "example_zh": "安全帽是所有施工现场的强制要求。"
+    },
+    {
+      "id": "d1_con_p02",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "submit documents",
+      "zh": "提交文件",
+      "example_en": "Please submit documents for pre-qualification two weeks before bid day.",
+      "example_zh": "请在投标日前两周提交资格预审文件。"
+    },
+    {
+      "id": "d1_con_p03",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "hazard identification",
+      "zh": "危险源辨识",
+      "example_en": "Hazard identification is the first step of every risk assessment.",
+      "example_zh": "危险源辨识是每项风险评估的第一步。"
+    },
+    {
+      "id": "d1_con_p04",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "risk assessment",
+      "zh": "风险评估",
+      "example_en": "Risk assessment determines what controls are needed for the task.",
+      "example_zh": "风险评估确定作业所需的管控措施。"
+    },
+    {
+      "id": "d1_con_p05",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "work safety plan",
+      "zh": "作业安全方案",
+      "example_en": "Submit your work safety plan to the E. H. S. team for approval.",
+      "example_zh": "将作业安全方案提交给 E. H. S. 团队审批。"
+    },
+    {
+      "id": "d1_con_p06",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "sign off an agreement",
+      "zh": "签署协议",
+      "example_en": "Both parties must sign off an agreement before mobilization.",
+      "example_zh": "双方必须在进场前签署协议。"
+    },
+    {
+      "id": "d1_con_p07",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "prior to the commence of work",
+      "zh": "开工之前",
+      "example_en": "All training must be completed prior to the commence of work.",
+      "example_zh": "所有培训必须在开工之前完成。"
+    },
+    {
+      "id": "d1_con_p08",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "control hazardous activities",
+      "zh": "管控危险作业",
+      "example_en": "Permits help control hazardous activities on the site.",
+      "example_zh": "许可证有助于管控现场的危险作业。"
+    },
+    {
+      "id": "d1_con_p09",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "comply with regulations",
+      "zh": "遵守法规",
+      "example_en": "All contractors must comply with regulations of the host country.",
+      "example_zh": "所有承包商必须遵守东道国的法规。"
+    },
+    {
+      "id": "d1_con_p10",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "verify training records",
+      "zh": "核验培训记录",
+      "example_en": "The safety officer will verify training records before site access.",
+      "example_zh": "入场前安全员会核验培训记录。"
+    },
+    {
+      "id": "d1_con_p11",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "familiarize with standards",
+      "zh": "熟悉标准",
+      "example_en": "All crew members must familiarize themselves with local standards.",
+      "example_zh": "所有班组成员必须熟悉本地标准。"
+    },
+    {
+      "id": "d1_con_p12",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "integrate safety management into project",
+      "zh": "将安全管理融入项目",
+      "example_en": "We integrate safety management into project planning from day one.",
+      "example_zh": "我们从项目规划第一天起就把安全管理融入其中。"
+    },
+    {
+      "id": "d1_con_p13",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "designated online training",
+      "zh": "指定线上培训",
+      "example_en": "Each new hire must complete the designated online training modules.",
+      "example_zh": "每位新员工必须完成指定的线上培训模块。"
+    },
+    {
+      "id": "d1_con_p14",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "central, provincial and local regulations",
+      "zh": "国家、省、地方法规",
+      "example_en": "Comply with central, provincial and local regulations at all times.",
+      "example_zh": "始终遵守国家、省、地方法规。"
+    },
+    {
+      "id": "d1_con_p15",
+      "cat": "承包商安全管理",
+      "sub_cat": "高频专业短语",
+      "en": "electrical safety standards",
+      "zh": "电气安全标准",
+      "example_en": "Electrical safety standards must be followed for live work.",
+      "example_zh": "带电作业必须遵守电气安全标准。"
+    },
+    {
+      "id": "d1_con_v01",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "cite",
+      "zh": "传讯、处罚；引用",
+      "example_en": "The inspector will cite any contractor who violates the E. H. S. rules.",
+      "example_zh": "检查员会对违反 E. H. S. 规定的承包商开具处罚。"
+    },
+    {
+      "id": "d1_con_v02",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "citation",
+      "zh": "违规处罚通知书",
+      "example_en": "Three citations in a quarter will trigger a performance review.",
+      "example_zh": "一个季度内三次违规处罚将触发绩效评审。"
+    },
+    {
+      "id": "d1_con_v03",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "designate",
+      "zh": "指定、指派",
+      "example_en": "Designate one safety representative for each work crew.",
+      "example_zh": "为每个作业班组指派一名安全代表。"
+    },
+    {
+      "id": "d1_con_v04",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "distribute",
+      "zh": "下发、发放",
+      "example_en": "Distribute the E. H. S. manual to all crew members before entry.",
+      "example_zh": "入场前将 E. H. S. 手册发放给所有班组成员。"
+    },
+    {
+      "id": "d1_con_v05",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "conduct inspections",
+      "zh": "开展检查",
+      "example_en": "The E. H. S. team will conduct inspections on a weekly basis.",
+      "example_zh": "E. H. S. 团队将每周开展检查。"
+    },
+    {
+      "id": "d1_con_v06",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "verify",
+      "zh": "核验、核实",
+      "example_en": "Verify that all licenses are valid before mobilization.",
+      "example_zh": "进场前核验所有许可证的有效性。"
+    },
+    {
+      "id": "d1_con_v07",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "identify hazards",
+      "zh": "识别危险源",
+      "example_en": "Workers must identify hazards before starting any new task.",
+      "example_zh": "工人必须在开始任何新作业前识别危险源。"
+    },
+    {
+      "id": "d1_con_v08",
+      "cat": "承包商安全管理",
+      "sub_cat": "核心动词",
+      "en": "evaluate risks",
+      "zh": "评估风险",
+      "example_en": "Evaluate risks before selecting controls for the task.",
+      "example_zh": "选择管控措施前先评估风险。"
+    }
+  ]
+}
