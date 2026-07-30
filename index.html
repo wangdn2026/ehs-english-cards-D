@@ -22,108 +22,87 @@ body {
   padding: 40px 20px 60px;
   color: var(--ink);
 }
-.page-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
+.page-header { text-align: center; margin-bottom: 32px; }
 .pkg-badge {
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 12px;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
+  display: inline-block; background: var(--primary); color: #fff;
+  font-size: 12px; font-weight: 600; padding: 4px 12px;
+  border-radius: 12px; letter-spacing: 1px; margin-bottom: 12px;
 }
-.page-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
-.page-header .subtitle {
-  font-size: 14px;
-  color: var(--text-secondary);
-}
+.page-header h1 { font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.page-header .subtitle { font-size: 14px; color: var(--text-secondary); }
 .day-section {
-  max-width: 1080px;
-  margin: 0 auto 32px;
-  background: #FFFFFF;
-  border: 2px solid var(--primary);
-  border-radius: 16px;
-  padding: 24px 28px;
+  max-width: 1080px; margin: 0 auto 32px; background: #FFFFFF;
+  border: 2px solid var(--primary); border-radius: 16px; padding: 24px 28px;
 }
-.day-section h2 {
-  font-size: 20px;
-  color: var(--primary);
-  margin-bottom: 4px;
+.day-section h2 { font-size: 20px; color: var(--primary); margin-bottom: 4px; }
+.day-section .meta { font-size: 13px; color: var(--text-secondary); margin-bottom: 18px; }
+.level {
+  margin-bottom: 16px; border: 1px solid var(--border);
+  border-left: 4px solid var(--lv-color); border-radius: 10px;
+  background: #FAFCFC; overflow: hidden;
 }
-.day-section .meta {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-bottom: 18px;
+.level:last-child { margin-bottom: 0; }
+.level summary {
+  font-size: 16px; font-weight: 600; color: var(--ink); padding: 14px 16px;
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px;
+  transition: background 0.15s;
 }
+.level summary::-webkit-details-marker { display: none; }
+.level summary::marker { display: none; }
+.level summary:hover { background: rgba(91, 164, 181, 0.06); }
+.level summary::after {
+  content: '▾'; font-size: 14px; color: var(--text-secondary);
+  transition: transform 0.2s; margin-left: auto;
+}
+.level[open] > summary { border-bottom: 1px solid var(--border); background: rgba(91, 164, 181, 0.04); }
+.level[open] > summary::after { transform: rotate(180deg); }
+.lv-tag {
+  display: inline-block; background: var(--lv-color); color: #fff;
+  font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 6px; letter-spacing: 1px;
+}
+.lv-desc { font-size: 13px; font-weight: 400; color: var(--text-secondary); }
+.lv-count {
+  font-size: 12px; font-weight: 500; color: var(--text-secondary);
+  background: rgba(74, 74, 82, 0.08); padding: 3px 10px; border-radius: 8px;
+  margin-left: auto; margin-right: 8px;
+}
+.level-body { padding: 12px 14px; }
 .subsection {
-  margin-bottom: 22px;
+  margin-bottom: 10px; border: 1px solid var(--border);
+  border-radius: 8px; background: #fff; overflow: hidden;
 }
-.subsection:last-child {
-  margin-bottom: 0;
+.subsection:last-child { margin-bottom: 0; }
+.subsection summary {
+  font-size: 13px; font-weight: 600; color: var(--ink); padding: 10px 12px;
+  cursor: pointer; list-style: none; display: flex; align-items: center;
+  justify-content: space-between; transition: background 0.15s;
 }
-.subsection h3 {
-  font-size: 14px;
-  color: var(--ink);
-  margin-bottom: 10px;
-  padding-left: 8px;
-  border-left: 3px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.subsection summary::-webkit-details-marker { display: none; }
+.subsection summary::marker { display: none; }
+.subsection summary:hover { background: rgba(91, 164, 181, 0.06); }
+.subsection summary::after {
+  content: '▾'; font-size: 11px; color: var(--text-secondary);
+  transition: transform 0.2s; margin-left: 8px;
 }
-.subsection h3 .count {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-left: 8px;
+.subsection[open] > summary { border-bottom: 1px solid var(--border); }
+.subsection[open] > summary::after { transform: rotate(180deg); }
+.subsection summary .count {
+  font-size: 11px; font-weight: 400; color: var(--text-secondary);
+  background: rgba(91, 164, 181, 0.10); padding: 2px 8px; border-radius: 6px; margin-right: 8px;
 }
+.subsection[open] .vocab-grid { padding: 10px; }
 .vocab-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px;
 }
 .vocab-grid a {
-  display: block;
-  padding: 10px 12px;
-  background: var(--bg-warm);
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--ink);
-  border: 1px solid var(--border);
-  transition: transform 0.1s, border-color 0.2s;
+  display: block; padding: 10px 12px; background: var(--bg-warm);
+  border-radius: 8px; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--border); transition: transform 0.1s, border-color 0.2s;
 }
-.vocab-grid a:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-}
-.vocab-grid .en {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 2px;
-  word-break: break-word;
-}
-.vocab-grid .zh {
-  font-size: 11px;
-  color: var(--text-secondary);
-  word-break: break-word;
-}
-.brand-foot {
-  text-align: center;
-  margin-top: 32px;
-  font-size: 12px;
-  color: var(--text-secondary);
-  letter-spacing: 1px;
-}
+.vocab-grid a:hover { border-color: var(--primary); transform: translateY(-2px); }
+.vocab-grid .en { font-size: 14px; font-weight: 600; margin-bottom: 2px; word-break: break-word; }
+.vocab-grid .zh { font-size: 11px; color: var(--text-secondary); word-break: break-word; }
+.brand-foot { text-align: center; margin-top: 32px; font-size: 12px; color: var(--text-secondary); letter-spacing: 1px; }
 </style>
 </head>
 <body>
@@ -136,141 +115,156 @@ body {
 
 <div class="day-section">
   <h2>Day 1 · 医院门诊 & 承包商安全管理（一）</h2>
-  <div class="meta">88 条 · 生活医疗 + 承包商安全管理 · 点击进入单词卡</div>
+  <div class="meta">88 条 · 共 3 档 9 个分类 · 从初级开始学</div>
 
-<div class="subsection">
-  <h3>生活医疗 · 核心名词<span class="count">17 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_med_01.html"><div class="en">emergency room</div><div class="zh">急诊室 · 核心名词</div></a>
-    <a href="day1/d1_med_02.html"><div class="en">outpatient lobby</div><div class="zh">门诊大厅 · 核心名词</div></a>
-    <a href="day1/d1_med_03.html"><div class="en">inpatient lobby</div><div class="zh">住院登记大厅 · 核心名词</div></a>
-    <a href="day1/d1_med_04.html"><div class="en">internal medicine department</div><div class="zh">内科 · 核心名词</div></a>
-    <a href="day1/d1_med_05.html"><div class="en">medical insurance card</div><div class="zh">医保卡 · 核心名词</div></a>
-    <a href="day1/d1_med_06.html"><div class="en">specialist</div><div class="zh">专科医生 · 核心名词</div></a>
-    <a href="day1/d1_med_07.html"><div class="en">primary care doctor</div><div class="zh">家庭全科医生 · 核心名词</div></a>
-    <a href="day1/d1_med_08.html"><div class="en">fever-reducer</div><div class="zh">退烧药 · 核心名词</div></a>
-    <a href="day1/d1_med_09.html"><div class="en">cough syrup</div><div class="zh">止咳糖浆 · 核心名词</div></a>
-    <a href="day1/d1_med_10.html"><div class="en">follow-up check</div><div class="zh">复查 · 核心名词</div></a>
-    <a href="day1/d1_med_11.html"><div class="en">chronic illnesses</div><div class="zh">慢性病 · 核心名词</div></a>
-    <a href="day1/d1_med_12.html"><div class="en">bacterial infection</div><div class="zh">细菌感染 · 核心名词</div></a>
-    <a href="day1/d1_med_13.html"><div class="en">viral cold</div><div class="zh">病毒性感冒 · 核心名词</div></a>
-    <a href="day1/d1_med_14.html"><div class="en">pulse</div><div class="zh">脉搏 · 核心名词</div></a>
-    <a href="day1/d1_med_15.html"><div class="en">immunity</div><div class="zh">免疫力 · 核心名词</div></a>
-    <a href="day1/d1_med_16.html"><div class="en">symptoms</div><div class="zh">症状 · 核心名词</div></a>
-    <a href="day1/d1_med_17.html"><div class="en">wound</div><div class="zh">伤口 · 核心名词</div></a>
+<details class="level" data-level="初级" open style="--lv-color:#5BA4B5;">
+  <summary><span class="lv-tag">初级</span><span class="lv-desc">每天都会用</span><span class="lv-count">25 条</span></summary>
+  <div class="level-body">
+    <details class="subsection" open>
+      <summary>生活医疗 · 核心名词<span class="count">17 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_med_01.html"><div class="en">emergency room</div><div class="zh">急诊室</div></a>
+    <a href="day1/d1_med_02.html"><div class="en">outpatient lobby</div><div class="zh">门诊大厅</div></a>
+    <a href="day1/d1_med_03.html"><div class="en">inpatient lobby</div><div class="zh">住院登记大厅</div></a>
+    <a href="day1/d1_med_04.html"><div class="en">internal medicine department</div><div class="zh">内科</div></a>
+    <a href="day1/d1_med_05.html"><div class="en">medical insurance card</div><div class="zh">医保卡</div></a>
+    <a href="day1/d1_med_06.html"><div class="en">specialist</div><div class="zh">专科医生</div></a>
+    <a href="day1/d1_med_07.html"><div class="en">primary care doctor</div><div class="zh">家庭全科医生</div></a>
+    <a href="day1/d1_med_08.html"><div class="en">fever-reducer</div><div class="zh">退烧药</div></a>
+    <a href="day1/d1_med_09.html"><div class="en">cough syrup</div><div class="zh">止咳糖浆</div></a>
+    <a href="day1/d1_med_10.html"><div class="en">follow-up check</div><div class="zh">复查</div></a>
+    <a href="day1/d1_med_11.html"><div class="en">chronic illnesses</div><div class="zh">慢性病</div></a>
+    <a href="day1/d1_med_12.html"><div class="en">bacterial infection</div><div class="zh">细菌感染</div></a>
+    <a href="day1/d1_med_13.html"><div class="en">viral cold</div><div class="zh">病毒性感冒</div></a>
+    <a href="day1/d1_med_14.html"><div class="en">pulse</div><div class="zh">脉搏</div></a>
+    <a href="day1/d1_med_15.html"><div class="en">immunity</div><div class="zh">免疫力</div></a>
+    <a href="day1/d1_med_16.html"><div class="en">symptoms</div><div class="zh">症状</div></a>
+    <a href="day1/d1_med_17.html"><div class="en">wound</div><div class="zh">伤口</div></a>
+      </div>
+    </details>
+    <details class="subsection">
+      <summary>承包商安全管理 · 核心动词<span class="count">8 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_con_v01.html"><div class="en">cite</div><div class="zh">传讯、处罚；引用</div></a>
+    <a href="day1/d1_con_v02.html"><div class="en">citation</div><div class="zh">违规处罚通知书</div></a>
+    <a href="day1/d1_con_v03.html"><div class="en">designate</div><div class="zh">指定、指派</div></a>
+    <a href="day1/d1_con_v04.html"><div class="en">distribute</div><div class="zh">下发、发放</div></a>
+    <a href="day1/d1_con_v05.html"><div class="en">conduct inspections</div><div class="zh">开展检查</div></a>
+    <a href="day1/d1_con_v06.html"><div class="en">verify</div><div class="zh">核验、核实</div></a>
+    <a href="day1/d1_con_v07.html"><div class="en">identify hazards</div><div class="zh">识别危险源</div></a>
+    <a href="day1/d1_con_v08.html"><div class="en">evaluate risks</div><div class="zh">评估风险</div></a>
+      </div>
+    </details>
   </div>
-</div>
-<div class="subsection">
-  <h3>生活医疗 · 高频动词/短语<span class="count">8 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_med_v01.html"><div class="en">develop infection</div><div class="zh">发生感染 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v02.html"><div class="en">recover</div><div class="zh">痊愈、康复 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v03.html"><div class="en">prescribe medicine</div><div class="zh">开药 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v04.html"><div class="en">jump to conclusions</div><div class="zh">过早下定论 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v05.html"><div class="en">boost immunity</div><div class="zh">提升免疫力 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v06.html"><div class="en">register appointment</div><div class="zh">挂号 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v07.html"><div class="en">refer sb to a specialist</div><div class="zh">将病人转诊给专科医生 · 高频动词/短语</div></a>
-    <a href="day1/d1_med_v08.html"><div class="en">describe discomfort</div><div class="zh">描述不适症状 · 高频动词/短语</div></a>
+</details>
+<details class="level" data-level="中级" style="--lv-color:#E8845C;">
+  <summary><span class="lv-tag">中级</span><span class="lv-desc">工作场景常用</span><span class="lv-count">24 条</span></summary>
+  <div class="level-body">
+    <details class="subsection">
+      <summary>承包商安全管理 · 承包商分类<span class="count">12 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_con_01.html"><div class="en">contractor</div><div class="zh">承包商</div></a>
+    <a href="day1/d1_con_02.html"><div class="en">subcontractor</div><div class="zh">分包商</div></a>
+    <a href="day1/d1_con_03.html"><div class="en">office based team</div><div class="zh">驻场办公团队</div></a>
+    <a href="day1/d1_con_04.html"><div class="en">facilities support services</div><div class="zh">厂务后勤服务</div></a>
+    <a href="day1/d1_con_05.html"><div class="en">grounds maintenance</div><div class="zh">场地维护</div></a>
+    <a href="day1/d1_con_06.html"><div class="en">landscaping</div><div class="zh">园林绿化</div></a>
+    <a href="day1/d1_con_07.html"><div class="en">janitorial services</div><div class="zh">保洁服务</div></a>
+    <a href="day1/d1_con_08.html"><div class="en">pest control</div><div class="zh">虫害防治</div></a>
+    <a href="day1/d1_con_09.html"><div class="en">waste management</div><div class="zh">废弃物管理</div></a>
+    <a href="day1/d1_con_10.html"><div class="en">renovation</div><div class="zh">翻新工程</div></a>
+    <a href="day1/d1_con_11.html"><div class="en">equipment maintenance</div><div class="zh">设备维保</div></a>
+    <a href="day1/d1_con_12.html"><div class="en">construction projects</div><div class="zh">施工项目</div></a>
+      </div>
+    </details>
+    <details class="subsection">
+      <summary>承包商安全管理 · 作业阶段术语<span class="count">4 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_con_34.html"><div class="en">Pre-Qualification and Selection</div><div class="zh">阶段1：资格预审与筛选</div></a>
+    <a href="day1/d1_con_35.html"><div class="en">Pre-Job Safety</div><div class="zh">阶段2：入场安全准备</div></a>
+    <a href="day1/d1_con_36.html"><div class="en">On the Job Safety</div><div class="zh">阶段3：现场作业安全</div></a>
+    <a href="day1/d1_con_37.html"><div class="en">Post-Job Safety</div><div class="zh">阶段4：作业后安全与绩效评估</div></a>
+      </div>
+    </details>
+    <details class="subsection">
+      <summary>生活医疗 · 高频动词/短语<span class="count">8 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_med_v01.html"><div class="en">develop infection</div><div class="zh">发生感染</div></a>
+    <a href="day1/d1_med_v02.html"><div class="en">recover</div><div class="zh">痊愈、康复</div></a>
+    <a href="day1/d1_med_v03.html"><div class="en">prescribe medicine</div><div class="zh">开药</div></a>
+    <a href="day1/d1_med_v04.html"><div class="en">jump to conclusions</div><div class="zh">过早下定论</div></a>
+    <a href="day1/d1_med_v05.html"><div class="en">boost immunity</div><div class="zh">提升免疫力</div></a>
+    <a href="day1/d1_med_v06.html"><div class="en">register appointment</div><div class="zh">挂号</div></a>
+    <a href="day1/d1_med_v07.html"><div class="en">refer sb to a specialist</div><div class="zh">将病人转诊给专科医生</div></a>
+    <a href="day1/d1_med_v08.html"><div class="en">describe discomfort</div><div class="zh">描述不适症状</div></a>
+      </div>
+    </details>
   </div>
-</div>
-<div class="subsection">
-  <h3>生活医疗 · 常用固定短句<span class="count">3 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_med_s01.html"><div class="en">What brings you in today?</div><div class="zh">你今天哪里不舒服？（诊所问诊专用） · 常用固定短句</div></a>
-    <a href="day1/d1_med_s02.html"><div class="en">Wait for your number on the screen</div><div class="zh">屏幕等候叫号 · 常用固定短句</div></a>
-    <a href="day1/d1_med_s03.html"><div class="en">Drink plenty of water, get enough rest</div><div class="zh">多喝水、充分休息 · 常用固定短句</div></a>
+</details>
+<details class="level" data-level="高级" style="--lv-color:#4A4A52;">
+  <summary><span class="lv-tag">高级</span><span class="lv-desc">专业体系 · 正式表达</span><span class="lv-count">39 条</span></summary>
+  <div class="level-body">
+    <details class="subsection">
+      <summary>承包商安全管理 · EHS体系/文件<span class="count">13 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_con_13.html"><div class="en">E. H. S.</div><div class="zh">环境、健康与安全</div></a>
+    <a href="day1/d1_con_14.html"><div class="en">pre-qualification</div><div class="zh">资格预审</div></a>
+    <a href="day1/d1_con_15.html"><div class="en">Contractor Pre-qualification Form</div><div class="zh">承包商资格预审表</div></a>
+    <a href="day1/d1_con_16.html"><div class="en">bid package</div><div class="zh">投标文件</div></a>
+    <a href="day1/d1_con_17.html"><div class="en">safety agreement</div><div class="zh">安全协议</div></a>
+    <a href="day1/d1_con_18.html"><div class="en">Contractor E. H. S. Manual</div><div class="zh">承包商 E. H. S. 手册</div></a>
+    <a href="day1/d1_con_19.html"><div class="en">work permit</div><div class="zh">作业许可证</div></a>
+    <a href="day1/d1_con_20.html"><div class="en">incident reporting and investigation</div><div class="zh">事故上报与调查</div></a>
+    <a href="day1/d1_con_21.html"><div class="en">emergency response procedure</div><div class="zh">应急处置流程</div></a>
+    <a href="day1/d1_con_22.html"><div class="en">Job Safety Analysis</div><div class="zh">作业安全分析</div></a>
+    <a href="day1/d1_con_23.html"><div class="en">safety training records</div><div class="zh">安全培训记录</div></a>
+    <a href="day1/d1_con_24.html"><div class="en">safety orientation</div><div class="zh">安全入职培训</div></a>
+    <a href="day1/d1_con_25.html"><div class="en">web-based orientation training modules</div><div class="zh">线上入职培训模块</div></a>
+      </div>
+    </details>
+    <details class="subsection">
+      <summary>承包商安全管理 · 安全审核考核<span class="count">8 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_con_26.html"><div class="en">annual audit</div><div class="zh">年度审核</div></a>
+    <a href="day1/d1_con_27.html"><div class="en">quarterly performance review</div><div class="zh">季度绩效评审</div></a>
+    <a href="day1/d1_con_28.html"><div class="en">safety inspection</div><div class="zh">安全检查</div></a>
+    <a href="day1/d1_con_29.html"><div class="en">periodical safety meetings</div><div class="zh">定期安全会议</div></a>
+    <a href="day1/d1_con_30.html"><div class="en">reportable injury</div><div class="zh">可记录工伤</div></a>
+    <a href="day1/d1_con_31.html"><div class="en">safety citation</div><div class="zh">安全违规处罚通知书</div></a>
+    <a href="day1/d1_con_32.html"><div class="en">licences and certification</div><div class="zh">许可证与资质证书</div></a>
+    <a href="day1/d1_con_33.html"><div class="en">safety representative</div><div class="zh">现场安全负责人</div></a>
+      </div>
+    </details>
+    <details class="subsection">
+      <summary>承包商安全管理 · 高频专业短语<span class="count">15 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_con_p01.html"><div class="en">mandatory requirement</div><div class="zh">强制要求</div></a>
+    <a href="day1/d1_con_p02.html"><div class="en">submit documents</div><div class="zh">提交文件</div></a>
+    <a href="day1/d1_con_p03.html"><div class="en">hazard identification</div><div class="zh">危险源辨识</div></a>
+    <a href="day1/d1_con_p04.html"><div class="en">risk assessment</div><div class="zh">风险评估</div></a>
+    <a href="day1/d1_con_p05.html"><div class="en">work safety plan</div><div class="zh">作业安全方案</div></a>
+    <a href="day1/d1_con_p06.html"><div class="en">sign off an agreement</div><div class="zh">签署协议</div></a>
+    <a href="day1/d1_con_p07.html"><div class="en">prior to the commence of work</div><div class="zh">开工之前</div></a>
+    <a href="day1/d1_con_p08.html"><div class="en">control hazardous activities</div><div class="zh">管控危险作业</div></a>
+    <a href="day1/d1_con_p09.html"><div class="en">comply with regulations</div><div class="zh">遵守法规</div></a>
+    <a href="day1/d1_con_p10.html"><div class="en">verify training records</div><div class="zh">核验培训记录</div></a>
+    <a href="day1/d1_con_p11.html"><div class="en">familiarize with standards</div><div class="zh">熟悉标准</div></a>
+    <a href="day1/d1_con_p12.html"><div class="en">integrate safety management into project</div><div class="zh">将安全管理融入项目</div></a>
+    <a href="day1/d1_con_p13.html"><div class="en">designated online training</div><div class="zh">指定线上培训</div></a>
+    <a href="day1/d1_con_p14.html"><div class="en">central, provincial and local regulations</div><div class="zh">国家、省、地方法规</div></a>
+    <a href="day1/d1_con_p15.html"><div class="en">electrical safety standards</div><div class="zh">电气安全标准</div></a>
+      </div>
+    </details>
+    <details class="subsection">
+      <summary>生活医疗 · 常用固定短句<span class="count">3 条</span></summary>
+      <div class="vocab-grid">
+    <a href="day1/d1_med_s01.html"><div class="en">What brings you in today?</div><div class="zh">你今天哪里不舒服？（诊所问诊专用）</div></a>
+    <a href="day1/d1_med_s02.html"><div class="en">Wait for your number on the screen</div><div class="zh">屏幕等候叫号</div></a>
+    <a href="day1/d1_med_s03.html"><div class="en">Drink plenty of water, get enough rest</div><div class="zh">多喝水、充分休息</div></a>
+      </div>
+    </details>
   </div>
-</div>
-<div class="subsection">
-  <h3>承包商安全管理 · 承包商分类<span class="count">12 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_con_01.html"><div class="en">contractor</div><div class="zh">承包商 · 承包商分类</div></a>
-    <a href="day1/d1_con_02.html"><div class="en">subcontractor</div><div class="zh">分包商 · 承包商分类</div></a>
-    <a href="day1/d1_con_03.html"><div class="en">office based team</div><div class="zh">驻场办公团队 · 承包商分类</div></a>
-    <a href="day1/d1_con_04.html"><div class="en">facilities support services</div><div class="zh">厂务后勤服务 · 承包商分类</div></a>
-    <a href="day1/d1_con_05.html"><div class="en">grounds maintenance</div><div class="zh">场地维护 · 承包商分类</div></a>
-    <a href="day1/d1_con_06.html"><div class="en">landscaping</div><div class="zh">园林绿化 · 承包商分类</div></a>
-    <a href="day1/d1_con_07.html"><div class="en">janitorial services</div><div class="zh">保洁服务 · 承包商分类</div></a>
-    <a href="day1/d1_con_08.html"><div class="en">pest control</div><div class="zh">虫害防治 · 承包商分类</div></a>
-    <a href="day1/d1_con_09.html"><div class="en">waste management</div><div class="zh">废弃物管理 · 承包商分类</div></a>
-    <a href="day1/d1_con_10.html"><div class="en">renovation</div><div class="zh">翻新工程 · 承包商分类</div></a>
-    <a href="day1/d1_con_11.html"><div class="en">equipment maintenance</div><div class="zh">设备维保 · 承包商分类</div></a>
-    <a href="day1/d1_con_12.html"><div class="en">construction projects</div><div class="zh">施工项目 · 承包商分类</div></a>
-  </div>
-</div>
-<div class="subsection">
-  <h3>承包商安全管理 · EHS体系/文件<span class="count">13 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_con_13.html"><div class="en">E. H. S.</div><div class="zh">环境、健康与安全 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_14.html"><div class="en">pre-qualification</div><div class="zh">资格预审 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_15.html"><div class="en">Contractor Pre-qualification Form</div><div class="zh">承包商资格预审表 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_16.html"><div class="en">bid package</div><div class="zh">投标文件 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_17.html"><div class="en">safety agreement</div><div class="zh">安全协议 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_18.html"><div class="en">Contractor E. H. S. Manual</div><div class="zh">承包商 E. H. S. 手册 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_19.html"><div class="en">work permit</div><div class="zh">作业许可证 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_20.html"><div class="en">incident reporting and investigation</div><div class="zh">事故上报与调查 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_21.html"><div class="en">emergency response procedure</div><div class="zh">应急处置流程 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_22.html"><div class="en">Job Safety Analysis</div><div class="zh">作业安全分析 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_23.html"><div class="en">safety training records</div><div class="zh">安全培训记录 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_24.html"><div class="en">safety orientation</div><div class="zh">安全入职培训 · EHS体系/文件</div></a>
-    <a href="day1/d1_con_25.html"><div class="en">web-based orientation training modules</div><div class="zh">线上入职培训模块 · EHS体系/文件</div></a>
-  </div>
-</div>
-<div class="subsection">
-  <h3>承包商安全管理 · 安全审核考核<span class="count">8 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_con_26.html"><div class="en">annual audit</div><div class="zh">年度审核 · 安全审核考核</div></a>
-    <a href="day1/d1_con_27.html"><div class="en">quarterly performance review</div><div class="zh">季度绩效评审 · 安全审核考核</div></a>
-    <a href="day1/d1_con_28.html"><div class="en">safety inspection</div><div class="zh">安全检查 · 安全审核考核</div></a>
-    <a href="day1/d1_con_29.html"><div class="en">periodical safety meetings</div><div class="zh">定期安全会议 · 安全审核考核</div></a>
-    <a href="day1/d1_con_30.html"><div class="en">reportable injury</div><div class="zh">可记录工伤 · 安全审核考核</div></a>
-    <a href="day1/d1_con_31.html"><div class="en">safety citation</div><div class="zh">安全违规处罚通知书 · 安全审核考核</div></a>
-    <a href="day1/d1_con_32.html"><div class="en">licences and certification</div><div class="zh">许可证与资质证书 · 安全审核考核</div></a>
-    <a href="day1/d1_con_33.html"><div class="en">safety representative</div><div class="zh">现场安全负责人 · 安全审核考核</div></a>
-  </div>
-</div>
-<div class="subsection">
-  <h3>承包商安全管理 · 作业阶段术语<span class="count">4 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_con_34.html"><div class="en">Pre-Qualification and Selection</div><div class="zh">阶段1：资格预审与筛选 · 作业阶段术语</div></a>
-    <a href="day1/d1_con_35.html"><div class="en">Pre-Job Safety</div><div class="zh">阶段2：入场安全准备 · 作业阶段术语</div></a>
-    <a href="day1/d1_con_36.html"><div class="en">On the Job Safety</div><div class="zh">阶段3：现场作业安全 · 作业阶段术语</div></a>
-    <a href="day1/d1_con_37.html"><div class="en">Post-Job Safety</div><div class="zh">阶段4：作业后安全与绩效评估 · 作业阶段术语</div></a>
-  </div>
-</div>
-<div class="subsection">
-  <h3>承包商安全管理 · 高频专业短语<span class="count">15 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_con_p01.html"><div class="en">mandatory requirement</div><div class="zh">强制要求 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p02.html"><div class="en">submit documents</div><div class="zh">提交文件 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p03.html"><div class="en">hazard identification</div><div class="zh">危险源辨识 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p04.html"><div class="en">risk assessment</div><div class="zh">风险评估 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p05.html"><div class="en">work safety plan</div><div class="zh">作业安全方案 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p06.html"><div class="en">sign off an agreement</div><div class="zh">签署协议 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p07.html"><div class="en">prior to the commence of work</div><div class="zh">开工之前 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p08.html"><div class="en">control hazardous activities</div><div class="zh">管控危险作业 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p09.html"><div class="en">comply with regulations</div><div class="zh">遵守法规 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p10.html"><div class="en">verify training records</div><div class="zh">核验培训记录 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p11.html"><div class="en">familiarize with standards</div><div class="zh">熟悉标准 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p12.html"><div class="en">integrate safety management into project</div><div class="zh">将安全管理融入项目 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p13.html"><div class="en">designated online training</div><div class="zh">指定线上培训 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p14.html"><div class="en">central, provincial and local regulations</div><div class="zh">国家、省、地方法规 · 高频专业短语</div></a>
-    <a href="day1/d1_con_p15.html"><div class="en">electrical safety standards</div><div class="zh">电气安全标准 · 高频专业短语</div></a>
-  </div>
-</div>
-<div class="subsection">
-  <h3>承包商安全管理 · 核心动词<span class="count">8 条</span></h3>
-  <div class="vocab-grid">
-    <a href="day1/d1_con_v01.html"><div class="en">cite</div><div class="zh">传讯、处罚；引用 · 核心动词</div></a>
-    <a href="day1/d1_con_v02.html"><div class="en">citation</div><div class="zh">违规处罚通知书 · 核心动词</div></a>
-    <a href="day1/d1_con_v03.html"><div class="en">designate</div><div class="zh">指定、指派 · 核心动词</div></a>
-    <a href="day1/d1_con_v04.html"><div class="en">distribute</div><div class="zh">下发、发放 · 核心动词</div></a>
-    <a href="day1/d1_con_v05.html"><div class="en">conduct inspections</div><div class="zh">开展检查 · 核心动词</div></a>
-    <a href="day1/d1_con_v06.html"><div class="en">verify</div><div class="zh">核验、核实 · 核心动词</div></a>
-    <a href="day1/d1_con_v07.html"><div class="en">identify hazards</div><div class="zh">识别危险源 · 核心动词</div></a>
-    <a href="day1/d1_con_v08.html"><div class="en">evaluate risks</div><div class="zh">评估风险 · 核心动词</div></a>
-  </div>
-</div>
+</details>
 
 </div>
 
