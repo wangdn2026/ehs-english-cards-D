@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>博物馆参观 &amp; 承包商现场作业安全（二） · D课包 Day2 点读</title>
+<style>
+:root {
+  --primary: #5BA4B5;
+  --primary-light: #7BB8C6;
+  --accent: #E8845C;
+  --ink: #2C2C2C;
+  --bg-warm: #FDF8F0;
+  --bg-page: #F5F0E8;
+  --text-secondary: #6A6A7A;
+  --text-light: #9A9AAA;
+  --border: #E8E2DA;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg-page);
+  font-family: 'PingFang SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+  min-height: 100vh;
+  padding: 24px 16px 60px;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+.page-header { text-align: center; margin-bottom: 18px; }
+.pkg-badge {
+  display: inline-block; background: var(--primary); color: #fff;
+  font-size: 11px; font-weight: 600; padding: 4px 12px;
+  border-radius: 12px; letter-spacing: 1px; margin-bottom: 10px;
+}
+.page-header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+.page-header .subtitle { font-size: 12px; color: var(--text-secondary); letter-spacing: 0.5px; }
+
+.tabs {
+  max-width: 720px; margin: 0 auto 14px;
+  display: flex; gap: 0; background: #fff;
+  border-radius: 12px; padding: 4px; border: 2px solid var(--primary);
+}
+.tab-btn {
+  flex: 1; padding: 10px 12px; font-size: 14px; font-weight: 600;
+  border: none; background: transparent; color: var(--text-secondary);
+  cursor: pointer; border-radius: 8px; font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+.tab-btn.active { background: var(--primary); color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.control-bar {
+  max-width: 720px; margin: 0 auto 14px; background: #fff;
+  border: 2px solid var(--primary); border-radius: 14px; padding: 12px 14px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.ctrl-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--primary); color: #fff; border: none;
+  border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background 0.2s, transform 0.1s; font-family: inherit;
+}
+.ctrl-btn:hover { background: var(--primary-light); }
+.ctrl-btn:active { transform: scale(0.96); }
+.ctrl-btn.secondary { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+.ctrl-btn.secondary:hover { background: rgba(91, 164, 181, 0.1); }
+.ctrl-btn .icon {
+  width: 11px; height: 11px; display: inline-block;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M8 5v14l11-7z'/></svg>") no-repeat center / contain;
+}
+.ctrl-btn.secondary .icon {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235BA4B5'><path d='M8 5v14l11-7z'/></svg>") no-repeat center / contain;
+}
+.speed-group {
+  margin-left: auto; display: flex; gap: 3px;
+  background: var(--bg-warm); padding: 3px; border-radius: 999px;
+}
+.speed-btn {
+  border: none; background: transparent; color: var(--text-secondary);
+  font-size: 11px; font-weight: 600; padding: 4px 9px;
+  border-radius: 999px; cursor: pointer; font-family: inherit;
+}
+.speed-btn.active { background: var(--primary); color: #fff; }
+.progress-info {
+  flex-basis: 100%; font-size: 11px; color: var(--text-light); margin-top: 4px;
+}
+
+.section-card {
+  max-width: 720px; margin: 0 auto 14px; background: #fff;
+  border: 2px solid var(--primary); border-radius: 16px; padding: 18px 20px;
+}
+.section-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px; padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.section-head .sec-tag {
+  background: rgba(91, 164, 181, 0.1); color: var(--primary);
+  font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 8px;
+}
+.section-head h2 { font-size: 15px; font-weight: 600; flex: 1; }
+.section-head .play-sec-btn {
+  background: transparent; border: 1.5px solid var(--primary);
+  color: var(--primary); padding: 5px 10px; border-radius: 8px;
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+}
+
+.dialogue-row {
+  display: flex; gap: 10px; margin-bottom: 10px; padding: 10px 12px;
+  border-radius: 10px; background: var(--bg-warm);
+  cursor: pointer; transition: background 0.15s, transform 0.1s;
+  border-left: 3px solid transparent;
+}
+.dialogue-row:hover { background: rgba(91, 164, 181, 0.08); }
+.dialogue-row:active { transform: scale(0.99); }
+.dialogue-row.playing {
+  background: rgba(232, 132, 92, 0.12); border-left-color: var(--accent);
+}
+.turn-num {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(91, 164, 181, 0.15); color: var(--primary);
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
+}
+.dialogue-body { flex: 1; min-width: 0; }
+.role-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  padding: 2px 8px; border-radius: 6px; margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.role-tag.visitor, .role-tag.pm { background: rgba(91, 164, 181, 0.15); color: var(--primary); }
+.role-tag.staff, .role-tag.ehs { background: rgba(232, 132, 92, 0.15); color: var(--accent); }
+.role-tag.phrase { background: rgba(156, 123, 201, 0.15); color: #9C7BC9; }
+.role-tag.example { background: rgba(111, 159, 91, 0.15); color: #6F9F5B; }
+.dialogue-en { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 4px; color: var(--ink); }
+.dialogue-zh { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+.dialogue-row.phrase-row .dialogue-en { font-size: 17px; font-weight: 700; color: #9C7BC9; }
+.dialogue-row.example-row .dialogue-en { font-size: 13px; font-style: italic; }
+.play-icon-mini {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(91, 164, 181, 0.1);
+  display: flex; align-items: center; justify-content: center; margin-top: 4px;
+}
+.play-icon-mini::before {
+  content: ''; width: 10px; height: 10px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235BA4B5'><path d='M8 5v14l11-7z'/></svg>") no-repeat center / contain;
+}
+.dialogue-row.playing .play-icon-mini { background: var(--accent); }
+.dialogue-row.playing .play-icon-mini::before {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M6 5h4v14H6zm8 0h4v14h-4z'/></svg>") no-repeat center / contain;
+}
+
+.role-scene-card {
+  max-width: 720px; margin: 0 auto 14px; background: #fff;
+  border: 2px solid var(--primary); border-radius: 16px; padding: 18px 20px;
+}
+.role-scene-card h3 { font-size: 14px; color: var(--primary); margin-bottom: 8px; }
+.role-scene-card .scene-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+.role-switch {
+  display: flex; gap: 6px; background: var(--bg-warm);
+  padding: 4px; border-radius: 10px; margin-bottom: 12px;
+}
+.role-switch button {
+  flex: 1; padding: 8px 10px; border: none; background: transparent;
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; border-radius: 7px; font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+.role-switch button.active { background: var(--primary); color: #fff; }
+
+.rp-turn {
+  max-width: 720px; margin: 0 auto 10px; background: #fff;
+  border: 2px solid var(--border); border-radius: 14px; padding: 14px 16px;
+  transition: border-color 0.2s;
+}
+.rp-turn.resolved { border-color: var(--primary); }
+.rp-turn-num { font-size: 11px; font-weight: 700; color: var(--text-light); margin-bottom: 6px; letter-spacing: 1px; }
+.rp-mine { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 4px; color: var(--ink); }
+.rp-mine-zh { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
+.rp-reveal-btn {
+  background: transparent; border: 1.5px solid var(--accent); color: var(--accent);
+  padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: background 0.2s;
+}
+.rp-reveal-btn:hover { background: rgba(232, 132, 92, 0.1); }
+.rp-reveal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.rp-theirs {
+  display: none; margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 14px; line-height: 1.5; color: var(--accent);
+  font-weight: 500; cursor: pointer;
+}
+.rp-theirs.show { display: block; }
+.rp-theirs-zh { font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.5; }
+.rp-complete-btn {
+  display: block; margin: 18px auto 0; background: transparent;
+  border: 1.5px solid var(--primary); color: var(--primary);
+  padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.rp-complete-dialog {
+  display: none; max-width: 720px; margin: 14px auto 0;
+  background: var(--bg-warm); border: 2px solid var(--primary);
+  border-radius: 14px; padding: 16px 18px;
+}
+.rp-complete-dialog.show { display: block; }
+.rp-complete-dialog h4 { font-size: 13px; color: var(--primary); margin-bottom: 10px; }
+.rp-complete-row {
+  display: flex; gap: 10px; padding: 8px 10px; background: #fff;
+  border-radius: 8px; margin-bottom: 6px; font-size: 13px;
+}
+.rp-complete-role { flex-shrink: 0; width: 60px; font-size: 11px; font-weight: 700; color: var(--primary); }
+
+.brand-foot {
+  text-align: center; margin-top: 28px; font-size: 11px;
+  color: var(--text-light); letter-spacing: 1px;
+}
+.brand-foot .accent { color: var(--accent); }
+
+@media (max-width: 480px) {
+  body { padding: 16px 10px 40px; }
+  .page-header h1 { font-size: 18px; }
+  .section-card { padding: 14px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="pkg-badge">PACKAGE D · Day2</span>
+  <h1>博物馆参观 &amp; 承包商现场作业安全（二）</h1>
+  <div class="subtitle">0803 · 第二次课 · Visiting Museum &amp; Historic Sites &amp; On-Site Contractor Safety Management (II)</div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="reader">📖 点读模式</button>
+  <button class="tab-btn" data-tab="roleplay">🎭 角色扮演</button>
+</div>
+
+<!-- ================ 点读模式 ================ -->
+<div class="tab-panel active" id="panel-reader">
+
+<div class="control-bar"><button class="ctrl-btn" id="btn-play-all"><span class="icon"></span>连续播放全部</button><button class="ctrl-btn secondary" id="btn-stop-all"><span class="icon"></span>停止</button><div class="speed-group"><button class="speed-btn" data-rate="0.6">0.6x</button><button class="speed-btn" data-rate="0.8">0.8x</button><button class="speed-btn active" data-rate="1.0">1.0x</button></div><div class="progress-info" id="progress-info">点击任意句子播放 · 切换上方 tab 进入角色扮演</div></div>
+<div class="section-card" data-sec="scene_a"><div class="section-head"><span class="sec-tag">SCENE A</span><h2>场景 A · 博物馆参观</h2><button class="play-sec-btn" data-sec="scene_a">▶ 播整段</button></div><div class="dialogue-row" data-id="d2_a_01a"><div class="turn-num">1</div><div class="dialogue-body"><span class="role-tag visitor">参观者 Visitor</span><div class="dialogue-en">When was this museum built?</div><div class="dialogue-zh">这座博物馆是什么时候建成的？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_01b"><div class="turn-num">1</div><div class="dialogue-body"><span class="role-tag staff">工作人员 Staff</span><div class="dialogue-en">This museum was built more than 100 years ago.</div><div class="dialogue-zh">这座博物馆始建于一百多年前。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_02a"><div class="turn-num">2</div><div class="dialogue-body"><span class="role-tag visitor">参观者 Visitor</span><div class="dialogue-en">Is admission to this museum free for the public?</div><div class="dialogue-zh">这家博物馆对公众免费开放吗？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_02b"><div class="turn-num">2</div><div class="dialogue-body"><span class="role-tag staff">工作人员 Staff</span><div class="dialogue-en">This museum is not open to the public free of charge all year round.</div><div class="dialogue-zh">该博物馆不是全年免费向公众开放。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_03a"><div class="turn-num">3</div><div class="dialogue-body"><span class="role-tag visitor">参观者 Visitor</span><div class="dialogue-en">Who can enjoy free entry to the museum at all times?</div><div class="dialogue-zh">哪些人群可以任何时候都免门票参观博物馆？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_03b"><div class="turn-num">3</div><div class="dialogue-body"><span class="role-tag staff">工作人员 Staff</span><div class="dialogue-en">Veterans, active military staff, unemployed people, disabled people, students and children can enjoy all year-round free admission.</div><div class="dialogue-zh">退役军人、现役军人、失业人士、残障人士、学生与儿童可全年免费入馆。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_04a"><div class="turn-num">4</div><div class="dialogue-body"><span class="role-tag visitor">参观者 Visitor</span><div class="dialogue-en">Could you tell me your opening hours?</div><div class="dialogue-zh">您可以告知一下博物馆的开放时间吗？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_04b"><div class="turn-num">4</div><div class="dialogue-body"><span class="role-tag staff">工作人员 Staff</span><div class="dialogue-en">We open seven days a week, only closed on official holidays.</div><div class="dialogue-zh">我们一周七天开放，仅法定节假日闭馆。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_05a"><div class="turn-num">5</div><div class="dialogue-body"><span class="role-tag visitor">参观者 Visitor</span><div class="dialogue-en">One more question, can I take a photo of the exhibits inside?</div><div class="dialogue-zh">还有一个问题，我可以给里面的展品拍照吗？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_05b"><div class="turn-num">5</div><div class="dialogue-body"><span class="role-tag staff">工作人员 Staff</span><div class="dialogue-en">Sorry, please do not take a photo of any exhibits. All displays are only for viewing and appreciation.</div><div class="dialogue-zh">请勿触碰或拍照任何展品，所有陈列品仅供观赏。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_06a"><div class="turn-num">6</div><div class="dialogue-body"><span class="role-tag visitor">参观者 Visitor</span><div class="dialogue-en">Thank you so much for your detailed explanation.</div><div class="dialogue-zh">非常感谢您细致的解答。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_a_06b"><div class="turn-num">6</div><div class="dialogue-body"><span class="role-tag staff">工作人员 Staff</span><div class="dialogue-en">You are welcome, wish you a nice visit!</div><div class="dialogue-zh">不客气，祝您参观愉快。</div></div><div class="play-icon-mini"></div></div></div>
+<div class="section-card" data-sec="phrases"><div class="section-head"><span class="sec-tag">PHRASES</span><h2>E. H. S. 固定搭配短语</h2><button class="play-sec-btn" data-sec="phrases">▶ 播整段</button></div><div class="dialogue-row phrase-row" data-id="d2_p_01"><div class="turn-num">1</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">Pre-Task Plan (PTP)</div><div class="dialogue-zh">作业前方案</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_01e"><div class="turn-num">1</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Completion of the Pre-Task Plan or work permit should be filled out for all scheduled routine tasks.</div><div class="dialogue-zh">所有已备案常规作业均需填写作业前方案（PTP）或作业许可证。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_02"><div class="turn-num">2</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">work permit</div><div class="dialogue-zh">作业许可证</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_02e"><div class="turn-num">2</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">PTP is also referred to as Work Permit in many companies.</div><div class="dialogue-zh">作业前方案在很多公司也叫作业许可证。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_03"><div class="turn-num">3</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">hot work</div><div class="dialogue-zh">动火作业</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_03e"><div class="turn-num">3</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Hot work requires a separate permit and a fire watch on site.</div><div class="dialogue-zh">动火作业需单独办证并安排现场消防监护人。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_04"><div class="turn-num">4</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">confined space</div><div class="dialogue-zh">有限空间</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_04e"><div class="turn-num">4</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Confined space entry needs atmospheric testing before anyone goes in.</div><div class="dialogue-zh">进入有限空间前必须进行气体检测。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_05"><div class="turn-num">5</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">working at heights</div><div class="dialogue-zh">高处作业</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_05e"><div class="turn-num">5</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Working at heights above 6 feet (1.8 meters) requires fall protection.</div><div class="dialogue-zh">6 英尺（1.8 米）以上的高处作业必须配备防坠落保护。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_06"><div class="turn-num">6</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">excavation</div><div class="dialogue-zh">挖掘作业</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_06e"><div class="turn-num">6</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Excavation work must include shoring, sloping or a trench box.</div><div class="dialogue-zh">挖掘作业必须设置支撑、放坡或采用防护箱。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_07"><div class="turn-num">7</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">scaffolding</div><div class="dialogue-zh">脚手架</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_07e"><div class="turn-num">7</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Scaffolding must be inspected by a competent person before use.</div><div class="dialogue-zh">脚手架使用前必须由专业人员进行检查。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_08"><div class="turn-num">8</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">roof work</div><div class="dialogue-zh">屋面施工</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_08e"><div class="turn-num">8</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Roof work requires edge protection and a fall arrest system.</div><div class="dialogue-zh">屋面施工需要临边防护和坠落保护系统。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_09"><div class="turn-num">9</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">energized electrical work above 50 volts</div><div class="dialogue-zh">对地电压 ≥ 50 伏的带电作业</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_09e"><div class="turn-num">9</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Energized electrical work above 50 volts requires lock out tag out.</div><div class="dialogue-zh">对地电压超过 50 伏的带电作业必须执行上锁挂牌。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_10"><div class="turn-num">10</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">lock out tag out (LOTO)</div><div class="dialogue-zh">上锁挂牌</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_10e"><div class="turn-num">10</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Apply Lock Out Tag Out before any energized electrical work above 50 volts.</div><div class="dialogue-zh">对地电压超过 50 伏的带电作业前必须执行上锁挂牌。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_11"><div class="turn-num">11</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">Personal Protective Equipment (PPE)</div><div class="dialogue-zh">个人防护装备</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_11e"><div class="turn-num">11</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">All required Personal Protective Equipment must be worn at all times on site.</div><div class="dialogue-zh">现场必须全程佩戴所需的个人防护装备。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_12"><div class="turn-num">12</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">hazard identification</div><div class="dialogue-zh">危害辨识</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_12e"><div class="turn-num">12</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">Before any task, contractors must complete hazard identification and risk assessment.</div><div class="dialogue-zh">任何作业开始前，承包商必须完成危害辨识和风险评估。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_13"><div class="turn-num">13</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">risk assessment</div><div class="dialogue-zh">风险评估</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_13e"><div class="turn-num">13</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">A risk assessment should be filled out for every upcoming work activity.</div><div class="dialogue-zh">针对即将开展的每项工作，都应填写风险评估。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_14"><div class="turn-num">14</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">weekly safety meeting</div><div class="dialogue-zh">每周安全会议</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_14e"><div class="turn-num">14</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">They hold safety meetings at least on a weekly basis.</div><div class="dialogue-zh">承包商每周至少开一次安全会议。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_15"><div class="turn-num">15</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">safety violation</div><div class="dialogue-zh">安全违规</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_15e"><div class="turn-num">15</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">They will give fines penalty for contractor workers for their safety violations.</div><div class="dialogue-zh">如果查到安全违规，他们会对承包商工人进行罚款。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row phrase-row" data-id="d2_p_16"><div class="turn-num">16</div><div class="dialogue-body"><span class="role-tag phrase">固定搭配</span><div class="dialogue-en">unsafe act</div><div class="dialogue-zh">不安全行为</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row example-row" data-id="d2_p_16e"><div class="turn-num">16</div><div class="dialogue-body"><span class="role-tag example">例句</span><div class="dialogue-en">They will get rewards if they proactively report unsafe acts.</div><div class="dialogue-zh">如果他们主动上报不安全行为，就能获得奖励。</div></div><div class="play-icon-mini"></div></div></div>
+<div class="section-card" data-sec="scene_b"><div class="section-head"><span class="sec-tag">SCENE B</span><h2>场景 B · 承包商现场作业安全</h2><button class="play-sec-btn" data-sec="scene_b">▶ 播整段</button></div><div class="dialogue-row" data-id="d2_b_01a"><div class="turn-num">1</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">Our contractors have finished all pre-qualification and pre-job preparations and will start on-site work very soon. Could you walk me through our safety management process before they begin work?</div><div class="dialogue-zh">我们的承包商已经完成所有前期资格审核入场准备，马上就要进场作业。请你说明一下开工前的整套安全管理流程？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_01b"><div class="turn-num">1</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">Before any contractor task starts, they should complete an overall pre-task hazard identification and risk assessment for every upcoming work activities. This is the foundation of all on-site risk control.</div><div class="dialogue-zh">在承包商任何作业开始前，他们必须针对即将开展的所有工作，完成整体的危害辨识和风险评估，这是所有现场风险管控的基础。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_02a"><div class="turn-num">2</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">After they finish hazard identification and risk evaluation, what do they need to do next?</div><div class="dialogue-zh">完成危害辨识和风险评估之后，下一步要做什么？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_02b"><div class="turn-num">2</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">They need to fill out a Pre-Task Plan (PTP) and get approvals. PTP is also referred to as Work Permit in many companies. This document records the related risks, control measures and other safety requirements for the task.</div><div class="dialogue-zh">我们需要填写并审批作业前方案，也就是很多公司说的作业许可证。这份文件会记录作业相关的风险、管控措施和安全要求。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_03a"><div class="turn-num">3</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">Besides risk analysis and permit approval, what on-site safety work do they need to conduct?</div><div class="dialogue-zh">除了风险分析和许可审批，开工后我们还要落实哪些现场安全工作？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_03b"><div class="turn-num">3</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">They need to ensure all the safety measures indicated in the PTP are in place before the start of the work. In addition, they should perform routine on-site safety inspections at least every week to check contractor workers&#x27; behaviors, PPE compliance and risk control status.</div><div class="dialogue-zh">他们需要确保作业开始前，作业方案（PTP）中列明的所有安全措施均落实到位，此外，他们至少每周要开展现场安全巡查，核查承包商作业行为、防护用品佩戴以及风险管控的情况。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_04a"><div class="turn-num">4</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">Do they have regular safety meetings for contractor ongoing projects?</div><div class="dialogue-zh">针对承包商持续作业的项目，他们有定期安全会议吗？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_04b"><div class="turn-num">4</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">Yes. They hold safety meetings at least on a weekly basis. We review current safety performance, existing hazards and closure status of the corrective actions.</div><div class="dialogue-zh">有的。承包商每周至少要开一次安全会议，复盘审核当前安全表现、现存隐患和整改进度。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_05a"><div class="turn-num">5</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">Do they have reward and penalty rules for the contractors on site?</div><div class="dialogue-zh">他们针对现场承包商，有没有一套奖惩规则？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_05b"><div class="turn-num">5</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">Yes. They will give fines penalty for contractor workers for their safety violations.</div><div class="dialogue-zh">有的。如果查到安全违规，他们会对承包商工人进行罚款。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_06a"><div class="turn-num">6</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">Will these fines be reviewed and confirmed at their weekly project meeting?</div><div class="dialogue-zh">这些罚款会在我们每周项目例会中审核确认吗？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_06b"><div class="turn-num">6</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">Exactly. All violation penalties will be discussed and finalized in the weekly meeting.</div><div class="dialogue-zh">没错，所有违规罚款都会在周会上商议并最终确定。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_07a"><div class="turn-num">7</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">Then what kind of behaviors can be rewarded for contractors?</div><div class="dialogue-zh">那承包商哪些行为可以获得奖励呢？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_07b"><div class="turn-num">7</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">They will get rewards if they proactively report unsafe acts, unsafe conditions or offer good safety suggestions.</div><div class="dialogue-zh">如果他们主动上报不安全行为、现场隐患，或是提出有效的安全建议，就能获得奖励。</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_08a"><div class="turn-num">8</div><div class="dialogue-body"><span class="role-tag pm">项目经理 PM</span><div class="dialogue-en">To summarize, the whole process covers pre-task hazard identification and risk assessment, PTP or Work Permit application and approval, ongoing site inspection, weekly safety review meetings, and penalty and reward program, correct?</div><div class="dialogue-zh">总结来说，整套流程包括：工作前危害识别和风险评估、PTP 作业许可申请和审批、持续现场巡查、每周安全复盘会议、奖惩与表彰制度，对吗？</div></div><div class="play-icon-mini"></div></div><div class="dialogue-row" data-id="d2_b_08b"><div class="turn-num">8</div><div class="dialogue-body"><span class="role-tag ehs">E. H. S. 经理</span><div class="dialogue-en">Yes, this is the complete and standard contractor safety management process for our site.</div><div class="dialogue-zh">没错，这就是我们厂区标准、完整的承包商安全管理流程。</div></div><div class="play-icon-mini"></div></div></div>
+
+</div>
+
+<!-- ================ 角色扮演模式 ================ -->
+<div class="tab-panel" id="panel-roleplay">
+
+<div class="role-scene-card"><h3>🎬 场景 A · 博物馆参观</h3><div class="scene-desc">Scene A · Visiting the Museum</div><div class="role-switch">
+<button data-role="visitor" data-sec="scene_a">👤 我演 Visitor（参观者）</button>
+<button data-role="staff" data-sec="scene_a">👔 我演 Staff（工作人员）</button>
+</div></div>
+<div class="rp-turn" data-my-role="visitor" data-sec="scene_a"><div class="rp-turn-num">第 1 轮 · 我 Visitor</div><div class="rp-mine">When was this museum built?</div><div class="rp-mine-zh">这座博物馆是什么时候建成的？</div><button class="rp-reveal-btn" data-reveal-id="d2_a_01b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_01b" data-audio="audio/d2_a_01b_en.mp3">This museum was built more than 100 years ago.<div class="rp-theirs-zh">这座博物馆始建于一百多年前。</div></div></div>
+<div class="rp-turn" data-my-role="staff" data-sec="scene_a"><div class="rp-turn-num">第 1 轮 · 我 Staff</div><div class="rp-mine">This museum was built more than 100 years ago.</div><div class="rp-mine-zh">这座博物馆始建于一百多年前。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_01a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_01a" data-audio="audio/d2_a_01a_en.mp3">When was this museum built?<div class="rp-theirs-zh">这座博物馆是什么时候建成的？</div></div></div>
+<div class="rp-turn" data-my-role="visitor" data-sec="scene_a"><div class="rp-turn-num">第 2 轮 · 我 Visitor</div><div class="rp-mine">Is admission to this museum free for the public?</div><div class="rp-mine-zh">这家博物馆对公众免费开放吗？</div><button class="rp-reveal-btn" data-reveal-id="d2_a_02b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_02b" data-audio="audio/d2_a_02b_en.mp3">This museum is not open to the public free of charge all year round.<div class="rp-theirs-zh">该博物馆不是全年免费向公众开放。</div></div></div>
+<div class="rp-turn" data-my-role="staff" data-sec="scene_a"><div class="rp-turn-num">第 2 轮 · 我 Staff</div><div class="rp-mine">This museum is not open to the public free of charge all year round.</div><div class="rp-mine-zh">该博物馆不是全年免费向公众开放。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_02a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_02a" data-audio="audio/d2_a_02a_en.mp3">Is admission to this museum free for the public?<div class="rp-theirs-zh">这家博物馆对公众免费开放吗？</div></div></div>
+<div class="rp-turn" data-my-role="visitor" data-sec="scene_a"><div class="rp-turn-num">第 3 轮 · 我 Visitor</div><div class="rp-mine">Who can enjoy free entry to the museum at all times?</div><div class="rp-mine-zh">哪些人群可以任何时候都免门票参观博物馆？</div><button class="rp-reveal-btn" data-reveal-id="d2_a_03b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_03b" data-audio="audio/d2_a_03b_en.mp3">Veterans, active military staff, unemployed people, disabled people, students and children can enjoy all year-round free admission.<div class="rp-theirs-zh">退役军人、现役军人、失业人士、残障人士、学生与儿童可全年免费入馆。</div></div></div>
+<div class="rp-turn" data-my-role="staff" data-sec="scene_a"><div class="rp-turn-num">第 3 轮 · 我 Staff</div><div class="rp-mine">Veterans, active military staff, unemployed people, disabled people, students and children can enjoy all year-round free admission.</div><div class="rp-mine-zh">退役军人、现役军人、失业人士、残障人士、学生与儿童可全年免费入馆。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_03a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_03a" data-audio="audio/d2_a_03a_en.mp3">Who can enjoy free entry to the museum at all times?<div class="rp-theirs-zh">哪些人群可以任何时候都免门票参观博物馆？</div></div></div>
+<div class="rp-turn" data-my-role="visitor" data-sec="scene_a"><div class="rp-turn-num">第 4 轮 · 我 Visitor</div><div class="rp-mine">Could you tell me your opening hours?</div><div class="rp-mine-zh">您可以告知一下博物馆的开放时间吗？</div><button class="rp-reveal-btn" data-reveal-id="d2_a_04b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_04b" data-audio="audio/d2_a_04b_en.mp3">We open seven days a week, only closed on official holidays.<div class="rp-theirs-zh">我们一周七天开放，仅法定节假日闭馆。</div></div></div>
+<div class="rp-turn" data-my-role="staff" data-sec="scene_a"><div class="rp-turn-num">第 4 轮 · 我 Staff</div><div class="rp-mine">We open seven days a week, only closed on official holidays.</div><div class="rp-mine-zh">我们一周七天开放，仅法定节假日闭馆。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_04a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_04a" data-audio="audio/d2_a_04a_en.mp3">Could you tell me your opening hours?<div class="rp-theirs-zh">您可以告知一下博物馆的开放时间吗？</div></div></div>
+<div class="rp-turn" data-my-role="visitor" data-sec="scene_a"><div class="rp-turn-num">第 5 轮 · 我 Visitor</div><div class="rp-mine">One more question, can I take a photo of the exhibits inside?</div><div class="rp-mine-zh">还有一个问题，我可以给里面的展品拍照吗？</div><button class="rp-reveal-btn" data-reveal-id="d2_a_05b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_05b" data-audio="audio/d2_a_05b_en.mp3">Sorry, please do not take a photo of any exhibits. All displays are only for viewing and appreciation.<div class="rp-theirs-zh">请勿触碰或拍照任何展品，所有陈列品仅供观赏。</div></div></div>
+<div class="rp-turn" data-my-role="staff" data-sec="scene_a"><div class="rp-turn-num">第 5 轮 · 我 Staff</div><div class="rp-mine">Sorry, please do not take a photo of any exhibits. All displays are only for viewing and appreciation.</div><div class="rp-mine-zh">请勿触碰或拍照任何展品，所有陈列品仅供观赏。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_05a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_05a" data-audio="audio/d2_a_05a_en.mp3">One more question, can I take a photo of the exhibits inside?<div class="rp-theirs-zh">还有一个问题，我可以给里面的展品拍照吗？</div></div></div>
+<div class="rp-turn" data-my-role="visitor" data-sec="scene_a"><div class="rp-turn-num">第 6 轮 · 我 Visitor</div><div class="rp-mine">Thank you so much for your detailed explanation.</div><div class="rp-mine-zh">非常感谢您细致的解答。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_06b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_06b" data-audio="audio/d2_a_06b_en.mp3">You are welcome, wish you a nice visit!<div class="rp-theirs-zh">不客气，祝您参观愉快。</div></div></div>
+<div class="rp-turn" data-my-role="staff" data-sec="scene_a"><div class="rp-turn-num">第 6 轮 · 我 Staff</div><div class="rp-mine">You are welcome, wish you a nice visit!</div><div class="rp-mine-zh">不客气，祝您参观愉快。</div><button class="rp-reveal-btn" data-reveal-id="d2_a_06a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_a_06a" data-audio="audio/d2_a_06a_en.mp3">Thank you so much for your detailed explanation.<div class="rp-theirs-zh">非常感谢您细致的解答。</div></div></div>
+<button class="rp-complete-btn" data-sec="scene_a">📜 查看完整对话</button>
+<div class="rp-complete-dialog" data-sec="scene_a">
+<h4>📜 完整对话 · 场景 A · 博物馆参观</h4>
+<div class="rp-complete-row"><div class="rp-complete-role">Visitor</div><div>When was this museum built?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Staff</div><div>This museum was built more than 100 years ago.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Visitor</div><div>Is admission to this museum free for the public?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Staff</div><div>This museum is not open to the public free of charge all year round.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Visitor</div><div>Who can enjoy free entry to the museum at all times?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Staff</div><div>Veterans, active military staff, unemployed people, disabled people, students and children can enjoy all year-round free admission.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Visitor</div><div>Could you tell me your opening hours?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Staff</div><div>We open seven days a week, only closed on official holidays.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Visitor</div><div>One more question, can I take a photo of the exhibits inside?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Staff</div><div>Sorry, please do not take a photo of any exhibits. All displays are only for viewing and appreciation.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Visitor</div><div>Thank you so much for your detailed explanation.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">Staff</div><div>You are welcome, wish you a nice visit!</div></div>
+</div>
+<div class="role-scene-card"><h3>🎬 场景 B · 承包商现场作业安全</h3><div class="scene-desc">Scene B · On-Site Contractor Safety Management</div><div class="role-switch">
+<button data-role="pm" data-sec="scene_b">👔 我演 PM（项目经理）</button>
+<button data-role="ehs" data-sec="scene_b">🦺 我演 E. H. S. 经理</button>
+</div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 1 轮 · 我 PM</div><div class="rp-mine">Our contractors have finished all pre-qualification and pre-job preparations and will start on-site work very soon. Could you walk me through our safety management process before they begin work?</div><div class="rp-mine-zh">我们的承包商已经完成所有前期资格审核入场准备，马上就要进场作业。请你说明一下开工前的整套安全管理流程？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_01b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_01b" data-audio="audio/d2_b_01b_en.mp3">Before any contractor task starts, they should complete an overall pre-task hazard identification and risk assessment for every upcoming work activities. This is the foundation of all on-site risk control.<div class="rp-theirs-zh">在承包商任何作业开始前，他们必须针对即将开展的所有工作，完成整体的危害辨识和风险评估，这是所有现场风险管控的基础。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 1 轮 · 我 E. H. S. 经理</div><div class="rp-mine">Before any contractor task starts, they should complete an overall pre-task hazard identification and risk assessment for every upcoming work activities. This is the foundation of all on-site risk control.</div><div class="rp-mine-zh">在承包商任何作业开始前，他们必须针对即将开展的所有工作，完成整体的危害辨识和风险评估，这是所有现场风险管控的基础。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_01a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_01a" data-audio="audio/d2_b_01a_en.mp3">Our contractors have finished all pre-qualification and pre-job preparations and will start on-site work very soon. Could you walk me through our safety management process before they begin work?<div class="rp-theirs-zh">我们的承包商已经完成所有前期资格审核入场准备，马上就要进场作业。请你说明一下开工前的整套安全管理流程？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 2 轮 · 我 PM</div><div class="rp-mine">After they finish hazard identification and risk evaluation, what do they need to do next?</div><div class="rp-mine-zh">完成危害辨识和风险评估之后，下一步要做什么？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_02b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_02b" data-audio="audio/d2_b_02b_en.mp3">They need to fill out a Pre-Task Plan (PTP) and get approvals. PTP is also referred to as Work Permit in many companies. This document records the related risks, control measures and other safety requirements for the task.<div class="rp-theirs-zh">我们需要填写并审批作业前方案，也就是很多公司说的作业许可证。这份文件会记录作业相关的风险、管控措施和安全要求。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 2 轮 · 我 E. H. S. 经理</div><div class="rp-mine">They need to fill out a Pre-Task Plan (PTP) and get approvals. PTP is also referred to as Work Permit in many companies. This document records the related risks, control measures and other safety requirements for the task.</div><div class="rp-mine-zh">我们需要填写并审批作业前方案，也就是很多公司说的作业许可证。这份文件会记录作业相关的风险、管控措施和安全要求。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_02a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_02a" data-audio="audio/d2_b_02a_en.mp3">After they finish hazard identification and risk evaluation, what do they need to do next?<div class="rp-theirs-zh">完成危害辨识和风险评估之后，下一步要做什么？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 3 轮 · 我 PM</div><div class="rp-mine">Besides risk analysis and permit approval, what on-site safety work do they need to conduct?</div><div class="rp-mine-zh">除了风险分析和许可审批，开工后我们还要落实哪些现场安全工作？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_03b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_03b" data-audio="audio/d2_b_03b_en.mp3">They need to ensure all the safety measures indicated in the PTP are in place before the start of the work. In addition, they should perform routine on-site safety inspections at least every week to check contractor workers&#x27; behaviors, PPE compliance and risk control status.<div class="rp-theirs-zh">他们需要确保作业开始前，作业方案（PTP）中列明的所有安全措施均落实到位，此外，他们至少每周要开展现场安全巡查，核查承包商作业行为、防护用品佩戴以及风险管控的情况。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 3 轮 · 我 E. H. S. 经理</div><div class="rp-mine">They need to ensure all the safety measures indicated in the PTP are in place before the start of the work. In addition, they should perform routine on-site safety inspections at least every week to check contractor workers&#x27; behaviors, PPE compliance and risk control status.</div><div class="rp-mine-zh">他们需要确保作业开始前，作业方案（PTP）中列明的所有安全措施均落实到位，此外，他们至少每周要开展现场安全巡查，核查承包商作业行为、防护用品佩戴以及风险管控的情况。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_03a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_03a" data-audio="audio/d2_b_03a_en.mp3">Besides risk analysis and permit approval, what on-site safety work do they need to conduct?<div class="rp-theirs-zh">除了风险分析和许可审批，开工后我们还要落实哪些现场安全工作？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 4 轮 · 我 PM</div><div class="rp-mine">Do they have regular safety meetings for contractor ongoing projects?</div><div class="rp-mine-zh">针对承包商持续作业的项目，他们有定期安全会议吗？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_04b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_04b" data-audio="audio/d2_b_04b_en.mp3">Yes. They hold safety meetings at least on a weekly basis. We review current safety performance, existing hazards and closure status of the corrective actions.<div class="rp-theirs-zh">有的。承包商每周至少要开一次安全会议，复盘审核当前安全表现、现存隐患和整改进度。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 4 轮 · 我 E. H. S. 经理</div><div class="rp-mine">Yes. They hold safety meetings at least on a weekly basis. We review current safety performance, existing hazards and closure status of the corrective actions.</div><div class="rp-mine-zh">有的。承包商每周至少要开一次安全会议，复盘审核当前安全表现、现存隐患和整改进度。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_04a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_04a" data-audio="audio/d2_b_04a_en.mp3">Do they have regular safety meetings for contractor ongoing projects?<div class="rp-theirs-zh">针对承包商持续作业的项目，他们有定期安全会议吗？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 5 轮 · 我 PM</div><div class="rp-mine">Do they have reward and penalty rules for the contractors on site?</div><div class="rp-mine-zh">他们针对现场承包商，有没有一套奖惩规则？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_05b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_05b" data-audio="audio/d2_b_05b_en.mp3">Yes. They will give fines penalty for contractor workers for their safety violations.<div class="rp-theirs-zh">有的。如果查到安全违规，他们会对承包商工人进行罚款。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 5 轮 · 我 E. H. S. 经理</div><div class="rp-mine">Yes. They will give fines penalty for contractor workers for their safety violations.</div><div class="rp-mine-zh">有的。如果查到安全违规，他们会对承包商工人进行罚款。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_05a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_05a" data-audio="audio/d2_b_05a_en.mp3">Do they have reward and penalty rules for the contractors on site?<div class="rp-theirs-zh">他们针对现场承包商，有没有一套奖惩规则？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 6 轮 · 我 PM</div><div class="rp-mine">Will these fines be reviewed and confirmed at their weekly project meeting?</div><div class="rp-mine-zh">这些罚款会在我们每周项目例会中审核确认吗？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_06b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_06b" data-audio="audio/d2_b_06b_en.mp3">Exactly. All violation penalties will be discussed and finalized in the weekly meeting.<div class="rp-theirs-zh">没错，所有违规罚款都会在周会上商议并最终确定。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 6 轮 · 我 E. H. S. 经理</div><div class="rp-mine">Exactly. All violation penalties will be discussed and finalized in the weekly meeting.</div><div class="rp-mine-zh">没错，所有违规罚款都会在周会上商议并最终确定。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_06a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_06a" data-audio="audio/d2_b_06a_en.mp3">Will these fines be reviewed and confirmed at their weekly project meeting?<div class="rp-theirs-zh">这些罚款会在我们每周项目例会中审核确认吗？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 7 轮 · 我 PM</div><div class="rp-mine">Then what kind of behaviors can be rewarded for contractors?</div><div class="rp-mine-zh">那承包商哪些行为可以获得奖励呢？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_07b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_07b" data-audio="audio/d2_b_07b_en.mp3">They will get rewards if they proactively report unsafe acts, unsafe conditions or offer good safety suggestions.<div class="rp-theirs-zh">如果他们主动上报不安全行为、现场隐患，或是提出有效的安全建议，就能获得奖励。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 7 轮 · 我 E. H. S. 经理</div><div class="rp-mine">They will get rewards if they proactively report unsafe acts, unsafe conditions or offer good safety suggestions.</div><div class="rp-mine-zh">如果他们主动上报不安全行为、现场隐患，或是提出有效的安全建议，就能获得奖励。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_07a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_07a" data-audio="audio/d2_b_07a_en.mp3">Then what kind of behaviors can be rewarded for contractors?<div class="rp-theirs-zh">那承包商哪些行为可以获得奖励呢？</div></div></div>
+<div class="rp-turn" data-my-role="pm" data-sec="scene_b"><div class="rp-turn-num">第 8 轮 · 我 PM</div><div class="rp-mine">To summarize, the whole process covers pre-task hazard identification and risk assessment, PTP or Work Permit application and approval, ongoing site inspection, weekly safety review meetings, and penalty and reward program, correct?</div><div class="rp-mine-zh">总结来说，整套流程包括：工作前危害识别和风险评估、PTP 作业许可申请和审批、持续现场巡查、每周安全复盘会议、奖惩与表彰制度，对吗？</div><button class="rp-reveal-btn" data-reveal-id="d2_b_08b">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_08b" data-audio="audio/d2_b_08b_en.mp3">Yes, this is the complete and standard contractor safety management process for our site.<div class="rp-theirs-zh">没错，这就是我们厂区标准、完整的承包商安全管理流程。</div></div></div>
+<div class="rp-turn" data-my-role="ehs" data-sec="scene_b"><div class="rp-turn-num">第 8 轮 · 我 E. H. S. 经理</div><div class="rp-mine">Yes, this is the complete and standard contractor safety management process for our site.</div><div class="rp-mine-zh">没错，这就是我们厂区标准、完整的承包商安全管理流程。</div><button class="rp-reveal-btn" data-reveal-id="d2_b_08a">揭晓对方回应</button><div class="rp-theirs" data-id="d2_b_08a" data-audio="audio/d2_b_08a_en.mp3">To summarize, the whole process covers pre-task hazard identification and risk assessment, PTP or Work Permit application and approval, ongoing site inspection, weekly safety review meetings, and penalty and reward program, correct?<div class="rp-theirs-zh">总结来说，整套流程包括：工作前危害识别和风险评估、PTP 作业许可申请和审批、持续现场巡查、每周安全复盘会议、奖惩与表彰制度，对吗？</div></div></div>
+<button class="rp-complete-btn" data-sec="scene_b">📜 查看完整对话</button>
+<div class="rp-complete-dialog" data-sec="scene_b">
+<h4>📜 完整对话 · 场景 B · 承包商现场作业安全</h4>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>Our contractors have finished all pre-qualification and pre-job preparations and will start on-site work very soon. Could you walk me through our safety management process before they begin work?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>Before any contractor task starts, they should complete an overall pre-task hazard identification and risk assessment for every upcoming work activities. This is the foundation of all on-site risk control.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>After they finish hazard identification and risk evaluation, what do they need to do next?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>They need to fill out a Pre-Task Plan (PTP) and get approvals. PTP is also referred to as Work Permit in many companies. This document records the related risks, control measures and other safety requirements for the task.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>Besides risk analysis and permit approval, what on-site safety work do they need to conduct?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>They need to ensure all the safety measures indicated in the PTP are in place before the start of the work. In addition, they should perform routine on-site safety inspections at least every week to check contractor workers&#x27; behaviors, PPE compliance and risk control status.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>Do they have regular safety meetings for contractor ongoing projects?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>Yes. They hold safety meetings at least on a weekly basis. We review current safety performance, existing hazards and closure status of the corrective actions.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>Do they have reward and penalty rules for the contractors on site?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>Yes. They will give fines penalty for contractor workers for their safety violations.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>Will these fines be reviewed and confirmed at their weekly project meeting?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>Exactly. All violation penalties will be discussed and finalized in the weekly meeting.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>Then what kind of behaviors can be rewarded for contractors?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>They will get rewards if they proactively report unsafe acts, unsafe conditions or offer good safety suggestions.</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">PM</div><div>To summarize, the whole process covers pre-task hazard identification and risk assessment, PTP or Work Permit application and approval, ongoing site inspection, weekly safety review meetings, and penalty and reward program, correct?</div></div>
+<div class="rp-complete-row"><div class="rp-complete-role">E. H. S.</div><div>Yes, this is the complete and standard contractor safety management process for our site.</div></div>
+</div>
+
+</div>
+
+<div class="brand-foot">安全五点半 · <span class="accent">E. H. S.</span> 职场英语 · D 课包点读卡</div>
+
+<script>
+const SENTENCES = [{"id": "d2_a_01a", "section": "scene_a", "turn": 1, "role": "visitor", "en": "When was this museum built?", "zh": "这座博物馆是什么时候建成的？", "audio": "audio/d2_a_01a_en.mp3", "audio_zh": "audio/d2_a_01a_zh.mp3"}, {"id": "d2_a_01b", "section": "scene_a", "turn": 1, "role": "staff", "en": "This museum was built more than 100 years ago.", "zh": "这座博物馆始建于一百多年前。", "audio": "audio/d2_a_01b_en.mp3", "audio_zh": "audio/d2_a_01b_zh.mp3"}, {"id": "d2_a_02a", "section": "scene_a", "turn": 2, "role": "visitor", "en": "Is admission to this museum free for the public?", "zh": "这家博物馆对公众免费开放吗？", "audio": "audio/d2_a_02a_en.mp3", "audio_zh": "audio/d2_a_02a_zh.mp3"}, {"id": "d2_a_02b", "section": "scene_a", "turn": 2, "role": "staff", "en": "This museum is not open to the public free of charge all year round.", "zh": "该博物馆不是全年免费向公众开放。", "audio": "audio/d2_a_02b_en.mp3", "audio_zh": "audio/d2_a_02b_zh.mp3"}, {"id": "d2_a_03a", "section": "scene_a", "turn": 3, "role": "visitor", "en": "Who can enjoy free entry to the museum at all times?", "zh": "哪些人群可以任何时候都免门票参观博物馆？", "audio": "audio/d2_a_03a_en.mp3", "audio_zh": "audio/d2_a_03a_zh.mp3"}, {"id": "d2_a_03b", "section": "scene_a", "turn": 3, "role": "staff", "en": "Veterans, active military staff, unemployed people, disabled people, students and children can enjoy all year-round free admission.", "zh": "退役军人、现役军人、失业人士、残障人士、学生与儿童可全年免费入馆。", "audio": "audio/d2_a_03b_en.mp3", "audio_zh": "audio/d2_a_03b_zh.mp3"}, {"id": "d2_a_04a", "section": "scene_a", "turn": 4, "role": "visitor", "en": "Could you tell me your opening hours?", "zh": "您可以告知一下博物馆的开放时间吗？", "audio": "audio/d2_a_04a_en.mp3", "audio_zh": "audio/d2_a_04a_zh.mp3"}, {"id": "d2_a_04b", "section": "scene_a", "turn": 4, "role": "staff", "en": "We open seven days a week, only closed on official holidays.", "zh": "我们一周七天开放，仅法定节假日闭馆。", "audio": "audio/d2_a_04b_en.mp3", "audio_zh": "audio/d2_a_04b_zh.mp3"}, {"id": "d2_a_05a", "section": "scene_a", "turn": 5, "role": "visitor", "en": "One more question, can I take a photo of the exhibits inside?", "zh": "还有一个问题，我可以给里面的展品拍照吗？", "audio": "audio/d2_a_05a_en.mp3", "audio_zh": "audio/d2_a_05a_zh.mp3"}, {"id": "d2_a_05b", "section": "scene_a", "turn": 5, "role": "staff", "en": "Sorry, please do not take a photo of any exhibits. All displays are only for viewing and appreciation.", "zh": "请勿触碰或拍照任何展品，所有陈列品仅供观赏。", "audio": "audio/d2_a_05b_en.mp3", "audio_zh": "audio/d2_a_05b_zh.mp3"}, {"id": "d2_a_06a", "section": "scene_a", "turn": 6, "role": "visitor", "en": "Thank you so much for your detailed explanation.", "zh": "非常感谢您细致的解答。", "audio": "audio/d2_a_06a_en.mp3", "audio_zh": "audio/d2_a_06a_zh.mp3"}, {"id": "d2_a_06b", "section": "scene_a", "turn": 6, "role": "staff", "en": "You are welcome, wish you a nice visit!", "zh": "不客气，祝您参观愉快。", "audio": "audio/d2_a_06b_en.mp3", "audio_zh": "audio/d2_a_06b_zh.mp3"}, {"id": "d2_p_01", "section": "phrases", "turn": 1, "role": "phrase", "en": "Pre-Task Plan (PTP)", "zh": "作业前方案", "audio": "audio/d2_p_01_en.mp3", "audio_zh": "audio/d2_p_01_zh.mp3"}, {"id": "d2_p_01e", "section": "phrases", "turn": 1, "role": "example", "en": "Completion of the Pre-Task Plan or work permit should be filled out for all scheduled routine tasks.", "zh": "所有已备案常规作业均需填写作业前方案（PTP）或作业许可证。", "audio": "audio/d2_p_01e_en.mp3", "audio_zh": "audio/d2_p_01e_zh.mp3"}, {"id": "d2_p_02", "section": "phrases", "turn": 2, "role": "phrase", "en": "work permit", "zh": "作业许可证", "audio": "audio/d2_p_02_en.mp3", "audio_zh": "audio/d2_p_02_zh.mp3"}, {"id": "d2_p_02e", "section": "phrases", "turn": 2, "role": "example", "en": "PTP is also referred to as Work Permit in many companies.", "zh": "作业前方案在很多公司也叫作业许可证。", "audio": "audio/d2_p_02e_en.mp3", "audio_zh": "audio/d2_p_02e_zh.mp3"}, {"id": "d2_p_03", "section": "phrases", "turn": 3, "role": "phrase", "en": "hot work", "zh": "动火作业", "audio": "audio/d2_p_03_en.mp3", "audio_zh": "audio/d2_p_03_zh.mp3"}, {"id": "d2_p_03e", "section": "phrases", "turn": 3, "role": "example", "en": "Hot work requires a separate permit and a fire watch on site.", "zh": "动火作业需单独办证并安排现场消防监护人。", "audio": "audio/d2_p_03e_en.mp3", "audio_zh": "audio/d2_p_03e_zh.mp3"}, {"id": "d2_p_04", "section": "phrases", "turn": 4, "role": "phrase", "en": "confined space", "zh": "有限空间", "audio": "audio/d2_p_04_en.mp3", "audio_zh": "audio/d2_p_04_zh.mp3"}, {"id": "d2_p_04e", "section": "phrases", "turn": 4, "role": "example", "en": "Confined space entry needs atmospheric testing before anyone goes in.", "zh": "进入有限空间前必须进行气体检测。", "audio": "audio/d2_p_04e_en.mp3", "audio_zh": "audio/d2_p_04e_zh.mp3"}, {"id": "d2_p_05", "section": "phrases", "turn": 5, "role": "phrase", "en": "working at heights", "zh": "高处作业", "audio": "audio/d2_p_05_en.mp3", "audio_zh": "audio/d2_p_05_zh.mp3"}, {"id": "d2_p_05e", "section": "phrases", "turn": 5, "role": "example", "en": "Working at heights above 6 feet (1.8 meters) requires fall protection.", "zh": "6 英尺（1.8 米）以上的高处作业必须配备防坠落保护。", "audio": "audio/d2_p_05e_en.mp3", "audio_zh": "audio/d2_p_05e_zh.mp3"}, {"id": "d2_p_06", "section": "phrases", "turn": 6, "role": "phrase", "en": "excavation", "zh": "挖掘作业", "audio": "audio/d2_p_06_en.mp3", "audio_zh": "audio/d2_p_06_zh.mp3"}, {"id": "d2_p_06e", "section": "phrases", "turn": 6, "role": "example", "en": "Excavation work must include shoring, sloping or a trench box.", "zh": "挖掘作业必须设置支撑、放坡或采用防护箱。", "audio": "audio/d2_p_06e_en.mp3", "audio_zh": "audio/d2_p_06e_zh.mp3"}, {"id": "d2_p_07", "section": "phrases", "turn": 7, "role": "phrase", "en": "scaffolding", "zh": "脚手架", "audio": "audio/d2_p_07_en.mp3", "audio_zh": "audio/d2_p_07_zh.mp3"}, {"id": "d2_p_07e", "section": "phrases", "turn": 7, "role": "example", "en": "Scaffolding must be inspected by a competent person before use.", "zh": "脚手架使用前必须由专业人员进行检查。", "audio": "audio/d2_p_07e_en.mp3", "audio_zh": "audio/d2_p_07e_zh.mp3"}, {"id": "d2_p_08", "section": "phrases", "turn": 8, "role": "phrase", "en": "roof work", "zh": "屋面施工", "audio": "audio/d2_p_08_en.mp3", "audio_zh": "audio/d2_p_08_zh.mp3"}, {"id": "d2_p_08e", "section": "phrases", "turn": 8, "role": "example", "en": "Roof work requires edge protection and a fall arrest system.", "zh": "屋面施工需要临边防护和坠落保护系统。", "audio": "audio/d2_p_08e_en.mp3", "audio_zh": "audio/d2_p_08e_zh.mp3"}, {"id": "d2_p_09", "section": "phrases", "turn": 9, "role": "phrase", "en": "energized electrical work above 50 volts", "zh": "对地电压 ≥ 50 伏的带电作业", "audio": "audio/d2_p_09_en.mp3", "audio_zh": "audio/d2_p_09_zh.mp3"}, {"id": "d2_p_09e", "section": "phrases", "turn": 9, "role": "example", "en": "Energized electrical work above 50 volts requires lock out tag out.", "zh": "对地电压超过 50 伏的带电作业必须执行上锁挂牌。", "audio": "audio/d2_p_09e_en.mp3", "audio_zh": "audio/d2_p_09e_zh.mp3"}, {"id": "d2_p_10", "section": "phrases", "turn": 10, "role": "phrase", "en": "lock out tag out (LOTO)", "zh": "上锁挂牌", "audio": "audio/d2_p_10_en.mp3", "audio_zh": "audio/d2_p_10_zh.mp3"}, {"id": "d2_p_10e", "section": "phrases", "turn": 10, "role": "example", "en": "Apply Lock Out Tag Out before any energized electrical work above 50 volts.", "zh": "对地电压超过 50 伏的带电作业前必须执行上锁挂牌。", "audio": "audio/d2_p_10e_en.mp3", "audio_zh": "audio/d2_p_10e_zh.mp3"}, {"id": "d2_p_11", "section": "phrases", "turn": 11, "role": "phrase", "en": "Personal Protective Equipment (PPE)", "zh": "个人防护装备", "audio": "audio/d2_p_11_en.mp3", "audio_zh": "audio/d2_p_11_zh.mp3"}, {"id": "d2_p_11e", "section": "phrases", "turn": 11, "role": "example", "en": "All required Personal Protective Equipment must be worn at all times on site.", "zh": "现场必须全程佩戴所需的个人防护装备。", "audio": "audio/d2_p_11e_en.mp3", "audio_zh": "audio/d2_p_11e_zh.mp3"}, {"id": "d2_p_12", "section": "phrases", "turn": 12, "role": "phrase", "en": "hazard identification", "zh": "危害辨识", "audio": "audio/d2_p_12_en.mp3", "audio_zh": "audio/d2_p_12_zh.mp3"}, {"id": "d2_p_12e", "section": "phrases", "turn": 12, "role": "example", "en": "Before any task, contractors must complete hazard identification and risk assessment.", "zh": "任何作业开始前，承包商必须完成危害辨识和风险评估。", "audio": "audio/d2_p_12e_en.mp3", "audio_zh": "audio/d2_p_12e_zh.mp3"}, {"id": "d2_p_13", "section": "phrases", "turn": 13, "role": "phrase", "en": "risk assessment", "zh": "风险评估", "audio": "audio/d2_p_13_en.mp3", "audio_zh": "audio/d2_p_13_zh.mp3"}, {"id": "d2_p_13e", "section": "phrases", "turn": 13, "role": "example", "en": "A risk assessment should be filled out for every upcoming work activity.", "zh": "针对即将开展的每项工作，都应填写风险评估。", "audio": "audio/d2_p_13e_en.mp3", "audio_zh": "audio/d2_p_13e_zh.mp3"}, {"id": "d2_p_14", "section": "phrases", "turn": 14, "role": "phrase", "en": "weekly safety meeting", "zh": "每周安全会议", "audio": "audio/d2_p_14_en.mp3", "audio_zh": "audio/d2_p_14_zh.mp3"}, {"id": "d2_p_14e", "section": "phrases", "turn": 14, "role": "example", "en": "They hold safety meetings at least on a weekly basis.", "zh": "承包商每周至少开一次安全会议。", "audio": "audio/d2_p_14e_en.mp3", "audio_zh": "audio/d2_p_14e_zh.mp3"}, {"id": "d2_p_15", "section": "phrases", "turn": 15, "role": "phrase", "en": "safety violation", "zh": "安全违规", "audio": "audio/d2_p_15_en.mp3", "audio_zh": "audio/d2_p_15_zh.mp3"}, {"id": "d2_p_15e", "section": "phrases", "turn": 15, "role": "example", "en": "They will give fines penalty for contractor workers for their safety violations.", "zh": "如果查到安全违规，他们会对承包商工人进行罚款。", "audio": "audio/d2_p_15e_en.mp3", "audio_zh": "audio/d2_p_15e_zh.mp3"}, {"id": "d2_p_16", "section": "phrases", "turn": 16, "role": "phrase", "en": "unsafe act", "zh": "不安全行为", "audio": "audio/d2_p_16_en.mp3", "audio_zh": "audio/d2_p_16_zh.mp3"}, {"id": "d2_p_16e", "section": "phrases", "turn": 16, "role": "example", "en": "They will get rewards if they proactively report unsafe acts.", "zh": "如果他们主动上报不安全行为，就能获得奖励。", "audio": "audio/d2_p_16e_en.mp3", "audio_zh": "audio/d2_p_16e_zh.mp3"}, {"id": "d2_b_01a", "section": "scene_b", "turn": 1, "role": "pm", "en": "Our contractors have finished all pre-qualification and pre-job preparations and will start on-site work very soon. Could you walk me through our safety management process before they begin work?", "zh": "我们的承包商已经完成所有前期资格审核入场准备，马上就要进场作业。请你说明一下开工前的整套安全管理流程？", "audio": "audio/d2_b_01a_en.mp3", "audio_zh": "audio/d2_b_01a_zh.mp3"}, {"id": "d2_b_01b", "section": "scene_b", "turn": 1, "role": "ehs", "en": "Before any contractor task starts, they should complete an overall pre-task hazard identification and risk assessment for every upcoming work activities. This is the foundation of all on-site risk control.", "zh": "在承包商任何作业开始前，他们必须针对即将开展的所有工作，完成整体的危害辨识和风险评估，这是所有现场风险管控的基础。", "audio": "audio/d2_b_01b_en.mp3", "audio_zh": "audio/d2_b_01b_zh.mp3"}, {"id": "d2_b_02a", "section": "scene_b", "turn": 2, "role": "pm", "en": "After they finish hazard identification and risk evaluation, what do they need to do next?", "zh": "完成危害辨识和风险评估之后，下一步要做什么？", "audio": "audio/d2_b_02a_en.mp3", "audio_zh": "audio/d2_b_02a_zh.mp3"}, {"id": "d2_b_02b", "section": "scene_b", "turn": 2, "role": "ehs", "en": "They need to fill out a Pre-Task Plan (PTP) and get approvals. PTP is also referred to as Work Permit in many companies. This document records the related risks, control measures and other safety requirements for the task.", "zh": "我们需要填写并审批作业前方案，也就是很多公司说的作业许可证。这份文件会记录作业相关的风险、管控措施和安全要求。", "audio": "audio/d2_b_02b_en.mp3", "audio_zh": "audio/d2_b_02b_zh.mp3"}, {"id": "d2_b_03a", "section": "scene_b", "turn": 3, "role": "pm", "en": "Besides risk analysis and permit approval, what on-site safety work do they need to conduct?", "zh": "除了风险分析和许可审批，开工后我们还要落实哪些现场安全工作？", "audio": "audio/d2_b_03a_en.mp3", "audio_zh": "audio/d2_b_03a_zh.mp3"}, {"id": "d2_b_03b", "section": "scene_b", "turn": 3, "role": "ehs", "en": "They need to ensure all the safety measures indicated in the PTP are in place before the start of the work. In addition, they should perform routine on-site safety inspections at least every week to check contractor workers' behaviors, PPE compliance and risk control status.", "zh": "他们需要确保作业开始前，作业方案（PTP）中列明的所有安全措施均落实到位，此外，他们至少每周要开展现场安全巡查，核查承包商作业行为、防护用品佩戴以及风险管控的情况。", "audio": "audio/d2_b_03b_en.mp3", "audio_zh": "audio/d2_b_03b_zh.mp3"}, {"id": "d2_b_04a", "section": "scene_b", "turn": 4, "role": "pm", "en": "Do they have regular safety meetings for contractor ongoing projects?", "zh": "针对承包商持续作业的项目，他们有定期安全会议吗？", "audio": "audio/d2_b_04a_en.mp3", "audio_zh": "audio/d2_b_04a_zh.mp3"}, {"id": "d2_b_04b", "section": "scene_b", "turn": 4, "role": "ehs", "en": "Yes. They hold safety meetings at least on a weekly basis. We review current safety performance, existing hazards and closure status of the corrective actions.", "zh": "有的。承包商每周至少要开一次安全会议，复盘审核当前安全表现、现存隐患和整改进度。", "audio": "audio/d2_b_04b_en.mp3", "audio_zh": "audio/d2_b_04b_zh.mp3"}, {"id": "d2_b_05a", "section": "scene_b", "turn": 5, "role": "pm", "en": "Do they have reward and penalty rules for the contractors on site?", "zh": "他们针对现场承包商，有没有一套奖惩规则？", "audio": "audio/d2_b_05a_en.mp3", "audio_zh": "audio/d2_b_05a_zh.mp3"}, {"id": "d2_b_05b", "section": "scene_b", "turn": 5, "role": "ehs", "en": "Yes. They will give fines penalty for contractor workers for their safety violations.", "zh": "有的。如果查到安全违规，他们会对承包商工人进行罚款。", "audio": "audio/d2_b_05b_en.mp3", "audio_zh": "audio/d2_b_05b_zh.mp3"}, {"id": "d2_b_06a", "section": "scene_b", "turn": 6, "role": "pm", "en": "Will these fines be reviewed and confirmed at their weekly project meeting?", "zh": "这些罚款会在我们每周项目例会中审核确认吗？", "audio": "audio/d2_b_06a_en.mp3", "audio_zh": "audio/d2_b_06a_zh.mp3"}, {"id": "d2_b_06b", "section": "scene_b", "turn": 6, "role": "ehs", "en": "Exactly. All violation penalties will be discussed and finalized in the weekly meeting.", "zh": "没错，所有违规罚款都会在周会上商议并最终确定。", "audio": "audio/d2_b_06b_en.mp3", "audio_zh": "audio/d2_b_06b_zh.mp3"}, {"id": "d2_b_07a", "section": "scene_b", "turn": 7, "role": "pm", "en": "Then what kind of behaviors can be rewarded for contractors?", "zh": "那承包商哪些行为可以获得奖励呢？", "audio": "audio/d2_b_07a_en.mp3", "audio_zh": "audio/d2_b_07a_zh.mp3"}, {"id": "d2_b_07b", "section": "scene_b", "turn": 7, "role": "ehs", "en": "They will get rewards if they proactively report unsafe acts, unsafe conditions or offer good safety suggestions.", "zh": "如果他们主动上报不安全行为、现场隐患，或是提出有效的安全建议，就能获得奖励。", "audio": "audio/d2_b_07b_en.mp3", "audio_zh": "audio/d2_b_07b_zh.mp3"}, {"id": "d2_b_08a", "section": "scene_b", "turn": 8, "role": "pm", "en": "To summarize, the whole process covers pre-task hazard identification and risk assessment, PTP or Work Permit application and approval, ongoing site inspection, weekly safety review meetings, and penalty and reward program, correct?", "zh": "总结来说，整套流程包括：工作前危害识别和风险评估、PTP 作业许可申请和审批、持续现场巡查、每周安全复盘会议、奖惩与表彰制度，对吗？", "audio": "audio/d2_b_08a_en.mp3", "audio_zh": "audio/d2_b_08a_zh.mp3"}, {"id": "d2_b_08b", "section": "scene_b", "turn": 8, "role": "ehs", "en": "Yes, this is the complete and standard contractor safety management process for our site.", "zh": "没错，这就是我们厂区标准、完整的承包商安全管理流程。", "audio": "audio/d2_b_08b_en.mp3", "audio_zh": "audio/d2_b_08b_zh.mp3"}];
+const SECTIONS = [{"id": "scene_a", "label": "场景 A · 博物馆参观", "label_en": "Scene A · Visiting the Museum", "type": "dialogue", "roles": ["visitor", "staff"]}, {"id": "phrases", "label": "E. H. S. 固定搭配短语", "label_en": "E. H. S. Fixed Phrases", "type": "phrase", "roles": ["phrase", "example"]}, {"id": "scene_b", "label": "场景 B · 承包商现场作业安全", "label_en": "Scene B · On-Site Contractor Safety Management", "type": "dialogue", "roles": ["pm", "ehs"]}];
+
+// ============ Tab 切换 ============
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    stopAllAudio();
+  });
+});
+
+// ============ 音频播放器 ============
+let currentAudio = null;
+let currentRow = null;
+let isContinuous = false;
+let continuousQueue = [];
+let continuousIdx = 0;
+let playbackRate = 1.0;
+
+function stopAllAudio() {
+  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+  currentAudio = null;
+  continuousQueue = [];
+  continuousIdx = 0;
+  isContinuous = false;
+  document.querySelectorAll('.dialogue-row.playing').forEach(r => r.classList.remove('playing'));
+  currentRow = null;
+  updateProgress('已停止');
+}
+
+function playSentence(sentId, fromQueue) {
+  const sent = SENTENCES.find(s => s.id === sentId);
+  if (!sent) return;
+  if (!fromQueue) stopAllAudio();
+
+  const audio = new Audio(sent.audio);
+  audio.playbackRate = playbackRate;
+  currentAudio = audio;
+
+  const row = document.querySelector(`.dialogue-row[data-id="${sentId}"]`);
+  if (row) {
+    document.querySelectorAll('.dialogue-row.playing').forEach(r => r.classList.remove('playing'));
+    row.classList.add('playing');
+    currentRow = row;
+  }
+
+  audio.play().catch(e => console.warn('播放失败:', e));
+
+  audio.addEventListener('ended', () => {
+    if (isContinuous && continuousQueue.length > 0) {
+      continuousIdx++;
+      if (continuousIdx < continuousQueue.length) {
+        const nextId = continuousQueue[continuousIdx];
+        updateProgress(`连续播放 ${continuousIdx + 1} / ${continuousQueue.length}`);
+        playSentence(nextId, true);
+      } else {
+        updateProgress('✅ 连续播放完成');
+        if (currentRow) currentRow.classList.remove('playing');
+      }
+    } else {
+      if (currentRow) currentRow.classList.remove('playing');
+    }
+  });
+}
+
+function updateProgress(text) {
+  const el = document.getElementById('progress-info');
+  if (el) el.textContent = text;
+}
+
+// ============ 点读模式：点击句子 ============
+document.querySelectorAll('.dialogue-row').forEach(row => {
+  row.addEventListener('click', () => {
+    isContinuous = false;
+    playSentence(row.dataset.id);
+    updateProgress('▶ 点读 · ' + row.dataset.id);
+  });
+});
+
+// ============ 速度切换 ============
+document.querySelectorAll('.speed-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    playbackRate = parseFloat(btn.dataset.rate);
+    if (currentAudio) currentAudio.playbackRate = playbackRate;
+    updateProgress('速度 ' + btn.textContent);
+  });
+});
+
+// ============ 连续播放全部 ============
+document.getElementById('btn-play-all').addEventListener('click', () => {
+  stopAllAudio();
+  continuousQueue = SENTENCES.map(s => s.id);
+  continuousIdx = 0;
+  isContinuous = true;
+  updateProgress(`▶ 连续播放 1 / ${continuousQueue.length} · 从头开始`);
+  playSentence(continuousQueue[0], true);
+});
+
+// ============ 停止 ============
+document.getElementById('btn-stop-all').addEventListener('click', stopAllAudio);
+
+// ============ 整段播放 ============
+document.querySelectorAll('.play-sec-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const secId = btn.dataset.sec;
+    stopAllAudio();
+    continuousQueue = SENTENCES.filter(s => s.section === secId).map(s => s.id);
+    continuousIdx = 0;
+    isContinuous = true;
+    updateProgress(`▶ [${secId}] 1 / ${continuousQueue.length}`);
+    playSentence(continuousQueue[0], true);
+  });
+});
+
+// ============ 角色扮演：选角色 ============
+document.querySelectorAll('.role-switch button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sec = btn.dataset.sec;
+    const role = btn.dataset.role;
+    document.querySelectorAll(`.role-switch button[data-sec="${sec}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`.rp-turn[data-sec="${sec}"]`).forEach(t => t.style.display = 'none');
+    document.querySelectorAll(`.rp-turn[data-sec="${sec}"][data-my-role="${role}"]`).forEach(t => t.style.display = 'block');
+    document.querySelectorAll(`.rp-complete-btn[data-sec="${sec}"]`).forEach(b => b.style.display = 'block');
+    document.querySelectorAll(`.rp-complete-dialog[data-sec="${sec}"]`).forEach(d => d.classList.remove('show'));
+  });
+});
+
+// ============ 角色扮演：揭晓对方 ============
+document.querySelectorAll('.rp-reveal-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.revealId;
+    const theirs = document.querySelector(`.rp-theirs[data-id="${id}"]`);
+    if (theirs) {
+      theirs.classList.add('show');
+      btn.disabled = true;
+      btn.textContent = '✓ 已揭晓';
+      const audio = new Audio(theirs.dataset.audio);
+      audio.playbackRate = playbackRate;
+      audio.play().catch(e => console.warn(e));
+    }
+  });
+});
+
+// ============ 角色扮演：点击对方对话也可复读 ============
+document.querySelectorAll('.rp-theirs').forEach(t => {
+  t.addEventListener('click', () => {
+    const audio = new Audio(t.dataset.audio);
+    audio.playbackRate = playbackRate;
+    audio.play().catch(e => console.warn(e));
+  });
+});
+
+// ============ 角色扮演：查看完整对话 ============
+document.querySelectorAll('.rp-complete-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sec = btn.dataset.sec;
+    const dlg = document.querySelector(`.rp-complete-dialog[data-sec="${sec}"]`);
+    if (dlg) {
+      dlg.classList.toggle('show');
+      btn.textContent = dlg.classList.contains('show') ? '收起完整对话' : '📜 查看完整对话';
+    }
+  });
+});
+
+// 默认：场景 A 默认选 Visitor
+window.addEventListener('DOMContentLoaded', () => {
+  const defaultBtn = document.querySelector('.role-switch button[data-sec="scene_a"][data-role="visitor"]');
+  if (defaultBtn) defaultBtn.click();
+});
+</script>
+
+</body>
+</html>
