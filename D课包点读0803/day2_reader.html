@@ -81,6 +81,22 @@ body {
   border-radius: 999px; cursor: pointer; font-family: inherit;
 }
 .speed-btn.active { background: var(--primary); color: #fff; }
+
+/* 中英文显隐切换（全局生效，body 加 .hide-zh） */
+body.hide-zh .dialogue-zh,
+body.hide-zh .rp-mine-zh,
+body.hide-zh .rp-theirs-zh { display: none; }
+.zh-toggle-bar {
+  max-width: 720px; margin: 10px auto 4px; display: flex; justify-content: flex-end;
+}
+.zh-toggle-btn {
+  background: #fff; border: 1.5px solid var(--primary); color: var(--primary);
+  padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: background 0.2s, color 0.2s;
+}
+.zh-toggle-btn:hover { background: rgba(91, 164, 181, 0.08); }
+.zh-toggle-btn.active { background: var(--primary); color: #fff; }
+
 .progress-info {
   flex-basis: 100%; font-size: 11px; color: var(--text-light); margin-top: 4px;
 }
