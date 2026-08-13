@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Work (1) Fire Source Control · D课包 Day4 点读</title>
+<style>
+:root {
+  --primary: #5BA4B5;
+  --primary-light: #7BB8C6;
+  --accent: #E8845C;
+  --ink: #2C2C2C;
+  --bg-warm: #FDF8F0;
+  --bg-page: #F5F0E8;
+  --text-secondary: #6A6A7A;
+  --text-light: #9A9AAA;
+  --border: #E8E2DA;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg-page);
+  font-family: 'PingFang SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+  min-height: 100vh;
+  padding: 24px 16px 60px;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+.page-header { text-align: center; margin-bottom: 18px; }
+.pkg-badge {
+  display: inline-block; background: var(--primary); color: #fff;
+  font-size: 11px; font-weight: 600; padding: 4px 12px;
+  border-radius: 12px; letter-spacing: 1px; margin-bottom: 10px;
+}
+.page-header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+.page-header .subtitle { font-size: 12px; color: var(--text-secondary); letter-spacing: 0.5px; }
+
+.tabs {
+  max-width: 720px; margin: 0 auto 14px;
+  display: flex; gap: 0; background: #fff;
+  border-radius: 12px; padding: 4px; border: 2px solid var(--primary);
+}
+.tab-btn {
+  flex: 1; padding: 10px 12px; font-size: 14px; font-weight: 600;
+  border: none; background: transparent; color: var(--text-secondary);
+  cursor: pointer; border-radius: 8px; font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+.tab-btn.active { background: var(--primary); color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.control-bar {
+  max-width: 720px; margin: 0 auto 14px; background: #fff;
+  border: 2px solid var(--primary); border-radius: 14px; padding: 12px 14px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.ctrl-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--primary); color: #fff; border: none;
+  border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background 0.2s, transform 0.1s; font-family: inherit;
+}
+.ctrl-btn:hover { background: var(--primary-light); }
+.ctrl-btn:active { transform: scale(0.96); }
+.ctrl-btn.secondary { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+.ctrl-btn.secondary:hover { background: rgba(91, 164, 181, 0.1); }
+.ctrl-btn .icon {
+  width: 11px; height: 11px; display: inline-block;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M8 5v14l11-7z'/></svg>") no-repeat center / contain;
+}
+.ctrl-btn.secondary .icon {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235BA4B5'><path d='M8 5v14l11-7z'/></svg>") no-repeat center / contain;
+}
+.speed-group {
+  margin-left: auto; display: flex; gap: 3px;
+  background: var(--bg-warm); padding: 3px; border-radius: 999px;
+}
+.speed-btn {
+  border: none; background: transparent; color: var(--text-secondary);
+  font-size: 11px; font-weight: 600; padding: 4px 9px;
+  border-radius: 999px; cursor: pointer; font-family: inherit;
+}
+.speed-btn.active { background: var(--primary); color: #fff; }
+
+/* ============ 中文显隐开关 ============ */
+body.hide-zh .dialogue-zh,
+body.hide-zh .rp-mine-zh,
+body.hide-zh .rp-theirs-zh { display: none; }
+.zh-toggle-bar { max-width: 720px; margin: 10px auto 4px; display: flex; justify-content: flex-end; }
+.zh-toggle-btn {
+  font-family: inherit; font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--primary); background: #fff; color: var(--primary);
+  transition: background .18s, color .18s;
+}
+.zh-toggle-btn.active { background: var(--primary); color: #fff; }
+.zh-toggle-btn:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.progress-info {
+  flex-basis: 100%; font-size: 11px; color: var(--text-light); margin-top: 4px;
+}
+
+.section-card {
+  max-width: 720px; margin: 0 auto 14px; background: #fff;
+  border: 2px solid var(--primary); border-radius: 16px; padding: 18px 20px;
+}
+.section-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px; padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.section-head .sec-tag {
+  background: rgba(91, 164, 181, 0.1); color: var(--primary);
+  font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 8px;
+}
+.section-head h2 { font-size: 15px; font-weight: 600; flex: 1; }
+.section-head .play-sec-btn {
+  background: transparent; border: 1.5px solid var(--primary);
+  color: var(--primary); padding: 5px 10px; border-radius: 8px;
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+}
+
+.dialogue-row {
+  display: flex; gap: 10px; margin-bottom: 10px; padding: 10px 12px;
+  border-radius: 10px; background: var(--bg-warm);
+  cursor: pointer; transition: background 0.15s, transform 0.1s;
+  border-left: 3px solid transparent;
+}
+.dialogue-row:hover { background: rgba(91, 164, 181, 0.08); }
+.dialogue-row:active { transform: scale(0.99); }
+.dialogue-row.playing {
+  background: rgba(232, 132, 92, 0.12); border-left-color: var(--accent);
+}
+.turn-num {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(91, 164, 181, 0.15); color: var(--primary);
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
+}
+.dialogue-body { flex: 1; min-width: 0; }
+.role-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  padding: 2px 8px; border-radius: 6px; margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.role-tag.pm { background: rgba(91, 164, 181, 0.15); color: var(--primary); }
+.role-tag.ehs { background: rgba(232, 132, 92, 0.15); color: var(--accent); }
+.role-tag.phrase { background: rgba(156, 123, 201, 0.15); color: #9C7BC9; }
+.role-tag.example { background: rgba(111, 159, 91, 0.15); color: #6F9F5B; }
+.dialogue-en { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 4px; color: var(--ink); }
+.dialogue-zh { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+.dialogue-row.phrase-row .dialogue-en { font-size: 17px; font-weight: 700; color: #9C7BC9; }
+.dialogue-row.example-row .dialogue-en { font-size: 13px; font-style: italic; }
+.play-icon-mini {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(91, 164, 181, 0.1);
+  display: flex; align-items: center; justify-content: center; margin-top: 4px;
+}
+.play-icon-mini::before {
+  content: ''; width: 10px; height: 10px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235BA4B5'><path d='M8 5v14l11-7z'/></svg>") no-repeat center / contain;
+}
+.dialogue-row.playing .play-icon-mini { background: var(--accent); }
+.dialogue-row.playing .play-icon-mini::before {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M6 5h4v14H6zm8 0h4v14h-4z'/></svg>") no-repeat center / contain;
+}
+
+.role-scene-card {
+  max-width: 720px; margin: 0 auto 14px; background: #fff;
+  border: 2px solid var(--primary); border-radius: 16px; padding: 18px 20px;
+}
+.role-scene-card h3 { font-size: 14px; color: var(--primary); margin-bottom: 8px; }
+.role-scene-card .scene-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+.role-switch {
+  display: flex; gap: 6px; background: var(--bg-warm);
+  padding: 4px; border-radius: 10px; margin-bottom: 12px;
+}
+.role-switch button {
+  flex: 1; padding: 8px 10px; border: none; background: transparent;
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; border-radius: 7px; font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+.role-switch button.active { background: var(--primary); color: #fff; }
+
+.rp-turn {
+  max-width: 720px; margin: 0 auto 10px; background: #fff;
+  border: 2px solid var(--border); border-radius: 14px; padding: 14px 16px;
+  transition: border-color 0.2s;
+}
+.rp-turn.resolved { border-color: var(--primary); }
+.rp-turn-num { font-size: 11px; font-weight: 700; color: var(--text-light); margin-bottom: 6px; letter-spacing: 1px; }
+.rp-mine { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 4px; color: var(--ink); }
+.rp-mine-zh { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
+.rp-reveal-btn {
+  background: transparent; border: 1.5px solid var(--accent); color: var(--accent);
+  padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: background 0.2s;
+}
+.rp-reveal-btn:hover { background: rgba(232, 132, 92, 0.1); }
+.rp-reveal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.rp-theirs {
+  display: none; margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 14px; line-height: 1.5; color: var(--accent);
+  font-weight: 500; cursor: pointer;
+}
+.rp-theirs.show { display: block; }
+.rp-theirs-zh { font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.5; }
+.rp-complete-btn {
+  display: block; margin: 18px auto 0; background: transparent;
+  border: 1.5px solid var(--primary); color: var(--primary);
+  padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.rp-complete-dialog {
+  display: none; max-width: 720px; margin: 14px auto 0;
+  background: var(--bg-warm); border: 2px solid var(--primary);
+  border-radius: 14px; padding: 16px 18px;
+}
+.rp-complete-dialog.show { display: block; }
+.rp-complete-dialog h4 { font-size: 13px; color: var(--primary); margin-bottom: 10px; }
+.rp-complete-row {
+  display: flex; gap: 10px; padding: 8px 10px; background: #fff;
+  border-radius: 8px; margin-bottom: 6px; font-size: 13px;
+}
+.rp-complete-role { flex-shrink: 0; width: 60px; font-size: 11px; font-weight: 700; color: var(--primary); }
+
+.brand-foot {
+  text-align: center; margin-top: 28px; font-size: 11px;
+  color: var(--text-light); letter-spacing: 1px;
+}
+.brand-foot .accent { color: var(--accent); }
+
+@media (max-width: 480px) {
+  body { padding: 16px 10px 40px; }
+  .page-header h1 { font-size: 18px; }
+  .section-card { padding: 14px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="pkg-badge">PACKAGE D · Day4</span>
+  <h1>动火作业(一) 火源管控</h1>
+  <div class="subtitle">0817 · 第四次课 · Hot Work (1): Fire Source Control, Basic O. S. H. A. Hot Work Requirements</div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="reader">📖 点读模式</button>
+  <button class="tab-btn" data-tab="roleplay">🎭 角色扮演</button>
+</div>
+
+<!-- ============ 中文显隐全局开关 ============ -->
+<div class="zh-toggle-bar">
+  <button class="zh-toggle-btn active" id="btn-zh-toggle">中 / EN · 显示中文</button>
+</div>
+
+<!-- ================ 点读模式 ================ -->
+<div class="tab-panel active" id="panel-reader">
+
+<div class="control-bar"><button class="ctrl-btn" id="btn-play-all"><span class="icon"></span>连续播放全部</button><button class="ctrl-btn secondary" id="btn-stop-all"><span class="icon"></span>停止</button><div class="speed-group"><button class="speed-btn" data-rate="0.6">0.6x</button><button class="speed-btn" data-rate="0.8">0.8x</button><button class="speed-btn active" data-rate="1.0">1.0x</button></div><div class="progress-info" id="progress-info">点击任意句子播放 · 切换上方 tab 进入角色扮演</div></div>
+<div class="section-card" data-sec="scene_a"><div class="section-head"><span class="sec-tag">SCENE A</span><h2>场景 A · 决策与原则</h2><button class="play-sec-btn" data-sec="scene_a">▶ 播整段</button></div><div class="dialogue-list" data-sec="scene_a"></div></div><div class="section-card" data-sec="phrases"><div class="section-head"><span class="sec-tag">PHRASES</span><h2>E. H. S. 关键术语</h2><button class="play-sec-btn" data-sec="phrases">▶ 播整段</button></div><div class="dialogue-list" data-sec="phrases"></div></div><div class="section-card" data-sec="scene_b"><div class="section-head"><span class="sec-tag">SCENE B</span><h2>场景 B · 危害与日常管控</h2><button class="play-sec-btn" data-sec="scene_b">▶ 播整段</button></div><div class="dialogue-list" data-sec="scene_b"></div></div><div class="tab-panel" id="panel-roleplay"><div class="rp-section" data-sec="scene_a"><div class="rp-section-title">场景 A · 决策与原则</div><div class="role-switch" data-sec="scene_a"><button data-role="pm" data-sec="scene_a" class="active">👔 我演 PM（项目经理）</button><button data-role="ehs" data-sec="scene_a">🛡️ 我演 E. H. S. 经理</button></div><div class="rp-turns" data-sec="scene_a"></div><button class="rp-complete-btn" data-sec="scene_a">📜 查看完整对话</button><div class="rp-complete-dialog" data-sec="scene_a"></div></div><div class="rp-section" data-sec="phrases"><div class="rp-section-title">E. H. S. 关键术语</div><div class="rp-phrase-info">💡 关键术语与例句，点读模式已提供点击发音。角色扮演主要针对对话场景。</div><button class="rp-complete-btn" data-sec="phrases">📜 查看完整术语表</button><div class="rp-complete-dialog" data-sec="phrases"></div></div><div class="rp-section" data-sec="scene_b"><div class="rp-section-title">场景 B · 危害与日常管控</div><div class="role-switch" data-sec="scene_b"><button data-role="pm" data-sec="scene_b" class="active">👔 我演 PM（项目经理）</button><button data-role="ehs" data-sec="scene_b">🛡️ 我演 E. H. S. 经理</button></div><div class="rp-turns" data-sec="scene_b"></div><button class="rp-complete-btn" data-sec="scene_b">📜 查看完整对话</button><div class="rp-complete-dialog" data-sec="scene_b"></div></div><script>
+// ============ 动态渲染：从 SENTENCES 生成 dialogue-row 和 rp-turn ============
+const ROLE_LABELS = {pm: "项目经理 PM", ehs: "E. H. S. 经理", phrase: "固定搭配", example: "例句"};
+const RP_ROLE_LABELS = {pm: "PM（项目经理）", ehs: "E. H. S. 经理"};
+
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function buildDialogueRow(s) {
+  const cls = (s.role === "phrase") ? " phrase-row" : (s.role === "example") ? " example-row" : "";
+  return `<div class="dialogue-row${cls}" data-id="${s.id}"><div class="turn-num">${s.turn}</div><div class="dialogue-body"><span class="role-tag ${s.role}">${ROLE_LABELS[s.role]||s.role}</span><div class="dialogue-en">${escHtml(s.en)}</div><div class="dialogue-zh">${escHtml(s.zh)}</div></div><div class="play-icon-mini"></div></div>`;
+}
+
+function buildRpTurn(sec, myRole) {
+  // 找本 sec 的所有对话（role 为 pm 或 ehs 的）
+  const items = SENTENCES.filter(x => x.section === sec && (x.role === "pm" || x.role === "ehs"));
+  // 按 turn 分组
+  const turns = {};
+  items.forEach(x => { (turns[x.turn] = turns[x.turn] || []).push(x); });
+  const html = [];
+  Object.keys(turns).sort((a,b)=>a-b).forEach(t => {
+    const pair = turns[t];
+    const a = pair.find(x => x.role === myRole);
+    const b = pair.find(x => x.role !== myRole);
+    if (!a || !b) return;
+    const partner = pair.find(x => x.id !== a.id);
+    html.push(`<div class="rp-turn" data-my-role="${myRole}" data-sec="${sec}"><div class="rp-turn-num">第 ${t} 轮 · 我 ${RP_ROLE_LABELS[myRole]}</div><div class="rp-mine">${escHtml(a.en)}</div><div class="rp-mine-zh">${escHtml(a.zh)}</div><button class="rp-reveal-btn" data-reveal-id="${b.id}">揭晓对方回应</button><div class="rp-theirs" data-id="${b.id}" data-audio="${b.audio}">${escHtml(b.en)}<div class="rp-theirs-zh">${escHtml(b.zh)}</div></div></div>`);
+  });
+  return html.join("");
+}
+
+function buildRpComplete(sec) {
+  if (sec === "phrases") {
+    const items = SENTENCES.filter(x => x.section === "phrases");
+    const rows = [];
+    for (let i = 0; i < items.length; i += 2) {
+      const term = items[i], ex = items[i+1];
+      if (!term || !ex) continue;
+      const n = term.turn.toString().padStart(2, "0");
+      rows.push(`<div class="rp-complete-row"><span class="rp-complete-tag phrase">${n}</span><b>${escHtml(term.en)}</b> · ${escHtml(term.zh)}<div class="rp-complete-zh">例：${escHtml(ex.en)}</div><div class="rp-complete-zh">${escHtml(ex.zh)}</div></div>`);
+    }
+    return `<div class="rp-complete-title">📚 完整术语表</div>${rows.join("")}`;
+  }
+  const items = SENTENCES.filter(x => x.section === sec && (x.role === "pm" || x.role === "ehs"));
+  const turns = {};
+  items.forEach(x => { (turns[x.turn] = turns[x.turn] || []).push(x); });
+  const rows = [];
+  Object.keys(turns).sort((a,b)=>a-b).forEach(t => {
+    const pair = turns[t];
+    const pm = pair.find(x => x.role === "pm");
+    const ehs = pair.find(x => x.role === "ehs");
+    if (pm) rows.push(`<div class="rp-complete-row"><span class="rp-complete-tag pm">PM</span>${escHtml(pm.en)}<div class="rp-complete-zh">${escHtml(pm.zh)}</div></div>`);
+    if (ehs) rows.push(`<div class="rp-complete-row"><span class="rp-complete-tag ehs">E. H. S.</span>${escHtml(ehs.en)}<div class="rp-complete-zh">${escHtml(ehs.zh)}</div></div>`);
+  });
+  return `<div class="rp-complete-title">📜 完整对话参考</div>${rows.join("")}`;
+}
+
+function renderAll() {
+  // 渲染 dialogue-row
+  SECTIONS.forEach(sec => {
+    const list = document.querySelector(`.dialogue-list[data-sec="${sec.id}"]`);
+    if (!list) return;
+    const items = SENTENCES.filter(x => x.section === sec.id);
+    list.innerHTML = items.map(buildDialogueRow).join("");
+  });
+  // 渲染 rp-turns（默认 pm）
+  SECTIONS.forEach(sec => {
+    if (sec.type !== "dialogue") return;
+    const wrap = document.querySelector(`.rp-turns[data-sec="${sec.id}"]`);
+    if (wrap) wrap.innerHTML = buildRpTurn(sec.id, "pm");
+  });
+  // 渲染 rp-complete-dialog
+  SECTIONS.forEach(sec => {
+    const dlg = document.querySelector(`.rp-complete-dialog[data-sec="${sec.id}"]`);
+    if (dlg) dlg.innerHTML = buildRpComplete(sec.id);
+  });
+  // 重新绑定点读点击（动态生成的 row 没有 listener）
+  document.querySelectorAll('.dialogue-row').forEach(row => {
+    row.addEventListener('click', () => {
+      isContinuous = false;
+      playSentence(row.dataset.id);
+      updateProgress('▶ 点读 · ' + row.dataset.id);
+    });
+  });
+  // 重新绑定 rp-theirs 点击
+  document.querySelectorAll('.rp-theirs').forEach(t => {
+    t.addEventListener('click', () => {
+      const audio = new Audio(t.dataset.audio);
+      audio.playbackRate = playbackRate;
+      audio.play().catch(e => console.warn(e));
+    });
+  });
+  // 重新绑定 rp-reveal-btn
+  document.querySelectorAll('.rp-reveal-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.revealId;
+      const theirs = document.querySelector(`.rp-theirs[data-id="${id}"]`);
+      if (theirs) {
+        theirs.classList.add('show');
+        btn.disabled = true;
+        btn.textContent = '✓ 已揭晓';
+        const audio = new Audio(theirs.dataset.audio);
+        audio.playbackRate = playbackRate;
+        audio.play().catch(e => console.warn(e));
+      }
+    });
+  });
+}
+
+const SENTENCES = [
+{
+"id": "d4_a_01a",
+"section": "scene_a",
+"turn": 1,
+"role": "pm",
+"en": "When we need to do cutting work on a pipeline, can we start hot work directly?",
+"zh": "我们要切割管道的时候，可以直接开动火作业吗？",
+"audio": "audio/d4_a_01a_en.mp3",
+"audio_zh": "audio/d4_a_01a_zh.mp3"
+},
+{
+"id": "d4_a_01b",
+"section": "scene_a",
+"turn": 1,
+"role": "ehs",
+"en": "Absolutely not. The core principle for hot work control is: at first to check alternative cold work solutions first. If mechanical bolting, flange connection or industrial adhesive glue or other cold work method can finish the job, we must cancel hot work. Or we can also dismantle and take parts to a dedicated hot work shop rather than doing it on site.",
+"zh": "绝对不行。火源管控核心原则是优先评估冷工替代方案，如果机械螺栓联结、法兰对接、工业胶粘剂或其它冷工方法能完工，就必须取消动火；也可以拆工件送去专属动火车间，不在现场动火。",
+"audio": "audio/d4_a_01b_en.mp3",
+"audio_zh": "audio/d4_a_01b_zh.mp3"
+},
+{
+"id": "d4_a_02a",
+"section": "scene_a",
+"turn": 2,
+"role": "pm",
+"en": "Could you list the areas or situations in which hot work is forbidden?",
+"zh": "麻烦说说哪些区域或哪些情况下严禁动火？",
+"audio": "audio/d4_a_02a_en.mp3",
+"audio_zh": "audio/d4_a_02a_zh.mp3"
+},
+{
+"id": "d4_a_02b",
+"section": "scene_a",
+"turn": 2,
+"role": "ehs",
+"en": "First, areas filled with flammable vapor, liquid and dust are totally banned. Second, sealed tanks that once stored flammables or combustibles cannot be welded unless all explosion risks are removed. Third, we cannot do hot work within thirty-five feet of exposed combustibles like cardboard. Fourth, hot work is not allowed outside the designated area without an approved permit. Also, welding machines and compressed gas cylinders shall never be taken inside a confined space.",
+"zh": "首先充斥易燃蒸汽、液体、粉尘的区域禁止；存放过易燃或可燃物的密闭罐体，隐患未清零不能动火；纸张等可燃物外露 35 英尺范围内禁止动火；非指定动火区无审批许可不许动火。焊接设备以及压缩气瓶严禁带入有限空间。",
+"audio": "audio/d4_a_02b_en.mp3",
+"audio_zh": "audio/d4_a_02b_zh.mp3"
+},
+{
+"id": "d4_a_03a",
+"section": "scene_a",
+"turn": 3,
+"role": "pm",
+"en": "What steps do we need to follow to finish risk assessment before hot work starts?",
+"zh": "动火开工前，风险评估和危害辨识要做哪些内容？",
+"audio": "audio/d4_a_03a_en.mp3",
+"audio_zh": "audio/d4_a_03a_zh.mp3"
+},
+{
+"id": "d4_a_03b",
+"section": "scene_a",
+"turn": 3,
+"role": "ehs",
+"en": "Number one, we still need to check if cold work alternatives are available once more, and we need to conduct a job safety analysis, risk assessment and review the results. Number two, confirm existing and potential hazards and methods to control or eliminate them; we have to figure out all risks ahead of time.",
+"zh": "第一，我们还是复核看是否还有冷工替代方案；我们需要开展工作危险分析、风险评估并复核评估结果。第二，确认现存和潜在隐患以及控制或消除方式，提前识别所有风险点。",
+"audio": "audio/d4_a_03b_en.mp3",
+"audio_zh": "audio/d4_a_03b_zh.mp3"
+},
+{
+"id": "d4_p_01",
+"section": "phrases",
+"turn": 1,
+"role": "phrase",
+"en": "Hot Work",
+"zh": "动火作业",
+"audio": "audio/d4_p_01_en.mp3",
+"audio_zh": "audio/d4_p_01_zh.mp3"
+},
+{
+"id": "d4_p_01e",
+"section": "phrases",
+"turn": 1,
+"role": "example",
+"en": "Welding and torch cutting are typical hot work activities that require a permit.",
+"zh": "焊接和火焰切割是典型的动火作业，必须办理许可证。",
+"audio": "audio/d4_p_01e_en.mp3",
+"audio_zh": "audio/d4_p_01e_zh.mp3"
+},
+{
+"id": "d4_p_02",
+"section": "phrases",
+"turn": 2,
+"role": "phrase",
+"en": "Open Flame",
+"zh": "明火",
+"audio": "audio/d4_p_02_en.mp3",
+"audio_zh": "audio/d4_p_02_zh.mp3"
+},
+{
+"id": "d4_p_02e",
+"section": "phrases",
+"turn": 2,
+"role": "example",
+"en": "Keep all open flames away from flammable solvent storage areas.",
+"zh": "明火必须远离易燃溶剂储存区。",
+"audio": "audio/d4_p_02e_en.mp3",
+"audio_zh": "audio/d4_p_02e_zh.mp3"
+},
+{
+"id": "d4_p_03",
+"section": "phrases",
+"turn": 3,
+"role": "phrase",
+"en": "Sparks",
+"zh": "火花",
+"audio": "audio/d4_p_03_en.mp3",
+"audio_zh": "audio/d4_p_03_zh.mp3"
+},
+{
+"id": "d4_p_03e",
+"section": "phrases",
+"turn": 3,
+"role": "example",
+"en": "Grinding produces sparks that can travel several meters and ignite debris.",
+"zh": "打磨产生的火花能飞溅数米，引燃周围杂物。",
+"audio": "audio/d4_p_03e_en.mp3",
+"audio_zh": "audio/d4_p_03e_zh.mp3"
+},
+{
+"id": "d4_p_04",
+"section": "phrases",
+"turn": 4,
+"role": "phrase",
+"en": "Molten Slag",
+"zh": "熔渣",
+"audio": "audio/d4_p_04_en.mp3",
+"audio_zh": "audio/d4_p_04_zh.mp3"
+},
+{
+"id": "d4_p_04e",
+"section": "phrases",
+"turn": 4,
+"role": "example",
+"en": "Molten slag from welding can burn through P. P. E. and start secondary fires.",
+"zh": "焊接产生的熔渣会烧穿个人防护装备并引发次生火灾。",
+"audio": "audio/d4_p_04e_en.mp3",
+"audio_zh": "audio/d4_p_04e_zh.mp3"
+},
+{
+"id": "d4_p_05",
+"section": "phrases",
+"turn": 5,
+"role": "phrase",
+"en": "Cold Work",
+"zh": "冷工",
+"audio": "audio/d4_p_05_en.mp3",
+"audio_zh": "audio/d4_p_05_zh.mp3"
+},
+{
+"id": "d4_p_05e",
+"section": "phrases",
+"turn": 5,
+"role": "example",
+"en": "Use mechanical bolting or flange connection as a cold work method whenever possible.",
+"zh": "凡可用机械螺栓或法兰连接的，优先采用冷工方法。",
+"audio": "audio/d4_p_05e_en.mp3",
+"audio_zh": "audio/d4_p_05e_zh.mp3"
+},
+{
+"id": "d4_p_06",
+"section": "phrases",
+"turn": 6,
+"role": "phrase",
+"en": "Designated Hot Work Area",
+"zh": "指定动火区",
+"audio": "audio/d4_p_06_en.mp3",
+"audio_zh": "audio/d4_p_06_zh.mp3"
+},
+{
+"id": "d4_p_06e",
+"section": "phrases",
+"turn": 6,
+"role": "example",
+"en": "Only certified workers may perform hot work inside the designated hot work area.",
+"zh": "仅持证人员可在指定动火区内开展动火作业。",
+"audio": "audio/d4_p_06e_en.mp3",
+"audio_zh": "audio/d4_p_06e_zh.mp3"
+},
+{
+"id": "d4_p_07",
+"section": "phrases",
+"turn": 7,
+"role": "phrase",
+"en": "Combustible Materials",
+"zh": "可燃物",
+"audio": "audio/d4_p_07_en.mp3",
+"audio_zh": "audio/d4_p_07_zh.mp3"
+},
+{
+"id": "d4_p_07e",
+"section": "phrases",
+"turn": 7,
+"role": "example",
+"en": "Clear all combustible materials within thirty-five feet before any hot work begins.",
+"zh": "动火作业前 35 英尺范围内的可燃物必须清理干净。",
+"audio": "audio/d4_p_07e_en.mp3",
+"audio_zh": "audio/d4_p_07e_zh.mp3"
+},
+{
+"id": "d4_p_08",
+"section": "phrases",
+"turn": 8,
+"role": "phrase",
+"en": "Confined Space",
+"zh": "有限空间",
+"audio": "audio/d4_p_08_en.mp3",
+"audio_zh": "audio/d4_p_08_zh.mp3"
+},
+{
+"id": "d4_p_08e",
+"section": "phrases",
+"turn": 8,
+"role": "example",
+"en": "Welding machines and gas cylinders shall never be taken inside a confined space.",
+"zh": "焊接设备和气瓶严禁带入有限空间内部。",
+"audio": "audio/d4_p_08e_en.mp3",
+"audio_zh": "audio/d4_p_08e_zh.mp3"
+},
+{
+"id": "d4_p_09",
+"section": "phrases",
+"turn": 9,
+"role": "phrase",
+"en": "Firewalls",
+"zh": "防火墙",
+"audio": "audio/d4_p_09_en.mp3",
+"audio_zh": "audio/d4_p_09_zh.mp3"
+},
+{
+"id": "d4_p_09e",
+"section": "phrases",
+"turn": 9,
+"role": "example",
+"en": "Designated hot work areas must be fully separated by firewalls from other work zones.",
+"zh": "指定动火区必须用防火墙与其他作业区完全隔离。",
+"audio": "audio/d4_p_09e_en.mp3",
+"audio_zh": "audio/d4_p_09e_zh.mp3"
+},
+{
+"id": "d4_p_10",
+"section": "phrases",
+"turn": 10,
+"role": "phrase",
+"en": "Leak Testing",
+"zh": "泄漏测试",
+"audio": "audio/d4_p_10_en.mp3",
+"audio_zh": "audio/d4_p_10_zh.mp3"
+},
+{
+"id": "d4_p_10e",
+"section": "phrases",
+"turn": 10,
+"role": "example",
+"en": "Perform leak testing on gas hoses and torches before every hot work shift.",
+"zh": "每个动火班次前对燃气软管和焊枪做泄漏测试。",
+"audio": "audio/d4_p_10e_en.mp3",
+"audio_zh": "audio/d4_p_10e_zh.mp3"
+},
+{
+"id": "d4_p_11",
+"section": "phrases",
+"turn": 11,
+"role": "phrase",
+"en": "Ignition Risks",
+"zh": "引燃隐患",
+"audio": "audio/d4_p_11_en.mp3",
+"audio_zh": "audio/d4_p_11_zh.mp3"
+},
+{
+"id": "d4_p_11e",
+"section": "phrases",
+"turn": 11,
+"role": "example",
+"en": "Inspect the area for ignition risks prior to starting any hot work activity.",
+"zh": "动火作业前排查作业区域内的引燃隐患。",
+"audio": "audio/d4_p_11e_en.mp3",
+"audio_zh": "audio/d4_p_11e_zh.mp3"
+},
+{
+"id": "d4_p_12",
+"section": "phrases",
+"turn": 12,
+"role": "phrase",
+"en": "Ventilation",
+"zh": "通风",
+"audio": "audio/d4_p_12_en.mp3",
+"audio_zh": "audio/d4_p_12_zh.mp3"
+},
+{
+"id": "d4_p_12e",
+"section": "phrases",
+"turn": 12,
+"role": "example",
+"en": "Ensure mechanical ventilation is in proper working order during hot work.",
+"zh": "动火过程中要确保机械通风设备运行正常。",
+"audio": "audio/d4_p_12e_en.mp3",
+"audio_zh": "audio/d4_p_12e_zh.mp3"
+},
+{
+"id": "d4_b_01a",
+"section": "scene_b",
+"turn": 1,
+"role": "pm",
+"en": "What common hazards and actions shall we focus on during hot work?",
+"zh": "动火作业最常出现的安全危害是哪几类，要做什么？",
+"audio": "audio/d4_b_01a_en.mp3",
+"audio_zh": "audio/d4_b_01a_zh.mp3"
+},
+{
+"id": "d4_b_01b",
+"section": "scene_b",
+"turn": 1,
+"role": "ehs",
+"en": "Main hazards cover flammable or combustible materials nearby, for they may trigger fire and explosion. Dust and gas cylinders may also lead to explosive hazards. We also need to check ventilation condition, in addition to full preparation of P. P. E. for eye, hearing and respiratory protection. Furthermore, review the risk for electric shock from spark-generating equipment and during cylinder transportation.",
+"zh": "主要是周边易燃或可燃物引发火灾爆炸、粉尘与气瓶爆炸风险；还要核查通风条件，配齐眼部、听力、呼吸防护 PPE；以及打火设备触电、气瓶转运安全隐患。",
+"audio": "audio/d4_b_01b_en.mp3",
+"audio_zh": "audio/d4_b_01b_zh.mp3"
+},
+{
+"id": "d4_b_02a",
+"section": "scene_b",
+"turn": 2,
+"role": "pm",
+"en": "If we want to set a permanent designated hot work area, what conditions must it meet?",
+"zh": "如果规划固定指定动火作业区，要满足哪些硬性条件？",
+"audio": "audio/d4_b_02a_en.mp3",
+"audio_zh": "audio/d4_b_02a_zh.mp3"
+},
+{
+"id": "d4_b_02b",
+"section": "scene_b",
+"turn": 2,
+"role": "ehs",
+"en": "Number one, it must be separated fully by fire walls from other work areas. Number two, no flammable or combustible substances are placed inside. Number three, adequate ventilation is required to exhaust welding fume. Number four, complying with local fire codes and other requirements from the insurance company.",
+"zh": "必须用防火墙和其他区域完全隔离，内部不得存放任何易燃或可燃物；通风充足排出动火烟气；符合消防法规和保险要求。",
+"audio": "audio/d4_b_02b_en.mp3",
+"audio_zh": "audio/d4_b_02b_zh.mp3"
+},
+{
+"id": "d4_b_03a",
+"section": "scene_b",
+"turn": 3,
+"role": "pm",
+"en": "After the designated hot work area is built, what control procedures should we follow daily?",
+"zh": "指定动火区建好后，日常要落地哪些管控流程？",
+"audio": "audio/d4_b_03a_en.mp3",
+"audio_zh": "audio/d4_b_03a_zh.mp3"
+},
+{
+"id": "d4_b_03b",
+"section": "scene_b",
+"turn": 3,
+"role": "ehs",
+"en": "Number one, only certified qualified workers can operate here. Number two, inspect ignition risks before each hot work. Number three, test gas hoses and torches for leakage beforehand. Number four, provide appropriate P. P. E. for different hot work tasks. Number five, make sure the ventilation equipment works well. Number six, take extra measures to mitigate evaluated risks if necessary.",
+"zh": "仅持证合格人员可作业；每次动火前排查引燃隐患；提前测试燃气软管、焊枪泄漏；为不同的动火作业任务配备合适的个人防护装备；保证通风设备正常运行；需要时，额外落实措施消减评估出的风险。",
+"audio": "audio/d4_b_03b_en.mp3",
+"audio_zh": "audio/d4_b_03b_zh.mp3"
+}
+];
+const SECTIONS = [{"id": "scene_a", "label": "场景 A · 决策与原则", "label_en": "Scene A · Decision and Principles", "type": "dialogue", "roles": ["pm", "ehs"]}, {"id": "phrases", "label": "E. H. S. 关键术语", "label_en": "E. H. S. Key Terms", "type": "phrase", "roles": ["phrase", "example"]}, {"id": "scene_b", "label": "场景 B · 危害与日常管控", "label_en": "Scene B · Hazards and Daily Controls", "type": "dialogue", "roles": ["pm", "ehs"]}];
+
+// ============ 中文显隐全局开关 ============
+const zhBtn = document.getElementById('btn-zh-toggle');
+zhBtn.addEventListener('click', () => {
+  const hidden = document.body.classList.toggle('hide-zh');
+  zhBtn.classList.toggle('active', !hidden);
+  zhBtn.textContent = hidden ? '中 / EN · 显示中文' : '中 / EN · 隐藏中文';
+});
+
+// ============ Tab 切换 ============
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    stopAllAudio();
+  });
+});
+
+// ============ 音频播放器 ============
+let currentAudio = null;
+let currentRow = null;
+let isContinuous = false;
+let continuousQueue = [];
+let continuousIdx = 0;
+let playbackRate = 1.0;
+
+function stopAllAudio() {
+  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+  currentAudio = null;
+  continuousQueue = [];
+  continuousIdx = 0;
+  isContinuous = false;
+  document.querySelectorAll('.dialogue-row.playing').forEach(r => r.classList.remove('playing'));
+  currentRow = null;
+  updateProgress('已停止');
+}
+
+function playSentence(sentId, fromQueue) {
+  const sent = SENTENCES.find(s => s.id === sentId);
+  if (!sent) return;
+  if (!fromQueue) stopAllAudio();
+
+  const audio = new Audio(sent.audio);
+  audio.playbackRate = playbackRate;
+  currentAudio = audio;
+
+  const row = document.querySelector(`.dialogue-row[data-id="${sentId}"]`);
+  if (row) {
+    document.querySelectorAll('.dialogue-row.playing').forEach(r => r.classList.remove('playing'));
+    row.classList.add('playing');
+    currentRow = row;
+  }
+
+  audio.play().catch(e => console.warn('播放失败:', e));
+
+  audio.addEventListener('ended', () => {
+    if (isContinuous && continuousQueue.length > 0) {
+      continuousIdx++;
+      if (continuousIdx < continuousQueue.length) {
+        const nextId = continuousQueue[continuousIdx];
+        updateProgress(`连续播放 ${continuousIdx + 1} / ${continuousQueue.length}`);
+        playSentence(nextId, true);
+      } else {
+        updateProgress('✅ 连续播放完成');
+        if (currentRow) currentRow.classList.remove('playing');
+      }
+    } else {
+      if (currentRow) currentRow.classList.remove('playing');
+    }
+  });
+}
+
+function updateProgress(text) {
+  const el = document.getElementById('progress-info');
+  if (el) el.textContent = text;
+}
+
+// ============ 点读模式：点击句子 ============
+document.querySelectorAll('.dialogue-row').forEach(row => {
+  row.addEventListener('click', () => {
+    isContinuous = false;
+    playSentence(row.dataset.id);
+    updateProgress('▶ 点读 · ' + row.dataset.id);
+  });
+});
+
+// ============ 速度切换 ============
+document.querySelectorAll('.speed-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    playbackRate = parseFloat(btn.dataset.rate);
+    if (currentAudio) currentAudio.playbackRate = playbackRate;
+    updateProgress('速度 ' + btn.textContent);
+  });
+});
+
+// ============ 连续播放全部 ============
+document.getElementById('btn-play-all').addEventListener('click', () => {
+  stopAllAudio();
+  continuousQueue = SENTENCES.map(s => s.id);
+  continuousIdx = 0;
+  isContinuous = true;
+  updateProgress(`▶ 连续播放 1 / ${continuousQueue.length} · 从头开始`);
+  playSentence(continuousQueue[0], true);
+});
+
+// ============ 停止 ============
+document.getElementById('btn-stop-all').addEventListener('click', stopAllAudio);
+
+// ============ 整段播放 ============
+document.querySelectorAll('.play-sec-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const secId = btn.dataset.sec;
+    stopAllAudio();
+    continuousQueue = SENTENCES.filter(s => s.section === secId).map(s => s.id);
+    continuousIdx = 0;
+    isContinuous = true;
+    updateProgress(`▶ [${secId}] 1 / ${continuousQueue.length}`);
+    playSentence(continuousQueue[0], true);
+  });
+});
+
+// ============ 角色扮演：选角色 ============
+document.querySelectorAll('.role-switch button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sec = btn.dataset.sec;
+    const role = btn.dataset.role;
+    document.querySelectorAll(`.role-switch button[data-sec="${sec}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const wrap = document.querySelector(`.rp-turns[data-sec="${sec}"]`);
+    if (wrap) wrap.innerHTML = buildRpTurn(sec, role);
+    // 重绑事件
+    document.querySelectorAll(`.rp-turns[data-sec="${sec}"] .rp-reveal-btn`).forEach(b => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.revealId;
+        const theirs = document.querySelector(`.rp-theirs[data-id="${id}"]`);
+        if (theirs) {
+          theirs.classList.add('show');
+          b.disabled = true;
+          b.textContent = '✓ 已揭晓';
+          const audio = new Audio(theirs.dataset.audio);
+          audio.playbackRate = playbackRate;
+          audio.play().catch(e => console.warn(e));
+        }
+      });
+    });
+    document.querySelectorAll(`.rp-turns[data-sec="${sec}"] .rp-theirs`).forEach(t => {
+      t.addEventListener('click', () => {
+        const audio = new Audio(t.dataset.audio);
+        audio.playbackRate = playbackRate;
+        audio.play().catch(e => console.warn(e));
+      });
+    });
+    document.querySelectorAll(`.rp-complete-btn[data-sec="${sec}"]`).forEach(b => b.style.display = 'block');
+    document.querySelectorAll(`.rp-complete-dialog[data-sec="${sec}"]`).forEach(d => d.classList.remove('show'));
+  });
+});
+
+// ============ 角色扮演：揭晓对方 ============
+document.querySelectorAll('.rp-reveal-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.revealId;
+    const theirs = document.querySelector(`.rp-theirs[data-id="${id}"]`);
+    if (theirs) {
+      theirs.classList.add('show');
+      btn.disabled = true;
+      btn.textContent = '✓ 已揭晓';
+      const audio = new Audio(theirs.dataset.audio);
+      audio.playbackRate = playbackRate;
+      audio.play().catch(e => console.warn(e));
+    }
+  });
+});
+
+// ============ 角色扮演：点击对方对话也可复读 ============
+document.querySelectorAll('.rp-theirs').forEach(t => {
+  t.addEventListener('click', () => {
+    const audio = new Audio(t.dataset.audio);
+    audio.playbackRate = playbackRate;
+    audio.play().catch(e => console.warn(e));
+  });
+});
+
+// ============ 角色扮演：查看完整对话 ============
+document.querySelectorAll('.rp-complete-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sec = btn.dataset.sec;
+    const dlg = document.querySelector(`.rp-complete-dialog[data-sec="${sec}"]`);
+    if (dlg) {
+      dlg.classList.toggle('show');
+      btn.textContent = dlg.classList.contains('show') ? '收起完整对话' : '📜 查看完整对话';
+    }
+  });
+});
+
+// 默认：场景 A 默认选 PM
+window.addEventListener('DOMContentLoaded', () => {
+  renderAll();
+  const defaultBtn = document.querySelector('.role-switch button[data-sec="scene_a"][data-role="pm"]');
+  if (defaultBtn) defaultBtn.click();
+});
+</script>
+
+</body>
+</html>
