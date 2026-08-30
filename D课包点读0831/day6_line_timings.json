@@ -1,0 +1,221 @@
+{
+  "parts": [
+    {
+      "id": 1,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Stylist",
+          "start": 0.0,
+          "end": 7.51,
+          "duration": 7.51,
+          "en": "Good afternoon! What can I do for you today?"
+        },
+        {
+          "idx": 1,
+          "role": "Customer",
+          "start": 7.51,
+          "end": 19.81,
+          "duration": 12.3,
+          "en": "Hi, I'm thinking about getting a perm. Can I get it done within two hours?"
+        },
+        {
+          "idx": 2,
+          "role": "Stylist",
+          "start": 19.81,
+          "end": 26.02,
+          "duration": 6.21,
+          "en": "That should work. Are you in a hurry?"
+        },
+        {
+          "idx": 3,
+          "role": "Customer",
+          "start": 26.02,
+          "end": 41.3,
+          "duration": 15.28,
+          "en": "Yes, I need to pick up my kid later. Also, do you offer manicure and facial care here?"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Stylist",
+          "start": 41.8,
+          "end": 57.35,
+          "duration": 15.55,
+          "en": "Sure we do. We have cucumber mask facial care. Would you like to add any of those services?"
+        },
+        {
+          "idx": 1,
+          "role": "Customer",
+          "start": 57.35,
+          "end": 69.04,
+          "duration": 11.69,
+          "en": "Sounds nice. How much for a perm, manicure and a facial together?"
+        },
+        {
+          "idx": 2,
+          "role": "Stylist",
+          "start": 69.04,
+          "end": 83.79,
+          "duration": 14.75,
+          "en": "The perm is 80, manicure 30 and facial $50. I can give you 15% off today."
+        },
+        {
+          "idx": 3,
+          "role": "Customer",
+          "start": 83.79,
+          "end": 92.83,
+          "duration": 9.04,
+          "en": "That's a good deal. Let's start with the perm first."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Stylist",
+          "start": 93.33,
+          "end": 101.31,
+          "duration": 7.98,
+          "en": "No problem. Let's wash your hair right away."
+        },
+        {
+          "idx": 1,
+          "role": "Customer",
+          "start": 101.31,
+          "end": 109.16,
+          "duration": 7.85,
+          "en": "Great, thank you for being so considerate."
+        },
+        {
+          "idx": 2,
+          "role": "Stylist",
+          "start": 109.16,
+          "end": 116.32,
+          "duration": 7.16,
+          "en": "My pleasure. Please have a seat over here."
+        },
+        {
+          "idx": 3,
+          "role": "Customer",
+          "start": 116.32,
+          "end": 120.45,
+          "duration": 4.13,
+          "en": "Alright, thanks a lot."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "GM",
+          "start": 120.95,
+          "end": 148.43,
+          "duration": 27.48,
+          "en": "I just heard about a fatal confined-space accident at a local company. I'm quite concerned. Could you exactly let me know what a confined space means and tell me how we manage confined spaces at our site?"
+        },
+        {
+          "idx": 1,
+          "role": "EHS Manager",
+          "start": 148.43,
+          "end": 169.25,
+          "duration": 20.82,
+          "en": "Sure. A confined-space meets three conditions: big enough for people to enter and work, limited entry-exit points, and it's not built for regular long-time work."
+        },
+        {
+          "idx": 2,
+          "role": "GM",
+          "start": 169.25,
+          "end": 183.81,
+          "duration": 14.56,
+          "en": "What is our top principle for any confined-space entry job? And when do we need a confined-space entry permit?"
+        },
+        {
+          "idx": 3,
+          "role": "EHS Manager",
+          "start": 183.81,
+          "end": 213.34,
+          "duration": 29.53,
+          "en": "Our first principle is to avoid entry if possible. We look for alternative ways to finish work without sending people inside. Only when entry cannot be avoided, we must issue a formal confined-space entry permit before work starts."
+        },
+        {
+          "idx": 4,
+          "role": "GM",
+          "start": 213.34,
+          "end": 231.69,
+          "duration": 18.36,
+          "en": "That makes sense. One key question: Have we identified all confined spaces across our whole plant? Walk me through our identification process."
+        },
+        {
+          "idx": 5,
+          "role": "EHS Manager",
+          "start": 231.69,
+          "end": 245.75,
+          "duration": 14.05,
+          "en": "Yes, we have completed this work for our entire facility, and we follow five steps in identification process."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "GM",
+          "start": 246.25,
+          "end": 267.13,
+          "duration": 20.89,
+          "en": "What is permit-required confined space and no permit required confined space? Please give me some examples for permit-required confined spaces."
+        },
+        {
+          "idx": 1,
+          "role": "EHS Manager",
+          "start": 267.13,
+          "end": 284.75,
+          "duration": 17.62,
+          "en": "A permit-required confined space is a confined space that has one or more of the following four characteristics."
+        },
+        {
+          "idx": 2,
+          "role": "EHS Manager",
+          "start": 284.75,
+          "end": 293.08,
+          "duration": 8.33,
+          "en": "Contains or has the potential to contain a hazardous atmosphere."
+        },
+        {
+          "idx": 3,
+          "role": "EHS Manager",
+          "start": 293.08,
+          "end": 302.16,
+          "duration": 9.07,
+          "en": "Has an internal configuration that could trap or asphyxiate an entrant."
+        },
+        {
+          "idx": 4,
+          "role": "EHS Manager",
+          "start": 302.16,
+          "end": 318.3,
+          "duration": 16.14,
+          "en": "Smoking and open flame are forbidden nearby; in addition, no unauthorized entry. Furthermore, blind rescue is not allowed."
+        },
+        {
+          "idx": 5,
+          "role": "EHS Manager",
+          "start": 318.3,
+          "end": 333.7,
+          "duration": 15.4,
+          "en": "They need to apply for a confined space entry permit and ensure all the measures are in place prior to the entry."
+        }
+      ]
+    }
+  ]
+}

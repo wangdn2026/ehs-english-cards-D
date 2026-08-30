@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "vol": "Day6",
+    "topic": "美容美发服务 & 有限空间作业(一)",
+    "topic_en": "Beauty Salon & Confined Space (I)",
+    "difficulty": "★★☆",
+    "scheduled_live_date": "2026-08-31"
+  },
+  "parts": [
+    {
+      "id": 1,
+      "title": "Part 1: 美容美发·迎宾洗发",
+      "difficulty_star": "★",
+      "difficulty_label": "L1 · 入门",
+      "key_phrases": ["Manicure", "Facial Care"],
+      "dialogue": [
+        {
+          "role": "Stylist",
+          "en": "Good afternoon! What can I do for you today?",
+          "zh": "下午好！请问今天想做点什么？"
+        },
+        {
+          "role": "Customer",
+          "en": "Hi, I'm thinking about getting a perm. Can I get it done within two hours?",
+          "zh": "你好，我想烫个头发。两个小时之内能做完吗？"
+        },
+        {
+          "role": "Stylist",
+          "en": "That should work. Are you in a hurry?",
+          "zh": "应该可以。您赶时间吗？"
+        },
+        {
+          "role": "Customer",
+          "en": "Yes, I need to pick up my kid later. Also, do you offer manicure and facial care here?",
+          "zh": "对，我待会儿要去接孩子。另外你们这里可以修指甲还有做面部护理吗？"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Part 2: 美容美发·美甲修护",
+      "difficulty_star": "★★",
+      "difficulty_label": "L2 · 进阶",
+      "key_phrases": ["Cucumber Mask"],
+      "dialogue": [
+        {
+          "role": "Stylist",
+          "en": "Sure we do. We have cucumber mask facial care. Would you like to add any of those services?",
+          "zh": "有的。我们有黄瓜面膜面部护理。您想一并做这些项目吗？"
+        },
+        {
+          "role": "Customer",
+          "en": "Sounds nice. How much for a perm, manicure and a facial together?",
+          "zh": "听起来不错。烫发、修指甲加面部护理一起多少钱？"
+        },
+        {
+          "role": "Stylist",
+          "en": "The perm is 80, manicure 30 and facial $50. I can give you 15% off today.",
+          "zh": "烫发 80 美元，修指甲 30，面部护理 50。今天我可以给您打 85 折。"
+        },
+        {
+          "role": "Customer",
+          "en": "That's a good deal. Let's start with the perm first.",
+          "zh": "价格挺划算。那我们先开始烫发吧。"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Part 3: 美容美发·面膜收尾",
+      "difficulty_star": "★★",
+      "difficulty_label": "L2 · 进阶",
+      "key_phrases": ["Confined Space", "PRCS", "NPRCS"],
+      "dialogue": [
+        {
+          "role": "Stylist",
+          "en": "No problem. Let's wash your hair right away.",
+          "zh": "没问题，我们现在先给您洗头。"
+        },
+        {
+          "role": "Customer",
+          "en": "Great, thank you for being so considerate.",
+          "zh": "太好了，谢谢你考虑得这么周到。"
+        },
+        {
+          "role": "Stylist",
+          "en": "My pleasure. Please have a seat over here.",
+          "zh": "乐意效劳，请这边坐。"
+        },
+        {
+          "role": "Customer",
+          "en": "Alright, thanks a lot.",
+          "zh": "好的，非常感谢。"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Part 4: 有限空间·定义与原则",
+      "difficulty_star": "★★★",
+      "difficulty_label": "L3 · 专业",
+      "key_phrases": ["Hazardous Atmosphere", "LFL", "IDLH"],
+      "dialogue": [
+        {
+          "role": "GM",
+          "en": "I just heard about a fatal confined-space accident at a local company. I'm quite concerned. Could you exactly let me know what a confined space means and tell me how we manage confined spaces at our site?",
+          "zh": "我刚听说本地一家公司发生有限空间死亡事故，我很担心。能否请你准确告知我有限空间的含义，并说明我们现场是如何对有限空间进行管理的？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Sure. A confined-space meets three conditions: big enough for people to enter and work, limited entry-exit points, and it's not built for regular long-time work.",
+          "zh": "好的。有限空间满足三个条件：人员可进入作业、进出通道受限、设计上不作为长期工作场所。"
+        },
+        {
+          "role": "GM",
+          "en": "What is our top principle for any confined-space entry job? And when do we need a confined-space entry permit?",
+          "zh": "开展有限空间作业我们首要原则是什么？什么时候必须办理进入许可证？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Our first principle is to avoid entry if possible. We look for alternative ways to finish work without sending people inside. Only when entry cannot be avoided, we must issue a formal confined-space entry permit before work starts.",
+          "zh": "首要原则是能不进就不进。优先找替代方案，避免人员进入空间。实在没办法必须进入，作业前一定要办理有限空间进入许可证。"
+        },
+        {
+          "role": "GM",
+          "en": "That makes sense. One key question: Have we identified all confined spaces across our whole plant? Walk me through our identification process.",
+          "zh": "明白。有个关键问题：我们全厂有限空间都识别完了吗？跟我讲下我们的识别流程。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Yes, we have completed this work for our entire facility, and we follow five steps in identification process.",
+          "zh": "全厂已经按这套流程做完识别工作。我们按 5 步识别流程。"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Part 5: 有限空间·PRCS 识别与许可",
+      "difficulty_star": "★★★★",
+      "difficulty_label": "L4 · 专家",
+      "key_phrases": ["PEL", "Engulfment", "H₂S"],
+      "dialogue": [
+        {
+          "role": "GM",
+          "en": "What is permit-required confined space and no permit required confined space? Please give me some examples for permit-required confined spaces.",
+          "zh": "什么是需要许可证才能进入受限空间和无需许可证可进入的受限空间？请同时给出一些需要许可证才能进入受限空间的例子。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "A permit-required confined space is a confined space that has one or more of the following four characteristics.",
+          "zh": "需要许可证才能进入的受限空间：受限空间只要具备下面任意一项，就属于许可受限空间，作业必须办理受限空间作业许可。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Contains or has the potential to contain a hazardous atmosphere.",
+          "zh": "内部存在或有可能产生危险气体。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Has an internal configuration that could trap or asphyxiate an entrant.",
+          "zh": "内部结构可造成人员被困、窒息。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Smoking and open flame are forbidden nearby; in addition, no unauthorized entry. Furthermore, blind rescue is not allowed.",
+          "zh": "周边严禁吸烟、明火；此外，禁止未经许可进入；而且严禁盲目施救。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "They need to apply for a confined space entry permit and ensure all the measures are in place prior to the entry.",
+          "zh": "他们需要申请有限空间作业许可证，并确保在进入前所有措施均落实到位。"
+        }
+      ]
+    }
+  ],
+  "phrases": [
+    { "id": "p01", "en": "Manicure",             "zh": "美甲",                       "scenario": "Part 1" },
+    { "id": "p02", "en": "Facial Care",          "zh": "脸部护理",                   "scenario": "Part 1" },
+    { "id": "p03", "en": "Cucumber Mask",        "zh": "黄瓜面膜",                   "scenario": "Part 2" },
+    { "id": "p04", "en": "Confined Space",       "zh": "有限空间",                   "scenario": "Part 3" },
+    { "id": "p05", "en": "PRCS",                 "zh": "P. R. C. S.",                "scenario": "Part 3" },
+    { "id": "p06", "en": "NPRCS",                "zh": "N. P. R. C. S.",             "scenario": "Part 3" },
+    { "id": "p07", "en": "Hazardous Atmosphere", "zh": "危险气体环境",               "scenario": "Part 4" },
+    { "id": "p08", "en": "LFL",                  "zh": "L. F. L.",                   "scenario": "Part 4" },
+    { "id": "p09", "en": "IDLH",                 "zh": "I. D. L. H.",                "scenario": "Part 4" },
+    { "id": "p10", "en": "PEL",                  "zh": "P. E. L.",                   "scenario": "Part 5" },
+    { "id": "p11", "en": "Engulfment",           "zh": "吞没",                       "scenario": "Part 5" },
+    { "id": "p12", "en": "H₂S",                  "zh": "硫化氢",                     "scenario": "Part 5" }
+  ]
+}
