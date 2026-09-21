@@ -1,0 +1,253 @@
+{
+  "parts": [
+    {
+      "id": 1,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Speaker A",
+          "start": 0.0,
+          "end": 4.21,
+          "duration": 4.21,
+          "en": "How's your family doing?"
+        },
+        {
+          "idx": 1,
+          "role": "Speaker B",
+          "start": 4.21,
+          "end": 16.73,
+          "duration": 12.51,
+          "en": "Everybody is doing fine. I'm going to visit my grandparents this weekend."
+        },
+        {
+          "idx": 2,
+          "role": "Speaker A",
+          "start": 16.73,
+          "end": 29.24,
+          "duration": 12.51,
+          "en": "I haven't seen my uncle for a long time. Have you heard from him lately?"
+        },
+        {
+          "idx": 3,
+          "role": "Speaker B",
+          "start": 29.24,
+          "end": 38.99,
+          "duration": 9.75,
+          "en": "No, I haven't. Your mother can't wait to see you again."
+        },
+        {
+          "idx": 4,
+          "role": "Speaker A",
+          "start": 38.99,
+          "end": 50.97,
+          "duration": 11.99,
+          "en": "Right. My cousin just got engaged. I really want to catch up with him."
+        },
+        {
+          "idx": 5,
+          "role": "Speaker B",
+          "start": 50.97,
+          "end": 60.72,
+          "duration": 9.75,
+          "en": "That's exciting! Are many relatives planning to come over?"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Speaker A",
+          "start": 61.22,
+          "end": 73.0,
+          "duration": 11.77,
+          "en": "Several cousins will drop by. What's up? Tell me how you've been."
+        },
+        {
+          "idx": 1,
+          "role": "Speaker B",
+          "start": 73.0,
+          "end": 81.92,
+          "duration": 8.93,
+          "en": "A bunch of things have happened while you were away."
+        },
+        {
+          "idx": 2,
+          "role": "Speaker A",
+          "start": 81.92,
+          "end": 93.05,
+          "duration": 11.13,
+          "en": "Sorry I haven't called you recently. How are things going with you?"
+        },
+        {
+          "idx": 3,
+          "role": "Speaker B",
+          "start": 93.05,
+          "end": 104.82,
+          "duration": 11.77,
+          "en": "Everything goes well. Would you feel like hanging out later this week?"
+        },
+        {
+          "idx": 4,
+          "role": "Speaker A",
+          "start": 104.82,
+          "end": 114.01,
+          "duration": 9.19,
+          "en": "I'd love to. Feel free to come over to my place anytime."
+        },
+        {
+          "idx": 5,
+          "role": "Speaker B",
+          "start": 114.01,
+          "end": 123.84,
+          "duration": 9.83,
+          "en": "Great. Can we try to hang out some other time this week?"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Speaker A",
+          "start": 124.34,
+          "end": 133.97,
+          "duration": 9.63,
+          "en": "Sure, we can catch up once I rest for a bit."
+        },
+        {
+          "idx": 1,
+          "role": "Speaker B",
+          "start": 133.97,
+          "end": 138.79,
+          "duration": 4.82,
+          "en": "Perfect. See you later."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Facility Manager",
+          "start": 139.29,
+          "end": 154.95,
+          "duration": 15.67,
+          "en": "We have a lot of working-at-height jobs in our facility. Could you walk me through our main fall-protection requirements?"
+        },
+        {
+          "idx": 1,
+          "role": "EHS Manager",
+          "start": 154.95,
+          "end": 187.82,
+          "duration": 32.87,
+          "en": "Sure. First, I would like to let you know our definition: performing work when the vertical distance is greater than or equal to 1.8 meters (>=1.8 m), as measured from the level below to the worker's feet, and there is a potential risk of injury due to a fall."
+        },
+        {
+          "idx": 2,
+          "role": "Facility Manager",
+          "start": 187.82,
+          "end": 195.7,
+          "duration": 7.88,
+          "en": "What activities are strictly prohibited for working-at-height?"
+        },
+        {
+          "idx": 3,
+          "role": "EHS Manager",
+          "start": 195.7,
+          "end": 217.62,
+          "duration": 21.91,
+          "en": "We cannot use forklifts or pallets as work platforms. Also, employees must not work alone for roof work or when they use aerial lifts, scissor lifts or ladders."
+        },
+        {
+          "idx": 4,
+          "role": "Facility Manager",
+          "start": 217.62,
+          "end": 230.72,
+          "duration": 13.11,
+          "en": "It makes sense. In addition, before we start these jobs, do they need to complete a risk assessment?"
+        },
+        {
+          "idx": 5,
+          "role": "EHS Manager",
+          "start": 230.72,
+          "end": 280.38,
+          "duration": 49.66,
+          "en": "Sure, they should identify activities, locations and assess the risks where any of the following may occur: (1) risk of injury to employees who are performing the work; (2) risk of injury to employees, other workers and visitors who are nearby or below; (3) risk of property damage, spills and/or releases of pollutants to the environment that are caused by falling objects."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "lines": [
+        {
+          "idx": 0,
+          "role": "Facility Manager",
+          "start": 280.88,
+          "end": 291.78,
+          "duration": 10.9,
+          "en": "What methods or procedures need to be implemented and/or required for working at heights?"
+        },
+        {
+          "idx": 1,
+          "role": "EHS Manager",
+          "start": 291.78,
+          "end": 368.06,
+          "duration": 76.28,
+          "en": "First priority is physical barriers such as guardrails. When barriers aren't feasible, we use personal fall-restraint or fall-arrest systems, and anchor points must be properly installed. We also need methods to control or reduce risks to all people in the area whenever anyone is working nearby or below, methods to inspect and repair damage to fixed equipment, procedures for inspection of personal fall restraint and fall arrest equipment, proper selection and use of ladders, proper selection and use of personal protective equipment when necessary, and a training program for employees who work at heights."
+        },
+        {
+          "idx": 2,
+          "role": "Facility Manager",
+          "start": 368.06,
+          "end": 382.01,
+          "duration": 13.95,
+          "en": "Agree. Specifically, we have mezzanines and loading docks here. What special rules apply to those areas?"
+        },
+        {
+          "idx": 3,
+          "role": "EHS Manager",
+          "start": 382.01,
+          "end": 403.4,
+          "duration": 21.39,
+          "en": "Permanently installed fall prevention barriers at least 1 meter (42 inches) high. Use chain or wire rope barriers where permanent barriers are not feasible."
+        },
+        {
+          "idx": 4,
+          "role": "Facility Manager",
+          "start": 403.4,
+          "end": 408.19,
+          "duration": 4.79,
+          "en": "How about our roof and skylight work?"
+        },
+        {
+          "idx": 5,
+          "role": "EHS Manager",
+          "start": 408.19,
+          "end": 459.11,
+          "duration": 50.92,
+          "en": "A parapet at least 1 meter high, installed along the edge of the roof; fixed barriers around each skylight, such as guardrails at least 1 meter high or fall protection screens. If barriers can't meet the standard, anyone working within 1.8 meters of the edge must wear personal fall-protection equipment. Only trained staff can access roof areas, and warning signs are required."
+        },
+        {
+          "idx": 6,
+          "role": "Facility Manager",
+          "start": 459.11,
+          "end": 476.52,
+          "duration": 17.41,
+          "en": "That covers most key points. Thank you for clarifying these requirements. It is also a fantastic training for me, really appreciate."
+        },
+        {
+          "idx": 7,
+          "role": "EHS Manager",
+          "start": 476.52,
+          "end": 484.98,
+          "duration": 8.46,
+          "en": "You're welcome. Reach out anytime if you have any questions on site."
+        }
+      ]
+    }
+  ]
+}

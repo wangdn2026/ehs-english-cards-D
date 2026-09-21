@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>跟读训练 · Day7 亲朋好友 & 高空作业(一)</title>
+<style>
+  :root {
+    --c-tian: #7BA7BC;
+    --c-orange: #E07A5F;
+    --c-orange-deep: #C9623F;
+    --c-charcoal: #3D405B;
+    --c-bg: #F4F1DE;
+    --c-card: #FFFFFF;
+    --c-line: #E5E1D0;
+    --c-soft: #8C99AB;
+    --c-good: #5B8FA8;
+    --c-best: #7BA7BC;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: var(--c-bg); color: var(--c-charcoal);
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none; -webkit-user-select: none; user-select: none; }
+  .top { background: linear-gradient(135deg, var(--c-tian) 0%, #5B8FA8 100%);
+    color: #fff; padding: 20px 18px 18px; }
+  .top h1 { margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: 0.3px; }
+  .top .sub { font-size: 12.5px; opacity: 0.88; line-height: 1.55; }
+  .meta-tag { display: inline-block; margin-top: 8px; padding: 2px 9px; background: rgba(255,255,255,0.18);
+    border-radius: 10px; font-size: 11px; }
+  .progress { background: var(--c-card); margin: 12px 14px 0; padding: 12px 14px;
+    border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 10px; }
+  .progress-bar { flex: 1; height: 6px; background: var(--c-line); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--c-best); width: 0%; transition: width 0.4s ease; }
+  .progress-text { font-size: 12px; color: var(--c-soft); white-space: nowrap; font-weight: 500; }
+  .tips { margin: 12px 14px; padding: 11px 13px; background: #EAF2F6; border-left: 3px solid var(--c-tian);
+    border-radius: 4px; font-size: 12px; color: #2C4A5C; line-height: 1.6; }
+  .tips b { color: #1A3548; }
+  .part { margin: 16px 14px 8px; }
+  .part-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .part-id { background: var(--c-charcoal); color: #fff; font-size: 11px; padding: 3px 9px;
+    border-radius: 10px; font-weight: 600; letter-spacing: 0.5px; }
+  .part-title { font-size: 14px; font-weight: 600; color: var(--c-charcoal); }
+  .line { background: var(--c-card); border-radius: 12px; padding: 14px 14px 12px;
+    margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: relative; overflow: hidden;
+    border: 2px solid transparent; transition: border-color 0.3s; }
+  .line.done { border-color: var(--c-good); }
+  .line-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .role-tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px;
+    color: #fff; letter-spacing: 0.3px; }
+  .line-no { font-size: 11px; color: var(--c-soft); margin-left: auto; }
+  .line-en { font-size: 16px; font-weight: 500; color: var(--c-charcoal); margin: 4px 0 4px;
+    line-height: 1.45; }
+  .line-zh { font-size: 12.5px; color: var(--c-soft); margin-bottom: 10px; }
+  .actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .btn { border: none; border-radius: 18px; padding: 8px 16px; font-size: 13px; cursor: pointer;
+    font-weight: 500; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s;
+    font-family: inherit; -webkit-tap-highlight-color: transparent; }
+  .btn-play { background: #7BA7BC; color: #fff; }
+  .btn-play:active { background: #5B8FA8; }
+  .btn-play.playing { background: #E07A5F; }
+  .btn-mark { background: #f0f7f9; color: #3D405B; }
+  .btn-unmark { background: #FBE3D4; color: #C9623F; }
+  .toast { position: fixed; top: 30%; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.85); color: #fff; padding: 12px 22px; border-radius: 24px;
+    font-size: 14px; z-index: 10000; box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    animation: toastIn 0.3s ease; }
+  @keyframes toastIn { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+  .footer { text-align: center; padding: 24px 14px 30px; font-size: 11.5px; color: var(--c-soft); }
+  .footer a { color: var(--c-tian); text-decoration: none; }
+
+  .part-tag-SpeakerA  { background: #7BA7BC !important; } /* 天青 */
+  .part-tag-SpeakerB  { background: #E07A5F !important; } /* 暖橙 */
+  .part-tag-FM        { background: #3D405B !important; } /* 深炭灰 */
+  .part-tag-EHS       { background: #C9623F !important; } /* 深橙 */
+
+  .role-label { font-size: 12px; color: var(--c-soft); }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>跟读训练 · Day7 亲朋好友 &amp; 高空作业(一)</h1>
+  <div class="sub">听原音 → 跟读 → 标记已听</div>
+  <span class="meta-tag">5 段对话 · 28 行 · E. H. S. 训练营</span>
+</div>
+<div class="progress">
+  <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+  <div class="progress-text" id="progText">0 / 28 已打卡</div>
+</div>
+<div class="tips">
+  <b>使用说明：</b>每行点击"听原音"播放对应片段，"标记已听"打卡。进度自动保存到本机浏览器。<br>
+  <b>音频：</b><a href="./day7_full.mp3" style="color:#3D405B">day7_full.mp3</a> · 5 Part 串成 1 个完整长音频
+</div>
+<div class="parts-container" id="partsContainer">
+  <div style="text-align:center;padding:40px 20px;color:var(--c-soft)">加载对话数据…</div>
+</div>
+<div class="footer">
+  安全五点半 E. H. S. 训练营 · 跟读训练模块<br>
+  听读模式 · 听原音 · 跟读练习 · 标记已听<br>
+  Day7 · 第八次课 · 亲朋好友 + 高空作业（一）
+</div>
+<script>
+const STORAGE_KEY = 'day7_relatives_heights_done';
+const lineState = {};
+const audioPlayer = new Audio();
+audioPlayer.preload = 'auto';
+const AUDIO_BASE = './';
+const AUDIO_FILE = 'day7_full.mp3';
+const ROLE_MAP = {
+  'Speaker A':       { tag: 'A', label: 'Speaker A · 男',       color: '#7BA7BC', cls: 'part-tag-SpeakerA' },
+  'Speaker B':       { tag: 'B', label: 'Speaker B · 女',       color: '#E07A5F', cls: 'part-tag-SpeakerB' },
+  'Facility Manager':{ tag: 'F', label: '设施经理 Facility Manager', color: '#3D405B', cls: 'part-tag-FM' },
+  'EHS Manager':     { tag: 'E', label: 'EHS 经理 EHS Manager',  color: '#C9623F', cls: 'part-tag-EHS' },
+};
+function roleInfo(r) { return ROLE_MAP[r] || { tag: '?', label: r, color: '#888', cls: '' }; }
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function playSegment(btn, start, end) {
+  if (!audioPlayer.src) audioPlayer.src = AUDIO_BASE + AUDIO_FILE;
+  audioPlayer.currentTime = start;
+  audioPlayer.play().catch(() => {});
+  btn.classList.add('playing');
+  const onTimeUpdate = () => {
+    if (audioPlayer.currentTime >= end) {
+      audioPlayer.pause();
+      audioPlayer.removeEventListener('timeupdate', onTimeUpdate);
+      btn.classList.remove('playing');
+    }
+  };
+  audioPlayer.addEventListener('timeupdate', onTimeUpdate);
+}
+function saveProgress() {
+  const doneKeys = Object.keys(lineState).filter(k => lineState[k] && lineState[k].done);
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(doneKeys)); } catch (e) {}
+}
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const doneKeys = JSON.parse(raw);
+    if (!Array.isArray(doneKeys)) return;
+    doneKeys.forEach(k => {
+      lineState[k] = { done: true };
+      const el = document.querySelector('[data-line-key="' + k + '"]');
+      if (!el) return;
+      el.classList.add('done');
+      const markBtn = el.querySelector('.btn-mark');
+      const unmarkBtn = el.querySelector('.btn-unmark');
+      if (markBtn) markBtn.style.display = 'none';
+      if (unmarkBtn) unmarkBtn.style.display = 'inline-flex';
+    });
+  } catch (e) {}
+}
+function updateProgress() {
+  const doneCount = Object.values(lineState).filter(s => s && s.done).length;
+  const fill = document.getElementById('progFill');
+  const text = document.getElementById('progText');
+  if (fill) fill.style.width = TOTAL_LINES > 0 ? (doneCount / TOTAL_LINES * 100) + '%' : '0%';
+  if (text) text.textContent = doneCount + ' / ' + TOTAL_LINES + ' 已打卡';
+}
+let PARTS_DATA = [];
+let TOTAL_LINES = 0;
+async function loadData() {
+  const [dResp, tResp] = await Promise.all([
+    fetch('./dialogue_day7.json'),
+    fetch('./day7_line_timings.json'),
+  ]);
+  if (!dResp.ok) throw new Error('dialogue_day7.json ' + dResp.status);
+  if (!tResp.ok) throw new Error('day7_line_timings.json ' + tResp.status);
+  const dialogue = await dResp.json();
+  const timings = await tResp.json();
+  const tMap = {};
+  timings.parts.forEach(p => { tMap[p.id] = p; });
+  PARTS_DATA = dialogue.parts.map(p => {
+    const tParts = tMap[p.id] || { lines: [] };
+    return {
+      id: p.id,
+      title: p.title,
+      lines: p.dialogue.map((d, i) => {
+        const t = tParts.lines[i] || {};
+        return {
+          idx: i, role: d.role, en: d.en, zh: d.zh,
+          start: t.start || 0, end: t.end || 0, duration: t.duration || 0,
+        };
+      }),
+    };
+  });
+  TOTAL_LINES = PARTS_DATA.reduce((s, p) => s + p.lines.length, 0);
+}
+function bindLine(el) {
+  const key = el.dataset.lineKey;
+  const start = parseFloat(el.dataset.start);
+  const end = parseFloat(el.dataset.end);
+  const playBtn = el.querySelector('.btn-play');
+  const markBtn = el.querySelector('.btn-mark');
+  const unmarkBtn = el.querySelector('.btn-unmark');
+  playBtn.addEventListener('click', () => {
+    if (playBtn.classList.contains('playing')) {
+      audioPlayer.pause();
+      playBtn.classList.remove('playing');
+    } else {
+      playSegment(playBtn, start, end);
+    }
+  });
+  const toggleMark = () => {
+    const done = !lineState[key] || !lineState[key].done;
+    lineState[key] = { done };
+    if (done) {
+      el.classList.add('done');
+      if (markBtn) markBtn.style.display = 'none';
+      if (unmarkBtn) unmarkBtn.style.display = 'inline-flex';
+    } else {
+      el.classList.remove('done');
+      if (markBtn) markBtn.style.display = 'inline-flex';
+      if (unmarkBtn) markBtn.style.display = 'none';
+    }
+    saveProgress();
+    updateProgress();
+  };
+  if (markBtn) markBtn.addEventListener('click', toggleMark);
+  if (unmarkBtn) unmarkBtn.addEventListener('click', toggleMark);
+}
+function renderParts(container) {
+  const html = PARTS_DATA.map(part => {
+    const linesHtml = part.lines.map(l => {
+      const ri = roleInfo(l.role);
+      const dur = l.duration.toFixed(2);
+      return `
+<div class="line" data-line-key="${part.id}_${l.idx}" data-part-id="${part.id}" data-line-idx="${l.idx}"
+  data-start="${l.start}" data-end="${l.end}">
+  <div class="line-head">
+    <span class="role-tag ${ri.cls}" style="background:${ri.color}">${ri.tag}</span>
+    <span class="role-label">${ri.label}</span>
+    <span class="line-no">L${l.idx + 1} · ${dur}s</span>
+  </div>
+  <div class="line-en">${escapeHtml(l.en)}</div>
+  <div class="line-zh">${escapeHtml(l.zh)}</div>
+  <div class="actions">
+    <button class="btn btn-play" data-line-key="${part.id}_${l.idx}">▶ 听原音</button>
+    <button class="btn btn-mark">✓ 标记已听</button>
+    <button class="btn btn-unmark" style="display:none">↻ 重听</button>
+  </div>
+</div>`;
+    }).join('');
+    return `
+<div class="part">
+  <div class="part-head">
+    <span class="part-id">${part.id}</span>
+    <span class="part-title">${escapeHtml(part.title)}</span>
+  </div>
+  ${linesHtml}
+</div>`;
+  }).join('');
+  container.innerHTML = html;
+}
+(async function init() {
+  const container = document.getElementById('partsContainer');
+  try {
+    await loadData();
+  } catch (err) {
+    console.error('加载数据失败', err);
+    container.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#C0392B">' +
+      '<b>❌ 加载对话数据失败</b><br>' + err.message + '<br>请检查网络后刷新页面重试</div>';
+    return;
+  }
+  renderParts(container);
+  document.querySelectorAll('.line').forEach(bindLine);
+  loadProgress();
+  updateProgress();
+})();
+</script>
+</body></html>

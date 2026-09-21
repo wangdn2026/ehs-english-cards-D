@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "vol": "Day7",
+    "topic": "亲朋好友 + 高空作业（一）",
+    "topic_en": "Relatives and Friends + Working at Heights (I)",
+    "difficulty": "★★☆",
+    "scheduled_live_date": "2026-09-14",
+    "course_number": "第八次课",
+    "role_voice_map": {
+      "Speaker A": {"gender": "male", "color": "#7BA7BC", "label_zh": "Speaker A · 男"},
+      "Speaker B": {"gender": "female", "color": "#E07A5F", "label_zh": "Speaker B · 女"},
+      "Facility Manager": {"gender": "male", "color": "#3D405B", "label_zh": "Facility Manager · 男"},
+      "EHS Manager": {"gender": "female", "color": "#C9623F", "label_zh": "EHS Manager · 女"}
+    }
+  },
+  "parts": [
+    {
+      "id": 1,
+      "title": "Part 1: 探亲·问候家人近况",
+      "difficulty_star": "★",
+      "difficulty_label": "L1 · 入门",
+      "key_phrases": ["relatives", "engaged", "catch up"],
+      "dialogue": [
+        {
+          "role": "Speaker A",
+          "en": "How's your family doing?",
+          "zh": "你的家人怎么样？"
+        },
+        {
+          "role": "Speaker B",
+          "en": "Everybody is doing fine. I'm going to visit my grandparents this weekend.",
+          "zh": "所有人都挺好的。这周末我准备去看望爷爷奶奶。"
+        },
+        {
+          "role": "Speaker A",
+          "en": "I haven't seen my uncle for a long time. Have you heard from him lately?",
+          "zh": "我很长时间没见到叔叔了。你最近有没有他的消息？"
+        },
+        {
+          "role": "Speaker B",
+          "en": "No, I haven't. Your mother can't wait to see you again.",
+          "zh": "我还没有。你妈妈迫不及待想要再见到你。"
+        },
+        {
+          "role": "Speaker A",
+          "en": "Right. My cousin just got engaged. I really want to catch up with him.",
+          "zh": "没错。我的表兄刚订婚，我很想和他叙叙近况。"
+        },
+        {
+          "role": "Speaker B",
+          "en": "That's exciting! Are many relatives planning to come over?",
+          "zh": "真让人高兴！会有不少亲戚过来吗？"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Part 2: 探亲·周末相聚邀约",
+      "difficulty_star": "★★",
+      "difficulty_label": "L2 · 进阶",
+      "key_phrases": ["drop by", "hang out"],
+      "dialogue": [
+        {
+          "role": "Speaker A",
+          "en": "Several cousins will drop by. What's up? Tell me how you've been.",
+          "zh": "好几位表亲都会到访。近况如何？跟我说下你过得怎么样。"
+        },
+        {
+          "role": "Speaker B",
+          "en": "A bunch of things have happened while you were away.",
+          "zh": "你不在的这段日子发生了一连串的事。"
+        },
+        {
+          "role": "Speaker A",
+          "en": "Sorry I haven't called you recently. How are things going with you?",
+          "zh": "很抱歉我近来没打电话。你一切都顺利吗？"
+        },
+        {
+          "role": "Speaker B",
+          "en": "Everything goes well. Would you feel like hanging out later this week?",
+          "zh": "一切都挺好。这周晚些时候你愿意出来聚聚吗？"
+        },
+        {
+          "role": "Speaker A",
+          "en": "I'd love to. Feel free to come over to my place anytime.",
+          "zh": "我很乐意。你随时都可以来我家。"
+        },
+        {
+          "role": "Speaker B",
+          "en": "Great. Can we try to hang out some other time this week?",
+          "zh": "太好了。我们能不能这周另外找个时间相聚？"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Part 3: 探亲·周末时间敲定",
+      "difficulty_star": "★",
+      "difficulty_label": "L1 · 入门",
+      "key_phrases": ["see you later"],
+      "dialogue": [
+        {
+          "role": "Speaker A",
+          "en": "Sure, we can catch up once I rest for a bit.",
+          "zh": "没问题，我稍微休息之后咱们就聚一聚。"
+        },
+        {
+          "role": "Speaker B",
+          "en": "Perfect. See you later.",
+          "zh": "太好了，回头见。"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Part 4: 高空作业·定义/禁止/风险评估",
+      "difficulty_star": "★★★",
+      "difficulty_label": "L3 · 实战",
+      "key_phrases": ["working at heights", "fall protection", "guardrails"],
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "We have a lot of working-at-height jobs in our facility. Could you walk me through our main fall-protection requirements?",
+          "zh": "我们工厂有不少高空作业，你跟我梳理下我们主要的坠落防护要求好吗？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Sure. First, I would like to let you know our definition: performing work when the vertical distance is greater than or equal to 1.8 meters (>=1.8 m), as measured from the level below to the worker's feet, and there is a potential risk of injury due to a fall.",
+          "zh": "好的。我想先告诉你我们的定义：从下方作业平面测量至作业人员脚部的垂直距离大于或等于1.8米，且存在坠落致伤潜在风险的场所。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "What activities are strictly prohibited for working-at-height?",
+          "zh": "高空作业有哪些明确禁止的行为？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "We cannot use forklifts or pallets as work platforms. Also, employees must not work alone for roof work or when they use aerial lifts, scissor lifts or ladders.",
+          "zh": "不能用叉车，托盘严禁拿来当作业平台；屋顶作业、使用高空作业平台、剪叉式升降机以及梯子时，员工不允许单人作业。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "It makes sense. In addition, before we start these jobs, do they need to complete a risk assessment?",
+          "zh": "有道理。此外，开展这类作业之前，他们需要完成风险评估吗？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Sure, they should identify activities, locations and assess the risks where any of the following may occur: (1) risk of injury to employees who are performing the work; (2) risk of injury to employees, other workers and visitors who are nearby or below; (3) risk of property damage, spills and/or releases of pollutants to the environment that are caused by falling objects.",
+          "zh": "当然，他们应识别可能发生以下任一情况的作业活动、作业地点，并评估风险：（1）作业人员存在受伤风险；（2）员工、其他作业人员以及附近或下方访客存在受伤风险；（3）物体坠落造成财产损坏、污染物泄漏和/或向环境排放污染物的风险。"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Part 5: 高空作业·防护措施/特殊场景/收尾",
+      "difficulty_star": "★★★",
+      "difficulty_label": "L3 · 实战",
+      "key_phrases": ["anchor points", "fall arrest", "fall restraint", "parapet", "skylight"],
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "What methods or procedures need to be implemented and/or required for working at heights?",
+          "zh": "高处作业需要落实和/或满足哪些措施？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "First priority is physical barriers such as guardrails. When barriers aren't feasible, we use personal fall-restraint or fall-arrest systems, and anchor points must be properly installed. We also need methods to control or reduce risks to all people in the area whenever anyone is working nearby or below, methods to inspect and repair damage to fixed equipment, procedures for inspection of personal fall restraint and fall arrest equipment, proper selection and use of ladders, proper selection and use of personal protective equipment when necessary, and a training program for employees who work at heights.",
+          "zh": "优先考虑实体屏障，例如护栏；屏障不可行时，使用个人防坠落约束或防坠落制动系统，锚固点必须合规安装。同时还需管控或降低该区域附近或下方所有人员的风险，检查与维修固定设备损伤，个人防坠落约束/制动设备零部件检查，梯子正确选用，必要时正确选用个人防护装备，以及高空作业员工培训项目。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "Agree. Specifically, we have mezzanines and loading docks here. What special rules apply to those areas?",
+          "zh": "同意。具体来说，我们现场还有夹层、装卸码头，这两块有什么特殊要求？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Permanently installed fall prevention barriers at least 1 meter (42 inches) high. Use chain or wire rope barriers where permanent barriers are not feasible.",
+          "zh": "永久性安装高度至少1米（42英寸）的防坠落防护栏；在无法设置永久性防护栏的位置，可使用链条或钢丝绳式防护栏。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "How about our roof and skylight work?",
+          "zh": "那屋顶和天窗作业呢？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "A parapet at least 1 meter high, installed along the edge of the roof; fixed barriers around each skylight, such as guardrails at least 1 meter high or fall protection screens. If barriers can't meet the standard, anyone working within 1.8 meters of the edge must wear personal fall-protection equipment. Only trained staff can access roof areas, and warning signs are required.",
+          "zh": "沿屋顶边缘设置的高度至少1米的防护矮墙（女儿墙）；每个天窗周边设置固定防护屏障，例如高度至少1米的护栏或防坠落防护网。屏障不达标的情况下，距离边缘1.8米范围内作业人员必须佩戴个人防坠落装备；只有受过培训的人员才可以上屋顶，并且要设置警示标识。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "That covers most key points. Thank you for clarifying these requirements. It is also a fantastic training for me, really appreciate.",
+          "zh": "核心要点都讲到了，感谢你说明这些要求。这对我而言也是一次很棒的训练，非常感谢。"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "You're welcome. Reach out anytime if you have any questions on site.",
+          "zh": "不客气，现场碰到疑问随时沟通。"
+        }
+      ]
+    }
+  ]
+}
