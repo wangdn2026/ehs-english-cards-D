@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "vol": "Day8",
+    "topic": "结账 + 电气安全（一）",
+    "topic_en": "Payment & Electrical Safety (I)",
+    "session": "第十次课",
+    "scheduled_live_date": "2026-10-12",
+    "difficulty": "★★☆",
+    "summary": "日常交际英语：Payment 结账（12 句） + EHS 情景英语：Global Electrical Safety Standard（一）知识块 + FM 与 EHS 经理就电气安全作业规范的 8 段对话（16 句）",
+    "role_voice": {
+      "Customer": "zh-CN-XiaoxiaoNeural（女声）",
+      "Clerk": "zh-CN-YunxiNeural（男声）",
+      "Facility Manager": "zh-CN-YunxiNeural（男声）",
+      "EHS Manager": "zh-CN-XiaoxiaoNeural（女声）"
+    }
+  },
+  "parts": [
+    {
+      "id": 1,
+      "title": "Part 1: 结账·开始与支付方式",
+      "difficulty_star": "★",
+      "difficulty_label": "L1 · 入门",
+      "key_phrases": [
+        "check out",
+        "credit card",
+        "debit card",
+        "cash"
+      ],
+      "dialogue": [
+        {
+          "role": "Customer",
+          "en": "Hi, I would like to check out.",
+          "zh": "你好，我要结账。"
+        },
+        {
+          "role": "Clerk",
+          "en": "Sure. Will that be cash, credit card, or debit card?",
+          "zh": "好的。请问您用现金、信用卡还是借记卡付款？"
+        },
+        {
+          "role": "Customer",
+          "en": "Can you tell me the difference between credit card, debit card and cash here?",
+          "zh": "能跟我说一下在这里用信用卡、借记卡和现金有什么区别吗？"
+        },
+        {
+          "role": "Clerk",
+          "en": "If you use credit card, there will be a small surcharge. Cash or debit card has no extra fee.",
+          "zh": "如果刷信用卡，会有一笔小额附加费。现金或借记卡没有额外费用。"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Part 2: 结账·折扣与促销",
+      "difficulty_star": "★★",
+      "difficulty_label": "L2 · 进阶",
+      "key_phrases": [
+        "discount",
+        "promotion",
+        "surcharge"
+      ],
+      "dialogue": [
+        {
+          "role": "Customer",
+          "en": "Do you have any discounts for these items? Is it 15% off for the first item, and 25% off for the second one?",
+          "zh": "这些商品有折扣吗？是不是第一件打85折，第二件打75折？"
+        },
+        {
+          "role": "Clerk",
+          "en": "Yes, that's our promotion today.",
+          "zh": "是的，这是我们今天的促销活动。"
+        },
+        {
+          "role": "Customer",
+          "en": "Oh, I see. Where is the checkout counter?",
+          "zh": "哦，我明白了。收银台在哪里？"
+        },
+        {
+          "role": "Clerk",
+          "en": "This is the checkout counter right here.",
+          "zh": "这里就是收银台。"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Part 3: 结账·会员卡与收银",
+      "difficulty_star": "★★",
+      "difficulty_label": "L2 · 进阶",
+      "key_phrases": [
+        "checkout counter",
+        "membership card",
+        "points",
+        "receipt"
+      ],
+      "dialogue": [
+        {
+          "role": "Customer",
+          "en": "Do you have a membership card for this store?",
+          "zh": "这家店有会员卡吗？"
+        },
+        {
+          "role": "Clerk",
+          "en": "Yes. Would you like to sign up for one? It can get you points and get discount when it reaches a certain amount.",
+          "zh": "有的。您要不要注册一张？消费达到一定金额就可以累积积分并享受折扣。"
+        },
+        {
+          "role": "Customer",
+          "en": "Not today, thanks. I will pay by cash.",
+          "zh": "今天先不用，谢谢。我付现金。"
+        },
+        {
+          "role": "Clerk",
+          "en": "Alright. Your total is 48 dollars. Here is your change and receipt. Have a nice day!",
+          "zh": "好的。您总共48美元。这是找您的钱和小票。祝您愉快！"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Part 4: 电气安全·规程/限制/作业文件",
+      "difficulty_star": "★★★",
+      "difficulty_label": "L3 · 实战",
+      "key_phrases": [
+        "written electrical safety procedures",
+        "qualified electrical worker",
+        "lockout/tagout (L. O. T. O.)",
+        "Pre-Task Plan (P. T. P.)",
+        "Energized Electrical Work Permit (E. E. W. P.)"
+      ],
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "We need to develop written electrical safety procedures for our site. What key items should we include?",
+          "zh": "我们需要为厂区制定书面电气安全规程，里面要包含哪些核心内容？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "It should cover roles & responsibilities, safe work conditions, arc flash assessment, P. P. E., training and rules for energized work.",
+          "zh": "应包含角色职责、安全作业条件、电弧危害评估、个人防护装备、培训以及带电作业相关规定。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "What basic restrictions are required in these written procedures?",
+          "zh": "这份书面规程里面必须包含哪些基础限制性条款？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Only qualified electrical workers can work on circuit parts. Access to electrical rooms is limited to authorized personnel only.",
+          "zh": "只有持证电气人员才可以在电路部件上作业；电气机房仅限授权人员进入。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "When we do energized work, what documents are mandatory before starting the job?",
+          "zh": "开展带电作业前，必须准备哪些文件？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "We need a Pre-Task Plan, or P. T. P. An Energized Electrical Work Permit, E. E. W. P., is also required for most energized tasks.",
+          "zh": "我们需要作业前方案 P. T. P.；大部分带电作业还必须办理带电作业许可证 E. E. W. P.。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "Who needs to review and sign off on the Pre-Task Plan before work starts?",
+          "zh": "开工前，作业前方案需要谁来审核和签字？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "All crew members must review it and sign. The supervisor will hold a job briefing to go over risks and precautions.",
+          "zh": "所有作业人员都要审核并签字。主管需要开展作业交底，复核风险和防护措施。"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Part 5: 电气安全·净距/维护/延长线",
+      "difficulty_star": "★★★",
+      "difficulty_label": "L3 · 实战",
+      "key_phrases": [
+        "clear working space",
+        "preventive maintenance",
+        "extension cord",
+        "ground fault circuit interrupter (G. F. C. I.)",
+        "energized work",
+        "arc flash"
+      ],
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "What is the minimum clearance we must keep in front of electrical equipment?",
+          "zh": "电气设备前方，我们必须保留的最小安全净距是多少？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "We must maintain at least 36 inches of clear working space. This area cannot be used for storage.",
+          "zh": "至少保留36英寸的净操作空间，该区域严禁堆放任何物料。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "What rule do we follow for electrical preventive maintenance?",
+          "zh": "电气预防性维护要遵循什么原则？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Maintenance shall be scheduled based on manufacturer recommendations and accepted industry standards.",
+          "zh": "维护计划需要按照设备厂商建议以及公认行业标准来制定。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "Can we use extension cords to replace permanent wiring in our facility?",
+          "zh": "厂区内，延长线可以用来替代固定布线吗？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "No. Extension cords are only for temporary power. They cannot be used as permanent wiring.",
+          "zh": "不可以。延长线仅用于临时供电，禁止替代固定布线。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "Any other important rules for extension cords?",
+          "zh": "延长线还有哪些重要规定？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Several: (1) Do not exceed the cord's rating. (2) Remove damaged cords from service right away. (3) Protect flexible cords from damage. (4) Never alter devices; defective cords must be discarded. (5) Use Ground Fault Circuit Interrupters (G. F. C. I.) for all extension-cord activities, and they are required in damp or wet conditions. Test them before use.",
+          "zh": "有几点：(1) 严禁超过线缆额定负荷。(2) 线缆一旦破损必须立刻停用。(3) 软线和电缆应加以保护，防止受损。(4) 设备不得进行任何形式的改动；故障延长线必须丢弃。(5) 延长线场景建议使用接地故障断路器 (G. F. C. I.)，潮湿环境作业必须配备，使用前应进行检测。"
+        }
+      ]
+    }
+  ]
+}
