@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day8 Electrical Safety Audio Preview</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0F1419;
+    color: #E8E8E8;
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+  }
+  .page-title {
+    text-align: center;
+    color: #E07A5F;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .page-sub {
+    text-align: center;
+    color: #9AA0A6;
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  .card {
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    background: #1A1F26;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: #232A33;
+    border-bottom: 1px solid #2C333D;
+  }
+  .card-title { font-size: 15px; font-weight: 600; color: #F5E6D3; }
+  .card-meta { font-size: 12px; color: #9AA0A6; }
+  .img-wrap {
+    position: relative;
+    width: 100%;
+    background: #000;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .play-btn {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(224, 122, 95, 0.92);
+    border: 3px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    transition: transform 0.15s, background 0.15s;
+    z-index: 2;
+  }
+  .play-btn:hover { background: rgba(224, 122, 95, 1); transform: scale(1.05); }
+  .play-btn:active { transform: scale(0.96); }
+  .play-btn.playing { background: rgba(61, 64, 91, 0.92); }
+  .play-btn svg { width: 32px; height: 32px; fill: #fff; pointer-events: none; }
+  .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,0.15); z-index: 1; }
+  .progress-bar { height: 100%; background: #E07A5F; width: 0; transition: width 0.1s linear; }
+  .card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    background: #1F252E;
+    font-size: 12px;
+    color: #9AA0A6;
+  }
+  .time { font-variant-numeric: tabular-nums; }
+  .badge { display: inline-block; padding: 2px 8px; background: #2C333D; border-radius: 4px; color: #E07A5F; font-size: 11px; margin-left: 6px; }
+  @media (max-width: 640px) {
+    body { padding: 16px 10px 48px; }
+    .play-btn { width: 56px; height: 56px; right: 14px; bottom: 14px; }
+    .play-btn svg { width: 24px; height: 24px; }
+    .card-head { padding: 10px 14px; }
+    .card-title { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page-title">Day8 · Electrical Safety (Part 1) Audio Preview</div>
+  <div class="page-sub">Tap the orange button on each image to play · 2 images, shared audio</div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <span class="card-title">Figure 1 · PTP &amp; EEWP Job Briefing</span>
+        <span class="badge">16 lines</span>
+      </div>
+      <div class="card-meta">Supervisor × Qualified Electrical Worker</div>
+    </div>
+    <div class="img-wrap">
+      <img src="img_ptp_eewp.png" alt="PTP EEWP Job Briefing">
+      <button class="play-btn" id="btn1" aria-label="Play PTP EEWP audio">
+        <svg viewBox="0 0 24 24" id="icon1"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="progress"><div class="progress-bar" id="bar1"></div></div>
+    </div>
+    <div class="card-foot">
+      <div>Topic: Pre-Task Plan PTP + Energized Electrical Work Permit EEWP</div>
+      <div class="time" id="time1">0:00 / 0:00</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <span class="card-title">Figure 2 · Energized Work Mode Dialogue</span>
+        <span class="badge">16 lines</span>
+      </div>
+      <div class="card-meta">EHS Manager × Electrical Engineer</div>
+    </div>
+    <div class="img-wrap">
+      <img src="img_energized_mode.png" alt="Energized Work Mode Dialogue">
+      <button class="play-btn" id="btn2" aria-label="Play energized mode audio">
+        <svg viewBox="0 0 24 24" id="icon2"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="progress"><div class="progress-bar" id="bar2"></div></div>
+    </div>
+    <div class="card-foot">
+      <div>Topic: Mode 1 / 2a / 2b / 3a / 3b classification and limits</div>
+      <div class="time" id="time2">0:00 / 0:00</div>
+    </div>
+  </div>
+
+  <audio id="audio1" preload="metadata" src="audio.mp3"></audio>
+  <audio id="audio2" preload="metadata" src="audio.mp3"></audio>
+
+<script>
+  function fmt(s) {
+    if (!isFinite(s) || s < 0) return "0:00";
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ":" + (sec < 10 ? "0" : "") + sec;
+  }
+  function wire(audioId, btnId, iconId, barId, timeId) {
+    var audio = document.getElementById(audioId);
+    var btn = document.getElementById(btnId);
+    var icon = document.getElementById(iconId);
+    var bar = document.getElementById(barId);
+    var time = document.getElementById(timeId);
+    var ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
+    var ICON_PAUSE = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+    function update() {
+      var d = audio.duration || 0;
+      var c = audio.currentTime || 0;
+      bar.style.width = d > 0 ? (c / d * 100) + "%" : "0%";
+      time.textContent = fmt(c) + " / " + fmt(d);
+    }
+    btn.addEventListener("click", function() {
+      document.querySelectorAll("audio").forEach(function(a) {
+        if (a !== audio && !a.paused) {
+          a.pause();
+          var id = a.id;
+          document.getElementById("btn" + id.slice(-1)).classList.remove("playing");
+          document.getElementById("icon" + id.slice(-1)).innerHTML = ICON_PLAY;
+        }
+      });
+      if (audio.paused) {
+        audio.play();
+        btn.classList.add("playing");
+        icon.innerHTML = ICON_PAUSE;
+      } else {
+        audio.pause();
+        btn.classList.remove("playing");
+        icon.innerHTML = ICON_PLAY;
+      }
+    });
+    audio.addEventListener("timeupdate", update);
+    audio.addEventListener("loadedmetadata", update);
+    audio.addEventListener("ended", function() {
+      btn.classList.remove("playing");
+      icon.innerHTML = ICON_PLAY;
+      bar.style.width = "0%";
+    });
+    audio.addEventListener("pause", function() {
+      btn.classList.remove("playing");
+      icon.innerHTML = ICON_PLAY;
+    });
+    audio.addEventListener("play", function() {
+      btn.classList.add("playing");
+      icon.innerHTML = ICON_PAUSE;
+    });
+  }
+  wire("audio1", "btn1", "icon1", "bar1", "time1");
+  wire("audio2", "btn2", "icon2", "bar2", "time2");
+</script>
+</body>
+</html>
