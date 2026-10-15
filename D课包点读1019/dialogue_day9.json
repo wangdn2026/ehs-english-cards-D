@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "vol": "Day9",
+    "topic": "电气安全（二）",
+    "session": "第十一次课",
+    "scheduled_live_date": "2026-10-19",
+    "difficulty": "★★☆",
+    "source": "doubao_html_20261015_162302",
+    "note": "仅取 EHS 部分（FM × EHS Manager 完整对话），不含出国留学生活交际部分"
+  },
+  "parts": [
+    {
+      "id": 1,
+      "title": "Part 1: 强制流程与状态检测",
+      "difficulty_star": "★★☆",
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "What is the procedure followed mandatorily before we conduct any electrical maintenance?",
+          "zh": "我们开展所有电气维保前，必须强制执行什么流程？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "All electrical work requires the implementation of Lockout/Tagout (L. O. T. O.) procedures. We must isolate energy sources, lock the devices, and post warning tags to prevent accidental power startup.",
+          "zh": "所有电气作业必须执行挂牌上锁流程。彻底隔离能源、锁定开关、悬挂警示标识，杜绝意外送电。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "Do we need to test the equipment status before electrical operation?",
+          "zh": "电气作业前是否需要检测设备带电状态？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Yes. We must perform live-dead testing on-site. Verify live status before shutdown and confirm dead zero-energy status before LOTO to ensure safety.",
+          "zh": "需要。现场必须执行带电-失电测试。停机前确认带电状态，挂牌上锁前核验零能量失电状态，保障作业安全。"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Part 2: 人员资质与防护装备",
+      "difficulty_star": "★★☆",
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "Who are allowed to perform on-site electrical work?",
+          "zh": "谁获准开展现场电气作业？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Only qualified/certified electrical personnel can conduct electrical tasks. Untrained staff are strictly prohibited from any electrical operation.",
+          "zh": "只有持证合格电工可开展电气作业，未受训人员严禁任何电气操作。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "What P. P. E. and tools are required for high voltage work?",
+          "zh": "高压电气作业，必须配备哪些防护和工具？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Workers shall use voltage-rated insulating rubber gloves with leather protectors, arc-rated flame-resistant clothing, insulating hard hat with arc flash face shield, insulating boots. We also need voltage-rated insulated hand tools, insulating blankets and insulating mats. All equipment must match the system voltage and pass periodic testing.",
+          "zh": "作业人员要佩戴对应电压等级的绝缘橡胶手套（外加皮革保护手套）、电弧防护阻燃服、带电弧防护面屏的绝缘安全帽、绝缘靴。配套使用额定电压的绝缘手动工具、绝缘毯、绝缘垫。所有装备必须匹配系统电压，并定期检测。"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Part 3: 带电禁令与承包商管控",
+      "difficulty_star": "★★☆",
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "Can our team carry out minor modifications while the equipment is live?",
+          "zh": "设备带电状态下，我们可以做小的改动作业吗？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "No. Unauthorized live-line work is strictly forbidden. All adjustments and repairs must be done under complete de-energized status with LOTO implementation.",
+          "zh": "不可以。严禁无授权带电作业，所有调试、维修工作必须完全断电、完成挂牌上锁后开展。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "How do we manage electrical safety for external contractors?",
+          "zh": "外来承包商的电气安全我们该如何管控？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "All contractors must take electrical safety training, follow site LOTO rules, and be supervised by our internal qualified personnel during electrical work.",
+          "zh": "所有承包商必须完成电气安全培训，严格遵守现场挂牌上锁规范，电气作业全程由我方持证人员监督。"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Part 4: 日常巡检与违规处置",
+      "difficulty_star": "★★☆",
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "What daily checks should our facility team focus on?",
+          "zh": "我们厂务团队日常电气巡检重点是什么？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Inspect wire aging, loose connections, damaged enclosures and abnormal heat. Report and isolate all electrical hazards immediately.",
+          "zh": "重点排查线路老化、接线松动、围栏破损、设备异常发热，所有电气隐患必须立即上报、隔离管控。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "What happens if someone violates electrical safety rules?",
+          "zh": "如果人员违反电气安全规范，如何处理？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Any electrical safety violation will trigger immediate stop work, formal investigation and corrective actions. Repeat violations will lead to disciplinary penalties.",
+          "zh": "所有电气违规行为立即停工整改、溯源调查、落实纠正措施，屡犯将执行纪律追责。"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Part 5: 培训体系与定期复训",
+      "difficulty_star": "★★☆",
+      "dialogue": [
+        {
+          "role": "Facility Manager",
+          "en": "Who needs to take our electrical safety training?",
+          "zh": "哪些人员需要参加电气安全培训？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Qualified electricians need advanced electrical safety training. All other facility staff must at least receive awareness training to recognize electrical hazards.",
+          "zh": "持证电工需要高阶电气安全培训。其余所有厂务人员至少要接受认知培训，能够识别电气危害。"
+        },
+        {
+          "role": "Facility Manager",
+          "en": "How often do we need to renew electrical safety training for our team?",
+          "zh": "我们团队的电气安全培训多久需要复训一次？"
+        },
+        {
+          "role": "EHS Manager",
+          "en": "Electrical safety refresher training shall be conducted at least on annual basis. We also need extra training whenever new equipment or new hazards are introduced.",
+          "zh": "电气安全培训需每年至少复训一次。当引入新设备、出现新危害时，还要额外培训。"
+        }
+      ]
+    }
+  ]
+}
