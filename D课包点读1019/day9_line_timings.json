@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "vol": "Day9",
+    "topic": "电气安全（二）",
+    "total_duration": 346.01,
+    "total_lines": 20,
+    "parts": 5,
+    "audio_file": "day9_full.mp3",
+    "part_gap": 0.5,
+    "weight_model": {
+      "en_word_s": 0.62,
+      "zh_char_s": 0.33
+    },
+    "method": "aligned on final audio: separator-located Part ranges + per-part DP over gap candidates"
+  },
+  "parts": [
+    {
+      "id": 1,
+      "title": "Part 1: 强制流程与状态检测",
+      "audio": "audio/长音频part/day9_electrical_part1.mp3",
+      "start": 0.0,
+      "end": 75.17,
+      "duration": 75.17,
+      "lines": [
+        {
+          "index": 0,
+          "role": "Facility Manager",
+          "start": 0.0,
+          "end": 11.55,
+          "duration": 11.55
+        },
+        {
+          "index": 1,
+          "role": "EHS Manager",
+          "start": 11.55,
+          "end": 38.25,
+          "duration": 26.7
+        },
+        {
+          "index": 2,
+          "role": "Facility Manager",
+          "start": 38.25,
+          "end": 50.035,
+          "duration": 11.785
+        },
+        {
+          "index": 3,
+          "role": "EHS Manager",
+          "start": 50.035,
+          "end": 75.17,
+          "duration": 25.135
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Part 2: 人员资质与防护装备",
+      "audio": "audio/长音频part/day9_electrical_part2.mp3",
+      "start": 77.23,
+      "end": 158.72,
+      "duration": 81.49,
+      "lines": [
+        {
+          "index": 0,
+          "role": "Facility Manager",
+          "start": 77.23,
+          "end": 84.755,
+          "duration": 7.525
+        },
+        {
+          "index": 1,
+          "role": "EHS Manager",
+          "start": 84.755,
+          "end": 99.39,
+          "duration": 14.635
+        },
+        {
+          "index": 2,
+          "role": "Facility Manager",
+          "start": 99.39,
+          "end": 112.0,
+          "duration": 12.61
+        },
+        {
+          "index": 3,
+          "role": "EHS Manager",
+          "start": 112.0,
+          "end": 158.72,
+          "duration": 46.72
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Part 3: 带电禁令与承包商管控",
+      "audio": "audio/长音频part/day9_electrical_part3.mp3",
+      "start": 159.57,
+      "end": 230.72,
+      "duration": 71.15,
+      "lines": [
+        {
+          "index": 0,
+          "role": "Facility Manager",
+          "start": 159.57,
+          "end": 170.84,
+          "duration": 11.27
+        },
+        {
+          "index": 1,
+          "role": "EHS Manager",
+          "start": 170.84,
+          "end": 196.03,
+          "duration": 25.19
+        },
+        {
+          "index": 2,
+          "role": "Facility Manager",
+          "start": 196.03,
+          "end": 205.53,
+          "duration": 9.5
+        },
+        {
+          "index": 3,
+          "role": "EHS Manager",
+          "start": 205.53,
+          "end": 230.72,
+          "duration": 25.19
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Part 4: 日常巡检与违规处置",
+      "audio": "audio/长音频part/day9_electrical_part4.mp3",
+      "start": 232.68,
+      "end": 280.27,
+      "duration": 47.59,
+      "lines": [
+        {
+          "index": 0,
+          "role": "Facility Manager",
+          "start": 232.68,
+          "end": 239.115,
+          "duration": 6.435
+        },
+        {
+          "index": 1,
+          "role": "EHS Manager",
+          "start": 239.115,
+          "end": 255.96,
+          "duration": 16.845
+        },
+        {
+          "index": 2,
+          "role": "Facility Manager",
+          "start": 255.96,
+          "end": 262.415,
+          "duration": 6.455
+        },
+        {
+          "index": 3,
+          "role": "EHS Manager",
+          "start": 262.415,
+          "end": 280.27,
+          "duration": 17.855
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Part 5: 培训体系与定期复训",
+      "audio": "audio/长音频part/day9_electrical_part5.mp3",
+      "start": 281.01,
+      "end": 346.007,
+      "duration": 64.997,
+      "lines": [
+        {
+          "index": 0,
+          "role": "Facility Manager",
+          "start": 281.01,
+          "end": 288.92,
+          "duration": 7.91
+        },
+        {
+          "index": 1,
+          "role": "EHS Manager",
+          "start": 288.92,
+          "end": 309.33,
+          "duration": 20.41
+        },
+        {
+          "index": 2,
+          "role": "Facility Manager",
+          "start": 309.33,
+          "end": 322.275,
+          "duration": 12.945
+        },
+        {
+          "index": 3,
+          "role": "EHS Manager",
+          "start": 322.275,
+          "end": 346.007,
+          "duration": 23.732
+        }
+      ]
+    }
+  ]
+}
