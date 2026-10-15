@@ -31,7 +31,7 @@
         },
         {
           "role": "EHS Manager",
-          "en": "Yes. We must perform live-dead testing on-site. Verify live status before shutdown and confirm dead zero-energy status before LOTO to ensure safety.",
+          "en": "Yes. We must perform live-dead testing on-site. Verify live status before shutdown and confirm dead zero-energy status before L. O. T. O. to ensure safety.",
           "zh": "需要。现场必须执行带电-失电测试。停机前确认带电状态，挂牌上锁前核验零能量失电状态，保障作业安全。"
         }
       ]
@@ -75,7 +75,7 @@
         },
         {
           "role": "EHS Manager",
-          "en": "No. Unauthorized live-line work is strictly forbidden. All adjustments and repairs must be done under complete de-energized status with LOTO implementation.",
+          "en": "No. Unauthorized live-line work is strictly forbidden. All adjustments and repairs must be done under complete de-energized status with L. O. T. O. implementation.",
           "zh": "不可以。严禁无授权带电作业，所有调试、维修工作必须完全断电、完成挂牌上锁后开展。"
         },
         {
@@ -85,7 +85,7 @@
         },
         {
           "role": "EHS Manager",
-          "en": "All contractors must take electrical safety training, follow site LOTO rules, and be supervised by our internal qualified personnel during electrical work.",
+          "en": "All contractors must take electrical safety training, follow site L. O. T. O. rules, and be supervised by our internal qualified personnel during electrical work.",
           "zh": "所有承包商必须完成电气安全培训，严格遵守现场挂牌上锁规范，电气作业全程由我方持证人员监督。"
         }
       ]
