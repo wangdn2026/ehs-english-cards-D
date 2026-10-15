@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>跟读训练 · Day9 电气安全(二)</title>
+<style>
+  :root {
+    --c-tian:#7BA7BC; --c-orange:#E07A5F; --c-orange-deep:#C9623F; --c-charcoal:#3D405B;
+    --c-bg:#F4F1DE; --c-card:#FFF; --c-line:#E5E1D0; --c-soft:#8C99AB;
+    --c-good:#5B8FA8; --c-best:#7BA7BC;
+  }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { margin:0; padding:0; background:var(--c-bg); color:var(--c-charcoal);
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+    font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+    overscroll-behavior:none; -webkit-user-select:none; user-select:none; }
+  .top { background:linear-gradient(135deg,var(--c-charcoal) 0%,var(--c-orange-deep) 100%);
+    color:#fff; padding:20px 18px 18px; }
+  .top h1 { margin:0 0 4px; font-size:19px; font-weight:600; letter-spacing:.3px; }
+  .top .sub { font-size:12.5px; opacity:.88; line-height:1.55; }
+  .meta-tag { display:inline-block; margin-top:8px; padding:2px 9px; background:rgba(255,255,255,.18);
+    border-radius:10px; font-size:11px; }
+  .progress { background:var(--c-card); margin:12px 14px 0; padding:12px 14px;
+    border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.04); display:flex; align-items:center; gap:10px; }
+  .progress-bar { flex:1; height:6px; background:var(--c-line); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; background:var(--c-best); width:0%; transition:width .4s ease; }
+  .progress-text { font-size:12px; color:var(--c-soft); white-space:nowrap; font-weight:500; }
+  .tips { margin:12px 14px; padding:11px 13px; background:#EAF2F6; border-left:3px solid var(--c-tian);
+    border-radius:4px; font-size:12px; color:#2C4A5C; line-height:1.6; }
+  .tips b { color:#1A3548; }
+  .audio-state { margin:12px 14px; padding:11px 13px; border-radius:4px; font-size:12.5px; line-height:1.6; }
+  .audio-state.wait { background:#FDF0E6; border-left:3px solid var(--c-orange); color:#8A4A2B; }
+  .audio-state.ok { display:none; }
+  .part { margin:16px 14px 8px; }
+  .part-head { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .part-id { background:var(--c-charcoal); color:#fff; font-size:11px; padding:3px 9px;
+    border-radius:10px; font-weight:600; letter-spacing:.5px; }
+  .part-title { font-size:14px; font-weight:600; color:var(--c-charcoal); }
+  .line { background:var(--c-card); border-radius:12px; padding:14px 14px 12px; margin-bottom:10px;
+    box-shadow:0 1px 3px rgba(0,0,0,.05); position:relative; overflow:hidden;
+    border:2px solid transparent; transition:border-color .3s; }
+  .line.done { border-color:var(--c-good); }
+  .line-head { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .role-tag { font-size:11px; font-weight:600; padding:2px 8px; border-radius:8px; color:#fff; letter-spacing:.3px; }
+  .line-no { font-size:11px; color:var(--c-soft); margin-left:auto; }
+  .line-en { font-size:16px; font-weight:500; color:var(--c-charcoal); margin:4px 0; line-height:1.45; }
+  .line-zh { font-size:12.5px; color:var(--c-soft); margin-bottom:10px; }
+  .actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .btn { border:none; border-radius:18px; padding:8px 16px; font-size:13px; cursor:pointer;
+    font-weight:500; display:inline-flex; align-items:center; gap:5px; transition:all .2s;
+    font-family:inherit; -webkit-tap-highlight-color:transparent; }
+  .btn-play { background:#7BA7BC; color:#fff; }
+  .btn-play:active { background:#5B8FA8; }
+  .btn-play.playing { background:#E07A5F; }
+  .btn-play.disabled { background:#C6CDD3; }
+  .btn-mark { background:#f0f7f9; color:#3D405B; }
+  .btn-unmark { background:#FBE3D4; color:#C9623F; }
+  .toast { position:fixed; top:30%; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.85);
+    color:#fff; padding:12px 22px; border-radius:24px; font-size:14px; z-index:10000;
+    box-shadow:0 4px 16px rgba(0,0,0,.3); animation:toastIn .3s ease; }
+  @keyframes toastIn { from { opacity:0; transform:translate(-50%,-10px); } to { opacity:1; transform:translate(-50%,0); } }
+  .sec-head { margin:26px 14px 10px; display:flex; align-items:center; gap:8px; }
+  .sec-head h2 { margin:0; font-size:15px; font-weight:600; color:var(--c-charcoal); }
+  .sec-head .bar { flex:1; height:2px; background:var(--c-line); border-radius:1px; }
+  .tier { margin:10px 14px; background:var(--c-card); border-radius:10px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .tier summary { padding:13px 14px; font-size:13.5px; font-weight:600; color:var(--c-charcoal);
+    cursor:pointer; display:flex; align-items:center; gap:8px; list-style:none; }
+  .tier summary::-webkit-details-marker { display:none; }
+  .tier summary::after { content:"▾"; margin-left:auto; color:var(--c-soft); transition:transform .2s; }
+  .tier[open] summary::after { transform:rotate(180deg); }
+  .tier-star { color:var(--c-orange-deep); }
+  .tier-count { font-size:11px; color:var(--c-soft); font-weight:400; }
+  .ptab { width:100%; border-collapse:collapse; font-size:13px; }
+  .ptab th { background:#f0f7f9; color:#2C4A5C; font-weight:600; padding:8px 12px; text-align:left;
+    border-top:1px solid var(--c-line); }
+  .ptab td { padding:8px 12px; border-top:1px solid #F0EEE2; color:var(--c-charcoal); vertical-align:top; }
+  .ptab td:first-child { color:#1A3548; font-weight:500; width:52%; }
+  .ptab td:last-child { color:var(--c-soft); }
+  .footer { text-align:center; padding:24px 14px 30px; font-size:11.5px; color:var(--c-soft); line-height:1.7; }
+  .part-tag-FM { background:#3D405B !important; }
+  .part-tag-EHS { background:#C9623F !important; }
+  .role-label { font-size:12px; color:var(--c-soft); }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>跟读训练 · Day9 电气安全（二）</h1>
+  <div class="sub">听原音 → 跟读 → 标记已听</div>
+  <span class="meta-tag">5 段对话 · 20 行 · E. H. S. 训练营</span>
+</div>
+<div class="progress">
+  <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+  <div class="progress-text" id="progText">0 / 20 已打卡</div>
+</div>
+<div class="tips">
+  <b>使用说明：</b>每行点"听原音"播放对应片段，"标记已听"打卡。进度自动保存到本机浏览器。<br>
+  <b>本页范围：</b>仅 EHS 部分（设施经理 FM × EHS 经理 完整对话），出国留学生活交际部分不在此页。
+</div>
+<div class="audio-state wait" id="audioState">
+  <b>⏳ 音频还在配音中</b><br>
+  对话文字已可先读、先标记。原音上线后本页自动生效，刷新即可。
+</div>
+<div class="parts-container" id="partsContainer">
+  <div style="text-align:center;padding:40px 20px;color:var(--c-soft)">加载对话数据…</div>
+</div>
+<div class="sec-head"><h2>短语速查 · 51 条</h2><div class="bar"></div></div>
+
+<details class="tier">
+  <summary><span class="tier-star">⭐ 简单</span><span class="tier-count">17 条</span></summary>
+  <table class="ptab"><thead><tr><th>英文</th><th>中文</th></tr></thead><tbody><tr><td>stored electrical energy</td><td>储存电能</td></tr><tr><td>stored nonelectrical energy</td><td>储存非电能</td></tr><tr><td>Lockout/Tagout (LOTO)</td><td>挂牌上锁</td></tr><tr><td>test for absence of voltage</td><td>无电压检测</td></tr><tr><td>ground circuit conductors</td><td>将电路导体接地</td></tr><tr><td>safety watch</td><td>安全监护员</td></tr><tr><td>high-hazard electrical work</td><td>高风险电气作业</td></tr><tr><td>fall, trip, slips hazards</td><td>跌倒、绊倒、滑倒风险</td></tr><tr><td>elevated heights</td><td>高处作业</td></tr><tr><td>confined space</td><td>有限空间</td></tr><tr><td>limited egress</td><td>出口受限</td></tr><tr><td>personal protective equipment (PPE)</td><td>个人防护装备</td></tr><tr><td>insulated tools</td><td>绝缘工具</td></tr><tr><td>qualified electrical worker</td><td>合格电气作业人员</td></tr><tr><td>unqualified person</td><td>非合格人员</td></tr><tr><td>electrical hazard</td><td>电气危险</td></tr><tr><td>prevent accidental power startup</td><td>防止意外送电</td></tr></tbody></table>
+</details>
+<details class="tier">
+  <summary><span class="tier-star">⭐⭐ 中等</span><span class="tier-count">20 条</span></summary>
+  <table class="ptab"><thead><tr><th>英文</th><th>中文</th></tr></thead><tbody><tr><td>establish an electrically safe work condition</td><td>建立电气安全作业条件</td></tr><tr><td>interrupt load</td><td>切断负载</td></tr><tr><td>disconnect for each source</td><td>断开每一路电源隔离开关</td></tr><tr><td>draw out-type circuit breaker</td><td>抽出式断路器</td></tr><tr><td>test instrument</td><td>测试仪器</td></tr><tr><td>induced voltages</td><td>感应电压</td></tr><tr><td>pre-task plan (PTP)</td><td>作业前方案</td></tr><tr><td>energized electrical work plan (EEWP)</td><td>带电作业方案</td></tr><tr><td>job briefing</td><td>作业交底</td></tr><tr><td>live-dead-live testing</td><td>带电-断电-带电测试</td></tr><tr><td>temporary grounding equipment</td><td>临时接地装置</td></tr><tr><td>approach boundary</td><td>接近边界</td></tr><tr><td>limited approach boundary</td><td>限制接近边界</td></tr><tr><td>restricted approach boundary</td><td>受限接近边界</td></tr><tr><td>arc flash boundary</td><td>电弧闪光边界</td></tr><tr><td>barricade</td><td>设置围挡隔离</td></tr><tr><td>conductive items</td><td>导电物品</td></tr><tr><td>commensurate with</td><td>与……相称、相匹配</td></tr><tr><td>compromise safety</td><td>危及安全</td></tr><tr><td>hierarchy of risk control</td><td>风险控制层级</td></tr></tbody></table>
+</details>
+<details class="tier">
+  <summary><span class="tier-star">⭐⭐⭐ 高级</span><span class="tier-count">14 条</span></summary>
+  <table class="ptab"><thead><tr><th>英文</th><th>中文</th></tr></thead><tbody><tr><td>up-to-date electrical drawings</td><td>最新电气图纸</td></tr><tr><td>nominal voltage</td><td>额定电压</td></tr><tr><td>short-circuit study</td><td>短路分析</td></tr><tr><td>protective device coordination study</td><td>保护装置协同分析</td></tr><tr><td>arc-flash incident energy</td><td>电弧闪络事故能量</td></tr><tr><td>power systems study</td><td>电力系统分析</td></tr><tr><td>catastrophic electrical equipment failures</td><td>电气设备灾难性故障</td></tr><tr><td>complex switching operations</td><td>复杂倒闸操作</td></tr><tr><td>periodic electrical tests</td><td>周期性电气检测</td></tr><tr><td>ASTM F1506 standard</td><td>ASTM F1506 电弧防护服装标准</td></tr><tr><td>incident energy values</td><td>事故能量数值</td></tr><tr><td>overcurrent protective devices</td><td>过流保护装置</td></tr><tr><td>de-energize equipment</td><td>切断设备电源</td></tr><tr><td>retraining / refresher training</td><td>复训</td></tr></tbody></table>
+</details>
+<div class="footer">
+  安全五点半 E. H. S. 训练营 · 跟读训练模块<br>
+  听读模式 · 听原音 · 跟读练习 · 标记已听<br>
+  Day9 · 第十一次课 · 电气安全（二）
+</div>
+<script>
+const STORAGE_KEY = 'day9_electrical_safety2_done';
+const lineState = {};
+const audioPlayer = new Audio();
+audioPlayer.preload = 'auto';
+const AUDIO_FILE = 'day9_full.mp3';
+const TIMINGS_FILE = 'day9_line_timings.json';
+let AUDIO_OK = false;
+const ROLE_MAP = {
+  'Facility Manager': { tag:'F', label:'设施经理 Facility Manager', color:'#3D405B', cls:'part-tag-FM' },
+  'EHS Manager':      { tag:'E', label:'EHS 经理 EHS Manager',  color:'#C9623F', cls:'part-tag-EHS' },
+};
+const PARTS_DATA = [{"id": 1, "title": "Part 1: 强制流程与状态检测", "difficulty_star": "★★☆", "dialogue": [{"role": "Facility Manager", "en": "What is the procedure followed mandatorily before we conduct any electrical maintenance?", "zh": "我们开展所有电气维保前，必须强制执行什么流程？"}, {"role": "EHS Manager", "en": "All electrical work requires the implementation of Lockout/Tagout (L. O. T. O.) procedures. We must isolate energy sources, lock the devices, and post warning tags to prevent accidental power startup.", "zh": "所有电气作业必须执行挂牌上锁流程。彻底隔离能源、锁定开关、悬挂警示标识，杜绝意外送电。"}, {"role": "Facility Manager", "en": "Do we need to test the equipment status before electrical operation?", "zh": "电气作业前是否需要检测设备带电状态？"}, {"role": "EHS Manager", "en": "Yes. We must perform live-dead testing on-site. Verify live status before shutdown and confirm dead zero-energy status before LOTO to ensure safety.", "zh": "需要。现场必须执行带电-失电测试。停机前确认带电状态，挂牌上锁前核验零能量失电状态，保障作业安全。"}]}, {"id": 2, "title": "Part 2: 人员资质与防护装备", "difficulty_star": "★★☆", "dialogue": [{"role": "Facility Manager", "en": "Who are allowed to perform on-site electrical work?", "zh": "谁获准开展现场电气作业？"}, {"role": "EHS Manager", "en": "Only qualified/certified electrical personnel can conduct electrical tasks. Untrained staff are strictly prohibited from any electrical operation.", "zh": "只有持证合格电工可开展电气作业，未受训人员严禁任何电气操作。"}, {"role": "Facility Manager", "en": "What P. P. E. and tools are required for high voltage work?", "zh": "高压电气作业，必须配备哪些防护和工具？"}, {"role": "EHS Manager", "en": "Workers shall use voltage-rated insulating rubber gloves with leather protectors, arc-rated flame-resistant clothing, insulating hard hat with arc flash face shield, insulating boots. We also need voltage-rated insulated hand tools, insulating blankets and insulating mats. All equipment must match the system voltage and pass periodic testing.", "zh": "作业人员要佩戴对应电压等级的绝缘橡胶手套（外加皮革保护手套）、电弧防护阻燃服、带电弧防护面屏的绝缘安全帽、绝缘靴。配套使用额定电压的绝缘手动工具、绝缘毯、绝缘垫。所有装备必须匹配系统电压，并定期检测。"}]}, {"id": 3, "title": "Part 3: 带电禁令与承包商管控", "difficulty_star": "★★☆", "dialogue": [{"role": "Facility Manager", "en": "Can our team carry out minor modifications while the equipment is live?", "zh": "设备带电状态下，我们可以做小的改动作业吗？"}, {"role": "EHS Manager", "en": "No. Unauthorized live-line work is strictly forbidden. All adjustments and repairs must be done under complete de-energized status with LOTO implementation.", "zh": "不可以。严禁无授权带电作业，所有调试、维修工作必须完全断电、完成挂牌上锁后开展。"}, {"role": "Facility Manager", "en": "How do we manage electrical safety for external contractors?", "zh": "外来承包商的电气安全我们该如何管控？"}, {"role": "EHS Manager", "en": "All contractors must take electrical safety training, follow site LOTO rules, and be supervised by our internal qualified personnel during electrical work.", "zh": "所有承包商必须完成电气安全培训，严格遵守现场挂牌上锁规范，电气作业全程由我方持证人员监督。"}]}, {"id": 4, "title": "Part 4: 日常巡检与违规处置", "difficulty_star": "★★☆", "dialogue": [{"role": "Facility Manager", "en": "What daily checks should our facility team focus on?", "zh": "我们厂务团队日常电气巡检重点是什么？"}, {"role": "EHS Manager", "en": "Inspect wire aging, loose connections, damaged enclosures and abnormal heat. Report and isolate all electrical hazards immediately.", "zh": "重点排查线路老化、接线松动、围栏破损、设备异常发热，所有电气隐患必须立即上报、隔离管控。"}, {"role": "Facility Manager", "en": "What happens if someone violates electrical safety rules?", "zh": "如果人员违反电气安全规范，如何处理？"}, {"role": "EHS Manager", "en": "Any electrical safety violation will trigger immediate stop work, formal investigation and corrective actions. Repeat violations will lead to disciplinary penalties.", "zh": "所有电气违规行为立即停工整改、溯源调查、落实纠正措施，屡犯将执行纪律追责。"}]}, {"id": 5, "title": "Part 5: 培训体系与定期复训", "difficulty_star": "★★☆", "dialogue": [{"role": "Facility Manager", "en": "Who needs to take our electrical safety training?", "zh": "哪些人员需要参加电气安全培训？"}, {"role": "EHS Manager", "en": "Qualified electricians need advanced electrical safety training. All other facility staff must at least receive awareness training to recognize electrical hazards.", "zh": "持证电工需要高阶电气安全培训。其余所有厂务人员至少要接受认知培训，能够识别电气危害。"}, {"role": "Facility Manager", "en": "How often do we need to renew electrical safety training for our team?", "zh": "我们团队的电气安全培训多久需要复训一次？"}, {"role": "EHS Manager", "en": "Electrical safety refresher training shall be conducted at least on annual basis. We also need extra training whenever new equipment or new hazards are introduced.", "zh": "电气安全培训需每年至少复训一次。当引入新设备、出现新危害时，还要额外培训。"}]}];
+const TOTAL_LINES = 20;
+function roleInfo(r) { return ROLE_MAP[r] || { tag:'?', label:r, color:'#888', cls:'' }; }
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function toast(msg) {
+  const t = document.createElement('div'); t.className='toast'; t.textContent=msg;
+  document.body.appendChild(t); setTimeout(()=>t.remove(), 1800);
+}
+function playSegment(btn, start, end) {
+  if (!audioPlayer.src) audioPlayer.src = AUDIO_FILE;
+  audioPlayer.currentTime = start;
+  audioPlayer.play().catch(()=>{});
+  btn.classList.add('playing');
+  const onTimeUpdate = () => {
+    if (audioPlayer.currentTime >= end) {
+      audioPlayer.pause(); audioPlayer.removeEventListener('timeupdate', onTimeUpdate);
+      btn.classList.remove('playing');
+    }
+  };
+  audioPlayer.addEventListener('timeupdate', onTimeUpdate);
+}
+function saveProgress() {
+  const done = Object.keys(lineState).filter(k => lineState[k] && lineState[k].done);
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e) {}
+}
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY); if (!raw) return;
+    const keys = JSON.parse(raw); if (!Array.isArray(keys)) return;
+    keys.forEach(k => {
+      lineState[k] = { done:true };
+      const el = document.querySelector('[data-line-key="'+k+'"]'); if (!el) return;
+      el.classList.add('done');
+      const mb = el.querySelector('.btn-mark'), ub = el.querySelector('.btn-unmark');
+      if (mb) mb.style.display='none';
+      if (ub) ub.style.display='inline-flex';
+    });
+  } catch(e) {}
+}
+function updateProgress() {
+  const c = Object.values(lineState).filter(s => s && s.done).length;
+  const f = document.getElementById('progFill'), t = document.getElementById('progText');
+  if (f) f.style.width = TOTAL_LINES>0 ? (c/TOTAL_LINES*100)+'%' : '0%';
+  if (t) t.textContent = c+' / '+TOTAL_LINES+' 已打卡';
+}
+function applyTimings(timings) {
+  const tMap = {};
+  timings.parts.forEach(p => { tMap[p.id] = p; });
+  PARTS_DATA.forEach(part => {
+    const tp = tMap[part.id] || { lines: [] };
+    part.lines.forEach((l, i) => {
+      const t = tp.lines[i] || {};
+      l.start = t.start || 0; l.end = t.end || 0; l.duration = t.duration || 0;
+    });
+  });
+}
+function renderParts() {
+  const container = document.getElementById('partsContainer');
+  container.innerHTML = PARTS_DATA.map(part => {
+    const linesHtml = part.lines.map(l => {
+      const ri = roleInfo(l.role);
+      const dur = l.duration > 0 ? l.duration.toFixed(2)+'s' : '待配音';
+      return `
+<div class="line" data-line-key="${part.id}_${l.idx}" data-start="${l.start}" data-end="${l.end}">
+  <div class="line-head">
+    <span class="role-tag ${ri.cls}" style="background:${ri.color}">${ri.tag}</span>
+    <span class="role-label">${ri.label}</span>
+    <span class="line-no">L${l.idx+1} · ${dur}</span>
+  </div>
+  <div class="line-en">${escapeHtml(l.en)}</div>
+  <div class="line-zh">${escapeHtml(l.zh)}</div>
+  <div class="actions">
+    <button class="btn btn-play${AUDIO_OK ? '' : ' disabled'}">${AUDIO_OK ? '▶ 听原音' : '⏳ 待配音'}</button>
+    <button class="btn btn-mark">✓ 标记已听</button>
+    <button class="btn btn-unmark" style="display:none">↻ 重听</button>
+  </div>
+</div>`;
+    }).join('');
+    return `<div class="part">
+  <div class="part-head"><span class="part-id">${part.id}</span><span class="part-title">${escapeHtml(part.title)}</span></div>
+  ${linesHtml}
+</div>`;
+  }).join('');
+  document.querySelectorAll('.line').forEach(bindLine);
+  loadProgress(); updateProgress();
+}
+function bindLine(el) {
+  const key = el.dataset.lineKey;
+  const start = parseFloat(el.dataset.start), end = parseFloat(el.dataset.end);
+  const playBtn = el.querySelector('.btn-play'), markBtn = el.querySelector('.btn-mark'), unmarkBtn = el.querySelector('.btn-unmark');
+  playBtn.addEventListener('click', () => {
+    if (!AUDIO_OK) { toast('音频还在配音中，先读文字吧'); return; }
+    if (playBtn.classList.contains('playing')) { audioPlayer.pause(); playBtn.classList.remove('playing'); }
+    else playSegment(playBtn, start, end);
+  });
+  const toggle = () => {
+    const done = !lineState[key] || !lineState[key].done;
+    lineState[key] = { done };
+    el.classList.toggle('done', done);
+    if (markBtn) markBtn.style.display = done ? 'none' : 'inline-flex';
+    if (unmarkBtn) unmarkBtn.style.display = done ? 'inline-flex' : 'none';
+    saveProgress(); updateProgress();
+  };
+  if (markBtn) markBtn.addEventListener('click', toggle);
+  if (unmarkBtn) unmarkBtn.addEventListener('click', toggle);
+}
+(async function init() {
+  PARTS_DATA.forEach(p => { p.lines = p.dialogue.map((d,i) => ({ idx:i, role:d.role, en:d.en, zh:d.zh, start:0, end:0, duration:0 })); });
+  try {
+    const r = await fetch('./' + TIMINGS_FILE, { cache:'no-cache' });
+    if (r.ok) { const t = await r.json(); applyTimings(t); AUDIO_OK = true; }
+  } catch(e) { AUDIO_OK = false; }
+  renderParts();
+  if (AUDIO_OK) { document.getElementById('audioState').style.display='none'; }
+})();
+</script>
+</body></html>
