@@ -41,6 +41,7 @@
     box-shadow:0 1px 3px rgba(0,0,0,.05); position:relative; overflow:hidden;
     border:2px solid transparent; transition:border-color .3s; }
   .line.done { border-color:var(--c-good); }
+  .line.playing { border-color:var(--c-orange); background:#FDF6F1; }
   .line-head { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
   .role-tag { font-size:11px; font-weight:600; padding:2px 8px; border-radius:8px; color:#fff; letter-spacing:.3px; }
   .line-no { font-size:11px; color:var(--c-soft); margin-left:auto; }
@@ -144,17 +145,24 @@ function toast(msg) {
   const t = document.createElement('div'); t.className='toast'; t.textContent=msg;
   document.body.appendChild(t); setTimeout(()=>t.remove(), 1800);
 }
-function playSegment(btn, start, end) {
+let activeStop = null, activeBtn = null, activeLine = null;
+function clearPlaying() {
+  if (activeStop) { audioPlayer.removeEventListener('timeupdate', activeStop); activeStop = null; }
+  if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.textContent = '▶ 听原音'; activeBtn = null; }
+  if (activeLine) { activeLine.classList.remove('playing'); activeLine = null; }
+}
+function playSegment(btn, lineEl, start, end) {
+  clearPlaying();
   if (!audioPlayer.src) audioPlayer.src = AUDIO_FILE;
-  audioPlayer.currentTime = start;
-  audioPlayer.play().catch(()=>{});
-  btn.classList.add('playing');
-  const onTimeUpdate = () => {
-    if (audioPlayer.currentTime >= end) {
-      audioPlayer.pause(); audioPlayer.removeEventListener('timeupdate', onTimeUpdate);
-      btn.classList.remove('playing');
-    }
-  };
+  const seek = () => { audioPlayer.currentTime = start; };
+  if (audioPlayer.readyState >= 1) seek();
+  else audioPlayer.addEventListener('loadedmetadata', seek, { once:true });
+  btn.classList.add('playing'); btn.textContent = '⏸ 暂停';
+  if (lineEl) lineEl.classList.add('playing');
+  activeBtn = btn; activeLine = lineEl;
+  audioPlayer.play().catch(() => { clearPlaying(); toast('浏览器拦截了自动播放，请再点一次'); });
+  const onTimeUpdate = () => { if (audioPlayer.currentTime >= end) { audioPlayer.pause(); clearPlaying(); } };
+  activeStop = onTimeUpdate;
   audioPlayer.addEventListener('timeupdate', onTimeUpdate);
 }
 function saveProgress() {
@@ -194,16 +202,18 @@ function applyTimings(timings) {
 }
 function renderParts() {
   const container = document.getElementById('partsContainer');
+  let g = 0;
   container.innerHTML = PARTS_DATA.map(part => {
     const linesHtml = part.lines.map(l => {
       const ri = roleInfo(l.role);
       const dur = l.duration > 0 ? l.duration.toFixed(2)+'s' : '待配音';
+      const gNo = ++g;
       return `
 <div class="line" data-line-key="${part.id}_${l.idx}" data-start="${l.start}" data-end="${l.end}">
   <div class="line-head">
     <span class="role-tag ${ri.cls}" style="background:${ri.color}">${ri.tag}</span>
     <span class="role-label">${ri.label}</span>
-    <span class="line-no">L${l.idx+1} · ${dur}</span>
+    <span class="line-no">L${gNo} · ${dur}</span>
   </div>
   <div class="line-en">${escapeHtml(l.en)}</div>
   <div class="line-zh">${escapeHtml(l.zh)}</div>
@@ -228,8 +238,8 @@ function bindLine(el) {
   const playBtn = el.querySelector('.btn-play'), markBtn = el.querySelector('.btn-mark'), unmarkBtn = el.querySelector('.btn-unmark');
   playBtn.addEventListener('click', () => {
     if (!AUDIO_OK) { toast('音频还在配音中，先读文字吧'); return; }
-    if (playBtn.classList.contains('playing')) { audioPlayer.pause(); playBtn.classList.remove('playing'); }
-    else playSegment(playBtn, start, end);
+    if (playBtn.classList.contains('playing')) { audioPlayer.pause(); clearPlaying(); }
+    else playSegment(playBtn, el, start, end);
   });
   const toggle = () => {
     const done = !lineState[key] || !lineState[key].done;
@@ -249,7 +259,7 @@ function bindLine(el) {
     if (r.ok) { const t = await r.json(); applyTimings(t); AUDIO_OK = true; }
   } catch(e) { AUDIO_OK = false; }
   renderParts();
-  if (AUDIO_OK) { document.getElementById('audioState').style.display='none'; }
+  if (AUDIO_OK) { const b = document.getElementById('audioState'); b.classList.remove('wait'); b.classList.add('ok'); }
 })();
 </script>
 </body></html>
